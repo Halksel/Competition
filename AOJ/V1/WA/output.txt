@@ -1,0 +1,7000 @@
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2
+lb: 0
+ub: 1
+mid: 0
+lb: 1
+ub: 1
+mid: 1
+2

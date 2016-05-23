@@ -1,0 +1,27 @@
+-- Example 0
+1
+5 6 6
+
+INCORRECT
+-- Example 1
+4
+11 12 13 14
+21 22 23 24
+31 32 33 34
+41 42 43 44
+
+CORRECT
+-- Example 2
+3
+3 7
+3 7
+3 7
+
+CORRECT
+-- Example 3
+3
+1 2 3
+4 5 6
+9 8 7
+
+INCORRECT

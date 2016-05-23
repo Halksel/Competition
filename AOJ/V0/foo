@@ -1,0 +1,168 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.006  000.006: --- VIM STARTING ---
+000.078  000.072: Allocated generic buffers
+000.087  000.009: GUI prepared
+000.395  000.308: locale set
+000.398  000.003: clipboard setup
+000.405  000.007: window checked
+000.986  000.581: inits 1
+000.997  000.011: parsing arguments
+001.681  000.684: expanding arguments
+006.675  004.994: shell init
+007.235  000.560: Termcap init
+007.319  000.084: inits 2
+011.121  003.802: init highlight
+011.870  000.054  000.054: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/autoload/kaoriya/switch.vim
+012.069  000.437  000.383: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/encode_japan.vim
+012.995  000.269  000.269: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syncolor.vim
+013.135  000.483  000.214: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/synload.vim
+047.234  034.030  034.030: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+047.381  034.808  000.295: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syntax.vim
+047.544  000.021  000.021: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+047.808  000.092  000.092: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftplugin.vim
+048.040  000.073  000.073: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/indent.vim
+048.266  035.878  000.884: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/vimrc_example.vim
+048.668  037.440  001.125: sourcing $VIM/vimrc
+051.121  002.306  002.306: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftoff.vim
+051.362  000.059  000.059: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/nosyntax.vim
+051.744  000.251  000.251: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syncolor.vim
+051.884  000.464  000.213: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/synload.vim
+090.587  038.637  038.637: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+090.721  039.475  000.315: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syntax.vim
+092.210  000.894  000.894: sourcing /Users/Hira/.vim/dein/repos/github.com/Shougo/dein.vim/autoload/dein.vim
+092.759  000.329  000.329: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftplugof.vim
+093.085  000.173  000.173: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/indoff.vim
+094.602  001.398  001.398: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftoff.vim
+097.022  000.293  000.293: sourcing /Users/Hira/.vim/rc/plugins/neocomplete.rc.vim
+097.377  000.146  000.146: sourcing /Users/Hira/.vim/rc/plugins/unite.rc.vim
+097.400  001.217  000.778: sourcing /Users/Hira/.vim/rc/plugins.rc.vim
+098.023  000.030  000.030: sourcing /Users/Hira/.vim/rc/encoding.rc.vim
+098.115  000.018  000.018: sourcing /Users/Hira/.vim/rc/filetype.rc.vim
+098.449  000.277  000.277: sourcing /Users/Hira/.vim/rc/mappings.rc.vim
+127.531  000.110  000.110: sourcing /Users/Hira/.vim/dein/.dein/ftdetect/ftdetect.vim
+127.757  029.240  029.130: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+127.818  079.092  003.735: sourcing $HOME/.vimrc
+127.825  000.172: sourcing vimrc file(s)
+128.081  000.134  000.134: sourcing /Users/Hira/.vim/dein/.dein/plugin/vimproc.vim
+128.562  000.082  000.082: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/getscriptPlugin.vim
+128.855  000.259  000.259: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/gzip.vim
+129.169  000.279  000.279: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/logiPat.vim
+129.229  000.025  000.025: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/matchparen.vim
+129.886  000.624  000.624: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/netrwPlugin.vim
+130.033  000.062  000.062: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/rrhelper.vim
+130.118  000.042  000.042: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/spellfile.vim
+130.345  000.187  000.187: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/tarPlugin.vim
+130.514  000.124  000.124: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/tohtml.vim
+130.714  000.159  000.159: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/vimballPlugin.vim
+131.002  000.230  000.230: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/zipPlugin.vim
+131.227  000.023  000.023: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/golang/plugin/extra.vim
+131.425  000.146  000.146: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/golang/plugin/godoc.vim
+132.063  000.391  000.391: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/autodate.vim
+132.354  000.237  000.237: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/cmdex.vim
+132.836  000.429  000.429: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/dicwin.vim
+133.452  000.560  000.560: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/hz_ja.vim
+133.693  000.173  000.173: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/scrnmode.vim
+134.015  000.268  000.268: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/verifyenc.vim
+134.236  000.040  000.040: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/vimproc/plugin/vimproc.vim
+134.261  001.962: loading plugins
+134.267  000.006: inits 3
+136.994  002.727: reading viminfo
+137.022  000.028: setting raw mode
+137.038  000.016: start termcap
+137.079  000.041: clearing screen
+137.223  000.144: opening buffers
+137.264  000.041: BufEnter autocommands
+137.269  000.005: editing files in windows
+137.559  000.290: VimEnter autocommands
+137.564  000.005: before starting main loop
+139.061  001.497: first screen update
+139.064  000.003: --- VIM STARTED ---
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.006  000.006: --- VIM STARTING ---
+000.075  000.069: Allocated generic buffers
+000.084  000.009: GUI prepared
+000.412  000.328: locale set
+000.416  000.004: clipboard setup
+000.423  000.007: window checked
+001.051  000.628: inits 1
+001.062  000.011: parsing arguments
+001.810  000.748: expanding arguments
+005.060  003.250: shell init
+005.412  000.352: Termcap init
+005.477  000.065: inits 2
+009.211  003.734: init highlight
+011.512  000.215  000.215: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/autoload/kaoriya/switch.vim
+012.408  001.732  001.517: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/encode_japan.vim
+014.058  000.404  000.404: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syncolor.vim
+014.256  000.706  000.302: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/synload.vim
+039.340  024.986  024.986: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+039.438  026.011  000.319: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syntax.vim
+039.648  000.028  000.028: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+039.920  000.065  000.065: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftplugin.vim
+040.081  000.052  000.052: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/indent.vim
+040.312  027.240  001.084: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/vimrc_example.vim
+040.646  031.193  002.221: sourcing $VIM/vimrc
+042.231  001.461  001.461: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftoff.vim
+042.495  000.063  000.063: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/nosyntax.vim
+042.908  000.272  000.272: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syncolor.vim
+043.061  000.503  000.231: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/synload.vim
+067.479  024.346  024.346: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+067.568  025.198  000.286: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/syntax.vim
+068.961  000.849  000.849: sourcing /Users/Hira/.vim/dein/repos/github.com/Shougo/dein.vim/autoload/dein.vim
+069.264  000.117  000.117: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftplugof.vim
+069.474  000.101  000.101: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/indoff.vim
+071.394  001.800  001.800: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/ftoff.vim
+073.984  000.309  000.309: sourcing /Users/Hira/.vim/rc/plugins/neocomplete.rc.vim
+074.360  000.150  000.150: sourcing /Users/Hira/.vim/rc/plugins/unite.rc.vim
+074.384  001.326  000.867: sourcing /Users/Hira/.vim/rc/plugins.rc.vim
+075.058  000.033  000.033: sourcing /Users/Hira/.vim/rc/encoding.rc.vim
+075.157  000.019  000.019: sourcing /Users/Hira/.vim/rc/filetype.rc.vim
+075.513  000.296  000.296: sourcing /Users/Hira/.vim/rc/mappings.rc.vim
+103.670  000.114  000.114: sourcing /Users/Hira/.vim/dein/.dein/ftdetect/ftdetect.vim
+103.915  028.329  028.215: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/filetype.vim
+103.979  063.285  003.756: sourcing $HOME/.vimrc
+103.986  000.297: sourcing vimrc file(s)
+104.264  000.145  000.145: sourcing /Users/Hira/.vim/dein/.dein/plugin/vimproc.vim
+104.788  000.091  000.091: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/getscriptPlugin.vim
+105.156  000.330  000.330: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/gzip.vim
+105.589  000.394  000.394: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/logiPat.vim
+105.700  000.042  000.042: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/matchparen.vim
+107.070  001.314  001.314: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/netrwPlugin.vim
+107.404  000.104  000.104: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/rrhelper.vim
+107.575  000.087  000.087: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/spellfile.vim
+108.089  000.424  000.424: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/tarPlugin.vim
+108.476  000.219  000.219: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/tohtml.vim
+108.776  000.235  000.235: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/vimballPlugin.vim
+109.529  000.579  000.579: sourcing /Applications/MacVim.app/Contents/Resources/vim/runtime/plugin/zipPlugin.vim
+110.322  000.063  000.063: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/golang/plugin/extra.vim
+110.886  000.411  000.411: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/golang/plugin/godoc.vim
+113.015  001.230  001.230: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/autodate.vim
+113.800  000.584  000.584: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/cmdex.vim
+114.381  000.497  000.497: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/dicwin.vim
+115.056  000.610  000.610: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/hz_ja.vim
+115.313  000.187  000.187: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/scrnmode.vim
+115.773  000.403  000.403: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/kaoriya/plugin/verifyenc.vim
+116.006  000.044  000.044: sourcing /Applications/MacVim.app/Contents/Resources/vim/plugins/vimproc/plugin/vimproc.vim
+116.035  004.056: loading plugins
+116.041  000.006: inits 3
+118.440  002.399: reading viminfo
+118.469  000.029: setting raw mode
+118.476  000.007: start termcap
+118.532  000.056: clearing screen
+118.717  000.185: opening buffers
+118.782  000.065: BufEnter autocommands
+118.790  000.008: editing files in windows
+119.107  000.317: VimEnter autocommands
+119.111  000.004: before starting main loop
+120.850  001.739: first screen update
+120.855  000.005: --- VIM STARTED ---

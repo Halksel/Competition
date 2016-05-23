@@ -1,0 +1,42 @@
+-- Example 0
+1
+C A B
+C
+
+3
+-- Example 1
+3
+A B C D
+B C D
+C D
+A
+
+8
+-- Example 2
+1
+A
+A
+
+1
+-- Example 3
+2
+A B
+B A
+A
+
+1
+-- Example 4
+4
+A B C D E F
+B A
+C B
+D B
+A
+
+3
+-- Example 5
+1
+MYSITE OTHERSITE ANOTHERSITE THIRDSITE
+MYSITE
+
+4
