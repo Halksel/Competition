@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include<cmath>
 using namespace std ;
 
 #define pb(n) push_back(n)
@@ -34,16 +35,21 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+vector<string> Split(char c,string s){
+  vector<string> res(0);
+  string str = "";
+  rep(i,s.size()){
+    if(s[i] == c){
+      res.push_back(str);
+      str.clear();
+    }
+    else{
+      str += s[i];
+    }
+  }
+  res.push_back(str);
+  return res;
 }
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
 template<typename T>
 T ston(string& str, T n){
   istringstream sin(str) ;
@@ -51,20 +57,36 @@ T ston(string& str, T n){
   sin >> num ;
   return num ;
 }
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  cout << n << endl << 1 << endl;
-  REP(i,2,n){
-    cout << rand() % i + 1 << endl;
+  ll n,m;
+  while(cin >> n >> m && n && m){
+    vector<pll> v(101);
+    rep(i,101){
+      v[i].se = i;
+    }
+    string s;
+    cin.ignore();
+    rep(i,n){
+      getline(cin,s);
+      auto vs = Split(' ',s);
+      auto tmp = v;
+      rep(j,vs.size()){
+        if(tmp[ston(vs[j],0)] == v[ston(vs[j],0)])
+          v[ston(vs[j],0)].fi++;
+      }
+    }
+    ll ans = 0;
+    sort(all(v),greater<pll>());
+    rep(i,101){
+      if(v[i].fi >= m){
+        ans = v[i].se;
+        break;
+      }
+    }
+    if(ans) cout << ans << endl;
+    else cout << 0 << endl;
   }
   return 0;
 }

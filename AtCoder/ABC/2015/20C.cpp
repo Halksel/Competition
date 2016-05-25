@@ -64,73 +64,16 @@ int main(){
   cin >> H >> W >> T;
   rep(i,H){
     rep(j,W){
-      cin >> s[i+1][j+1];
+      cin >> s[i][j];
     }
   }
-  queue<pii> q,xy;
-  queue<vector<vector<int>>> e;
-  q.push(make_pair(0,0));
-  xy.push(make_pair(1,1));
-  e.push(vector<vi>(12,vi(12,1000)));
-  pii mb(11,11),mw(11,11);
-  int mindis =100;
-  queue<int> dis;
-  dis.push(0);
-  while(!q.empty()){
-    pii pos = xy.front();xy.pop();
-    pii bw = q.front();q.pop();
-    vector<vi> v = e.front();e.pop();
-    v[pos.fi][pos.se] = dis.front();
-    dis.pop();
-    if(v[pos.fi][pos.se] <mindis){
-      rep(i,4){
-        int x = pos.fi + dx[i],y = pos.se+dy[i];
-        if(value(x,y,H+1,W+1)){
-          //         cout << x << "." << y << endl;
-          if(v[x][y] > v[pos.fi][pos.se] ){
-            if(s[x][y] == '#'){
-              q.push(make_pair(bw.fi+1,bw.se));
-              xy.push(make_pair(x,y));
-              dis.push(1+v[pos.fi][pos.se]);
-              e.push(v);
-            }
-            if(s[x][y] == '.'){
-              q.push(make_pair(bw.fi,bw.se+1));
-              xy.push(make_pair(x,y));
-              dis.push(1+v[pos.fi][pos.se]);
-              e.push(v);
-            }
-            if(s[x][y] == 'G'){
-              mb = make_pair(bw.fi,bw.se+1);
-              mw = make_pair(bw.fi,bw.se+1);
-              mindis = min(mindis,1+v[pos.fi][pos.se]);
-              break;
-            }
-          }
-        }
+  vector<vector<ll>> dp(12,vector<ll>(12,0));
+  rep(i,H){
+    rep(j,W){
+      if(s[j+1][i] == '#'){
+
       }
     }
   }
-  ll ub = T-1,lb = 0;
-  rep(_,100){
-    ll med = (ub+lb)/2;
-    if(lb - ub > 1){
-      break;
-    }
-    ll a = mb.fi * med + mb.se,b = mw.fi*med + mw.se;
-    if( a <= T || b <= T){
-      lb = med;
-    }
-    else{
-      ub = med;
-    }
-  }
-  cout << ub-1 << endl;
-  //   rep(i,H+1){
-  //     rep(j,W+1){
-  //       cout << s[i][j]<< " ";
-  //     }
-  //     cout << endl;
-  //   }
   return 0;
 }
