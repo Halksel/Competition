@@ -12,6 +12,7 @@ using namespace std ;
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -23,13 +24,15 @@ using vi = vector<int>;
 using vl = vector<ll>;
 using dict = map<string,int>;
 using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
 
+const int mod = 1000000007;
 constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0};
-const int dx[] = {0,-1,0,1};
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
@@ -54,56 +57,22 @@ void Ans(bool f){
   else cout << "NO"<<endl;
 }
 
-const int PrimeMax = 1000100;
-int is_prime[PrimeMax];
-void Eratosthenes(int N){
-  for(int i = 0; i < N; i++){
-    is_prime[i] = 1;
-  }
-  is_prime[0] = 0;
-  is_prime[1] = 0;
-  for(int i = 2; i*i < N ; i++){
-    if(is_prime[i]){
-      for(int j = 0; i * (j + 2) < N; j++){
-        is_prime[i *(j + 2)] = 0;
-      }
-    }
-  }
-  REP(i,1000002,PrimeMax){
-    is_prime[i] = 0;
-  }
-  REP(i,1,N){
-    is_prime[i] += is_prime[i-1];
-  }
-}
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  int n;
-  Eratosthenes(PrimeMax);
-  while(cin>>n && n){
-    ll p,m,ans = 0;
-    rep(i,n){
-      ll f,s;
-      cin >> p>>m;
-      if(p - m < 0){
-        s = 0;
-      }
-      else{
-        s = p -m;
-      }
-      f = (p+m > PrimeMax) ? PrimeMax: p + m;
-      if(is_prime[s]- is_prime[f] == 0){
-        ans -= 1;
-      }
-      else{
-        ans -= (is_prime[s]-is_prime[f]);
-      }
+  vary(ll,v,3,0);
+  ll a = 0,b = 0,c = 0,d = 0;
+  while(1){
+    cin >> v[0] >> v[1] >> v[2];
+    sort(all(v));
+    if(! (v[2] < v[0] + v[1])){
+      cout << a << " " << b << " " << c << " " << d << endl;
+      break;
     }
-    if(ans)
-      cout << ans-1 << endl;
-    else
-      cout << 0 << endl;
+    else if(v[0] * v[0] + v[1] * v[1] == v[2] * v[2]) ++b;
+    else if(v[0]*v[0] + v[1]*v[1] > v[2] * v[2]) ++ c;
+    else if(v[0]*v[0] + v[1]*v[1] < v[2] * v[2]) ++ d;
+    ++a;
   }
   return 0;
 }

@@ -12,6 +12,7 @@ using namespace std ;
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -23,67 +24,47 @@ using vi = vector<int>;
 using vl = vector<ll>;
 using dict = map<string,int>;
 using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
 constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0};
-const int dx[] = {0,-1,0,1};
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
+ll n,x;
+vector<ll> v;
+set<ll> s;
+void dfs(ll sum){
+  if(sum <= x && s.insert(sum).se){
+    rep(i,n){
+      dfs(v[i]+sum);
+    }
+  }
+  return;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  while(cin >> n && n){
-    vary(ll,v,n+1,0);
-    rep(i,n+1){
+  while(cin >> n >> x && n && x){
+    s.clear();
+    v.clear();
+    v.resize(n);
+    rep(i,n){
       cin >> v[i];
     }
-    rep(i,n+1){
-      ll dif = -1,pre = -1,dif2 = -1;
-      rep(j,n+1){
-        if(i != j){
-          if(pre == -1){
-            pre = v[j];
-          }
-          else{
-            dif = v[j] - pre;
-            if(dif2 != -1 && dif != dif2){
-              break;
-            }
-            dif2 = dif;
-            pre = v[j];
-          }
-        }
-        if(j == n)
-          cout << v[i]<<endl;
+    ll ans = 0;
+    dfs(0);
+    for(auto N:s){
+      if(N % n){
+        ans = max(ans,N);
       }
     }
+    if(ans) cout << ans << endl;
+    else cout << "NA"<<endl;
   }
   return 0;
 }

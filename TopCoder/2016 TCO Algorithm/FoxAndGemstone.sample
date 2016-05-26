@@ -1,0 +1,46 @@
+-- Example 0
+2
+AB
+AC
+
+Possible
+-- Example 1
+2
+A
+BC
+
+Impossible
+-- Example 2
+7
+A
+B
+C
+AB
+AC
+BC
+ABC
+
+Possible
+-- Example 3
+6
+AB
+AC
+AD
+BC
+BD
+CD
+
+Possible
+-- Example 4
+2
+AB
+CD
+
+Impossible
+-- Example 5
+3
+A
+A
+A
+
+Possible

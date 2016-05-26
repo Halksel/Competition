@@ -12,6 +12,7 @@ using namespace std ;
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -23,13 +24,15 @@ using vi = vector<int>;
 using vl = vector<ll>;
 using dict = map<string,int>;
 using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
 
+const int mod = 1000000007;
 constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0};
-const int dx[] = {0,-1,0,1};
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
@@ -54,56 +57,67 @@ void Ans(bool f){
   else cout << "NO"<<endl;
 }
 
-const int PrimeMax = 1000100;
-int is_prime[PrimeMax];
-void Eratosthenes(int N){
-  for(int i = 0; i < N; i++){
-    is_prime[i] = 1;
-  }
-  is_prime[0] = 0;
-  is_prime[1] = 0;
-  for(int i = 2; i*i < N ; i++){
-    if(is_prime[i]){
-      for(int j = 0; i * (j + 2) < N; j++){
-        is_prime[i *(j + 2)] = 0;
-      }
-    }
-  }
-  REP(i,1000002,PrimeMax){
-    is_prime[i] = 0;
-  }
-  REP(i,1,N){
-    is_prime[i] += is_prime[i-1];
-  }
-}
+struct data{
+  ll h,r,s;
+};
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  int n;
-  Eratosthenes(PrimeMax);
-  while(cin>>n && n){
-    ll p,m,ans = 0;
+  ll n,m;
+  while(cin >> n && n){
+    vector<data> v,v2;
+    ll h,r;
     rep(i,n){
-      ll f,s;
-      cin >> p>>m;
-      if(p - m < 0){
-        s = 0;
+      cin >> h >> r;
+      v.push_back({h,r,h+r});
+    }
+    cin >> m;
+    rep(i,m){
+      cin >> h >> r;
+      v2.push_back({h,r,h+r});
+    }
+    ll ans = 0,tmp = 1,c=0,d=0;
+    h = 0,r = 0;
+    while(c < n || d < m){
+      if(v[c].h <= h || v[c].r <= r) ++c;
+      if(v2[d].h <= h || v2[d].r <= r) ++d;
+      if(c < n && d < m){
+        if(((v[c].h <= v2[d].h && v[c].r <= v2[d].r)||(v2[d].h <= h || v2[d].r <= r)) && v[c].h > h && v[c].r > r){
+          h = v[c].h;
+          r = v[c].r;
+          ++c;
+          ++ans;
+        }
+        else if(v2[d].h > h && v2[d].r > r){
+          h = v2[d].h;
+          r = v2[d].r;
+          ++d;
+          ++ans;
+        }
+        else{
+          ++c;
+          ++d;
+        }
       }
-      else{
-        s = p -m;
+      else if(c >= n){
+        if(h < v2[d].h && r < v2[d].r){
+          h = v2[d].h;
+          r = v2[d].r;
+          ++ans;
+        }
+        ++d;
       }
-      f = (p+m > PrimeMax) ? PrimeMax: p + m;
-      if(is_prime[s]- is_prime[f] == 0){
-        ans -= 1;
-      }
-      else{
-        ans -= (is_prime[s]-is_prime[f]);
+      else if(d >= m){
+        if(h < v[c].h && r < v[c].r){
+          h = v[c].h;
+          r = v[c].r;
+          ++ans;
+        }
+        ++c;
       }
     }
-    if(ans)
-      cout << ans-1 << endl;
-    else
-      cout << 0 << endl;
+    cout << ans << endl;
   }
   return 0;
 }
