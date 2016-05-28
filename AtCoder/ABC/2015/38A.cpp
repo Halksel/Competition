@@ -60,54 +60,13 @@ void Ans(bool f){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll w,h;
-  while(cin >> w >> h && w && h){
-    vector<vector<ll>> v(w * 2+1,vector<ll>(h*2+1,0));
-    rep(j,h-1){
-      rep(i,w-1){
-        cin >> v[i*2+1][2*j];
-      }
-      rep(i,w){
-        cin >> v[i*2][2*j+1];
-      }
-    }
-    rep(i,w-1){
-      cin >> v[i*2+1][(h-1)*2];
-    }
-    queue<pll> q;
-    q.push({0,0});
-    v[0][0] = 1;
-    ll depth = 1;
-    while(q.size()){
-      ll s = q.size();
-      rep(i,s){
-        if(q.size()){
-          auto p = q.front();q.pop();
-          rep(i,4){
-            int nx = p.fi + dx[i]*2,ny = p.se + dy[i]*2;
-            if(value(nx,ny,w*2,h*2) && v[nx][ny] == 0){
-              if(value(nx-dx[i],ny-dy[i],w*2+1,h*2-1) && v[nx-dx[i]][ny-dy[i]] == 0){
-                q.push({nx,ny});
-                v[nx][ny] = depth+1;
-                if(nx == (w-1)*2 && ny == (h-1)*2){
-                  q = queue<pll>();
-                  i = s;
-                  break;
-                }
-              }
-            }
-          }
-        }
-      }
-      ++depth;
-    }
-//     rep(i,h*2){
-//       rep(j,w*2+1){
-//         cout << v[j][i]<< " ";
-//       }
-//       cout << endl;
-//     }
-    cout << v[(w-1)*2][(h-1)*2]<<endl;
+  string str;
+  cin >> str;
+  if(str[str.size()-1] == 'T'){
+    cout << "YES"<<endl;
+  }
+  else{
+    cout << "NO"<<endl;
   }
   return 0;
 }

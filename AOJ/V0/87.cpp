@@ -35,19 +35,6 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0};
 const int dx[] = {0,-1,0,1};
 
-double CalcDist(comd p1, comd p2){
-  return sqrt(pow(p1.X - p2.X,2.0) + pow(p1.Y -p2.Y,2.0));
-}
-
-template <typename T>
-void out(deque < T > d)
-{
-  for(size_t i = 0; i < d.size(); i++)
-  {
-    debug(d[i]);
-  }
-}
-
 template<typename T>
 T ston(string& str, T n){
   istringstream sin(str) ;

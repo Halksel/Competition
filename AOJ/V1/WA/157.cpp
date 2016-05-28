@@ -59,6 +59,9 @@ void Ans(bool f){
 
 struct data{
   ll h,r,s;
+  bool operator<(const data& d){
+    return s < d.s;
+  }
 };
 
 int main(){
@@ -66,56 +69,30 @@ int main(){
   ios::sync_with_stdio(false);
   ll n,m;
   while(cin >> n && n){
-    vector<data> v,v2;
-    ll h,r;
+    vector<data> v;
+    ll h,r,mh = 0;
     rep(i,n){
       cin >> h >> r;
+      mh = max(mh,h);
       v.push_back({h,r,h+r});
     }
     cin >> m;
     rep(i,m){
       cin >> h >> r;
-      v2.push_back({h,r,h+r});
+      mh = max(mh,h);
+      v.push_back({h,r,h+r});
     }
-    ll ans = 0,tmp = 1,c=0,d=0;
-    h = 0,r = 0;
-    while(c < n || d < m){
-      if(v[c].h <= h || v[c].r <= r) ++c;
-      if(v2[d].h <= h || v2[d].r <= r) ++d;
-      if(c < n && d < m){
-        if(((v[c].h <= v2[d].h && v[c].r <= v2[d].r)||(v2[d].h <= h || v2[d].r <= r)) && v[c].h > h && v[c].r > r){
-          h = v[c].h;
-          r = v[c].r;
-          ++c;
-          ++ans;
-        }
-        else if(v2[d].h > h && v2[d].r > r){
-          h = v2[d].h;
-          r = v2[d].r;
-          ++d;
-          ++ans;
-        }
-        else{
-          ++c;
-          ++d;
+    sort(all(v));
+    ll ans = 0,c = 0;
+    vary(ll,dp,n+m+1,0);
+    rep(i,n+m){
+      dp[i] = 1;
+      REP(j,0,i){
+        if(v[j].h < v[i].h && v[j].r < v[i].r){
+          dp[i] = max(dp[i],dp[j]+1);
         }
       }
-      else if(c >= n){
-        if(h < v2[d].h && r < v2[d].r){
-          h = v2[d].h;
-          r = v2[d].r;
-          ++ans;
-        }
-        ++d;
-      }
-      else if(d >= m){
-        if(h < v[c].h && r < v[c].r){
-          h = v[c].h;
-          r = v[c].r;
-          ++ans;
-        }
-        ++c;
-      }
+      ans = max(ans,dp[i]);
     }
     cout << ans << endl;
   }

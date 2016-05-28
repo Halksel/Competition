@@ -31,32 +31,40 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0};
 const int dx[] = {0,-1,0,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-
+  ll h,r,mh = 0,n;
+  cin >> n;
+  vector<pair<ll,ll>> v(n);
+  rep(i,n){
+    cin >> h >> r;
+    v[i] = make_pair(h,-r);
+  }
+  sort(all(v));
+  ll ans = 0,c = 0;
+  vector<ll> dp(n+1,inf);
+  dp[0] = -inf;
+  rep(i,n){
+    ll lb = 0,ub = n+1;
+    ll cand = -v[i].se;
+    while(ub-lb>1){
+      ll mid = (lb + ub)/2;
+      if(dp[mid] < cand){
+        lb = mid;
+      }
+      else{
+        ub = mid;
+      }
+    }
+    dp[lb+1] = cand;
+  }
+  for(ll i = n; i >= 0; --i){
+    if(dp[i] < inf){
+      cout << i << endl;
+      break;
+    }
+  }
   return 0;
 }
