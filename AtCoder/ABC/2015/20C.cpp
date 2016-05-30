@@ -22,7 +22,6 @@ using namespace std ;
 
 typedef long long ll ;
 typedef deque<int> di ;
-typedef vector<int> vi ;
 typedef deque<ll> dl ;
 typedef map<string,int> dict;
 typedef complex<double> comd;
@@ -38,42 +37,74 @@ const int dx[] = {0,-1,0,1};
 double CalcDist(comd p1, comd p2){
   return sqrt(pow(p1.X - p2.X,2.0) + pow(p1.Y -p2.Y,2.0));
 }
+struct data{
+  pii first;
+  ll second;
+};
+bool operator<(const data& a ,const data& b){
+  return a.second > b.second;
+}
 
-  template <typename T>
-void out(deque < T > d)
-{
-  for(size_t i = 0; i < d.size(); i++)
-  {
-    debug(d[i]);
+ll x;
+pii S,G;
+int H, W, T;
+char c[11][11];
+ll d[11][11];
+void dijkstra(pii s){
+  priority_queue<data> Q;
+  rep(i,H) rep(j,W) d[j][i] = inf;
+  Q.push(data{s,0});
+  while(Q.size()){
+    data q= Q.top();Q.pop();
+    if(d[q.fi.fi][q.fi.se] == inf){
+      d[q.fi.fi][q.fi.se] = q.se;
+    }
+    else{
+      continue;
+    }
+    rep(i,4){
+      int nx = q.fi.fi + dx[i],ny = q.fi.se + dy[i];
+      if(!value(nx,ny,W,H) ) continue;
+      ll t_c = (c[nx][ny] == '#' ? x:1LL) + q.se;
+      Q.push(data{make_pair(nx,ny),t_c});
+    }
   }
 }
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
+bool check(ll mid){
+  x = mid;
+  dijkstra(S);
+  if (d[G.first][G.second] <= (ll)T) {
+    return true;
+  }
+  return false;
 }
-
-int H,W,T;
-vector<vector<char>> s(12,vector<char>(12,'/'));
+ll bs(ll lb,ll ub){
+  while( ub - lb >1){
+    ll mid = (ub+lb)/2;
+    if(check(mid)){
+      lb = mid;
+    }
+    else ub = mid;
+  }
+  return lb;
+}
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  cin >> H >> W >> T;
+  cin >> H>>W>>T;
   rep(i,H){
     rep(j,W){
-      cin >> s[i][j];
+      cin >> c[j][i];
     }
   }
-  vector<vector<ll>> dp(12,vector<ll>(12,0));
   rep(i,H){
     rep(j,W){
-      if(s[j+1][i] == '#'){
-
-      }
+      if(c[j][i] == 'S')
+        S = pii(j,i);
+      if(c[j][i] == 'G')
+        G = pii(j,i);
     }
   }
+  cout << bs(1,T)<<endl;
   return 0;
 }

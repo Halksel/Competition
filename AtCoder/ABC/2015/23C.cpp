@@ -12,6 +12,7 @@ using namespace std ;
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define ll long long
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -21,35 +22,27 @@ using namespace std ;
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  int r,c,k,n,rr,cc;
-  int ans = 0;
+  ll r,c,k,n,rr,cc;
+  ll ans = 0;
   cin >> r >> c >> k >> n;
-  vary(int,vr,r+5,0);
-  vary(int,vc,c+5,0);
-  vector<vector<int>> v (r+5,vector<int>(c+5,0));
+  vary(int,vr,r+2,0);
+  vary(int,vc,c+2,0);
+  vector<int> rn(n+2),cn(n+2);
   vector<pair<int,int>> vp(n);
   rep(i,n){
     cin >> rr >> cc;
-    v[rr][cc] = 1;
     vr[rr]++;
     vc[cc]++;
     vp[i] = make_pair(rr,cc);
   }
-  vector<int> rn(n+5),cn(n+5);
-  REP(i,1,r+1){
-    rn[vr[i]]++;
+  REP(i,1,max(r,c)+1){
+    if(i < r+1){
+      rn[vr[i]]++;
+    }
+    if(i < c+1){
+      cn[vc[i]]++;
+    }
   }
-  REP(i,1,c+1){
-    cn[vc[i]]++;
-  }
-//   for(auto it = rn.begin(); it != rn.end();++it){
-//     cout << *it<<endl;
-//   }
-//   debug("c");
-//   for(auto it = cn.begin(); it != cn.end();++it){
-//     cout << *it<<endl;
-//   }
-  int a = 0,b = 0;
   rep(i,n){
     if(i < k+1){
       ans += rn[i]*cn[k-i];

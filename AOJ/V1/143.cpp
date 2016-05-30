@@ -4,8 +4,6 @@ using namespace std ;
 #define pb(n) push_back(n)
 #define fi first
 #define se second
-#define X real()
-#define Y imag()
 #define all(r) (r).begin(),(r).end()
 #define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
@@ -14,6 +12,7 @@ using namespace std ;
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -24,48 +23,26 @@ using ll = long long;
 using vi = vector<int>;
 using vl = vector<ll>;
 using dict = map<string,int>;
-using comd = complex<double>;
 using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
 
+const int mod = 1000000007;
 constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0};
-const int dx[] = {0,-1,0,1};
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
-
-double CalcDist(comd p1, comd p2){
-  return sqrt(pow(p1.X - p2.X,2.0) + pow(p1.Y -p2.Y,2.0));
-}
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(all(v),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-
 double EPS = 1e-10;
 double add(double a, double b){
   if(abs(a+b) < EPS* (abs(a) + abs(b))) return 0;
   return a+b;
 }
+
 struct P{
   double x,y;
   P(){}
@@ -79,6 +56,10 @@ struct P{
   P operator * (double d){
     return P(x * d,y * d);
   }
+  friend ostream& operator<<(ostream& os,const P& p){
+    os << "("<<p.x <<","<<p.y<<")";
+    return os;
+  }
   double norm(){
     return sqrt(x*x + y*y);
   }
@@ -91,14 +72,19 @@ struct P{
   double dist2(P p){
     return ((*this-p).x * (*this-p).x) + ((*this-p).y * (*this-p).y);
   }
+  P GetCenter(P &p){
+    return P((*this+p).x/2,(*this+p).y/2);
+  }
   double GetSlope(P &p){
     P tmp = *this - p;
     return tmp.y/tmp.x;
   }
 };
-//線分上に点が存在するか
 bool on_seg(P p1,P p2,P q){
   return (p1-q).det(p2-q) == 0 && (p1-q).dot(p2-q) <= 0;
+}
+P intersection(P p1, P p2, P q1,P q2){
+  return p1 + (p2-p1) * ((q2 - q1).det(q1-p1) / (q2 - q1).det(p2-p1)) ;
 }
 
 int check(P p1,P p2,P p3){
@@ -107,22 +93,29 @@ int check(P p1,P p2,P p3){
   else if(a.det(b) < -EPS) return -1;
   return 0;
 }
-
+bool solve(double a,double b,double c,double d,double e,double f,double xp,double yp){
+  P p1 = P(a,b),p2 = P(c,d),p3 = P(e,f),p4 = P(xp,yp);
+  int A = check(p1,p2,p4);
+  int B = check(p2,p3,p4);
+  int C = check(p3,p1,p4);
+  if(A == B && B == C && (B == 1 || B == -1)){
+    return true;
+  }
+  return false;
+}
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  double a,b,c,d,e,f,xp,yp;
-  while(cin >> a >> b >> c >> d >> e >> f >> xp >> yp){
-    bool flag = true;
-    P p1 = P(a,b),p2 = P(c,d),p3 = P(e,f),p4 = P(xp,yp);
-    int A = check(p1,p2,p4);
-    int B = check(p2,p3,p4);
-    int C = check(p3,p1,p4);
-    if(A == B && B == C && (B == 1 || B == -1)){
-      cout << "YES"<<endl;
+  ll n;
+  cin >> n;
+  double a,b,c,d,e,f,xk,yk,xs,ys;
+  rep(i,n){
+    cin >> a >> b >> c >> d >> e >> f >> xk >> yk >> xs >> ys;
+    if(solve(a,b,c,d,e,f,xk,yk) == solve(a,b,c,d,e,f,xs,ys)){
+      cout << "NG"<<endl;
     }
     else{
-      cout << "NO"<<endl;
+      cout << "OK"<<endl;
     }
   }
   return 0;
