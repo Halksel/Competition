@@ -5,14 +5,14 @@ using namespace std ;
 #define fi first
 #define se second
 #define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
-#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -60,22 +60,13 @@ void Ans(bool f){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  string str;
-  while(getline(cin,str)){
-    if(str == "END OF INPUT") break;
-    ll cnt = 0,f = 0;
-    rep(i,str.size()){
-      if(str[i] != ' '){
-        ++cnt;
-      }
-      else{
-        cout << cnt;
-        cnt = 0;
-      }
-    }
-    if(cnt)
-      cout << cnt << endl;
-    else cout << endl;
+  ll n;
+  cin >> n;
+  vector<string> v(n);
+  rep(i,n){
+    cin >> v[i];
   }
+  sort(all(v));
+  ll k = 2;
   return 0;
 }

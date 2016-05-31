@@ -34,37 +34,56 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-ll n,x;
-vector<ll> v;
-set<ll> s;
-void dfs(ll sum){
-  if(sum <= x && s.insert(sum).se){
-    rep(i,n){
-      dfs(v[i]+sum);
+const int PrimeMax = 1500001;
+int is_prime[PrimeMax];
+void Eratosthenes(int N){
+  for(int i = 0; i < N; i++){
+    is_prime[i] = 1;
+  }
+  is_prime[0] = 0;
+  is_prime[1] = 0;
+  for(int i = 2; i*i < N ; i++){
+    if(is_prime[i]){
+      for(int j = 0; i * (j + 2) < N; j++){
+        is_prime[i *(j + 2)] = 0;
+      }
     }
   }
-  return;
 }
+ll n,x;
+vector<ll> v;
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  Eratosthenes(PrimeMax);
   while(cin >> n >> x && n && x){
-    s.clear();
     v.clear();
     v.resize(n);
+    vector<ll> c(x+1,0);
     rep(i,n){
       cin >> v[i];
     }
-    ll ans = 0;
-    dfs(0);
-    for(auto N:s){
-      if(N % n){
-        ans = max(ans,N);
+    sort(all(v));
+    rep(i,n){
+      rep(j,x+1){
+        if(j > v[i]){
+          c[j] += c[j-v[i]];
+        }
+        else if(j == v[i]){
+          c[j]++;
+        }
       }
     }
-    if(ans) cout << ans << endl;
-    else cout << "NA"<<endl;
+    bool f =false;
+    for(int i = x; i >= 0; --i){
+      if(c[i] != 0 && is_prime[i] == 1){
+        cout << i << endl;
+        f = true;
+        break;
+      }
+    }
+    if(!f) cout << "NA"<<endl;
   }
   return 0;
 }

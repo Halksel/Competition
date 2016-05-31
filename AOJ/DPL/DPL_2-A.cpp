@@ -12,6 +12,7 @@ using namespace std ;
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -30,36 +31,47 @@ constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0};
-const int dx[] = {0,-1,0,1};
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
+ll n,e;
+vvl(d,20,20,inf);
+ll dp[1 << 15][20];
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+ll rec(ll s, ll v){
+  //一度見ているなら即座にその値を返す
+  if(dp[s][v] >= 0){
+    return dp[s][v];
+  }
+  //すべての頂点を訪れたなら
+  if(s == (1 << n) - 1 && v == 0){
+    return dp[s][v] = 0;
+  }
+  ll res = inf;
+  rep(u,n){
+    //まだ移動していない頂点なら、そこへ
+    if( !(s >> u & 1) && d[v][u] != inf){
+      res = min(res,rec(s | 1 << u, u) + d[v][u]);
+    }
+  }
+  return dp[s][v] = res;
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
+void solve(){
+  memset(dp,-1,sizeof(dp));
+  ll ans = rec(0,0);
+  if(ans == inf) ans = -1;
+  cout << ans<<endl;
 }
 
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-ll money[10000],b[10000];
-ll work[10000][10000];
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-
+  cin >> n >> e;
+  ll s,t,dis;
+  rep(i,e){
+    cin >> s >> t >> dis;
+    d[s][t] = dis;
+  }
+  solve();
   return 0;
 }

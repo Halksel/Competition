@@ -5,14 +5,14 @@ using namespace std ;
 #define fi first
 #define se second
 #define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
-#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -34,48 +34,36 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+ll n,m;
+vvl(d,300,300,inf);
+ll dp[1 << 16][300];
+ll rec(ll s,ll v){
+  if(dp[s][v] >= 0){
+    return dp[s][v];
+  }
+  if(s == (1 << n) -1 && v == 0) return dp[s][v] = 0;
+  ll res = inf;
+  rep(i,n){
+    if(!(s >> i & 1) && d[v][i] != inf){
+      res = min(res,rec(s | (1 << i),i) + d[v][i]);
+    }
+  }
+  return dp[s][v] = res;
 }
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  string str;
-  while(getline(cin,str)){
-    if(str == "END OF INPUT") break;
-    ll cnt = 0,f = 0;
-    rep(i,str.size()){
-      if(str[i] != ' '){
-        ++cnt;
-      }
-      else{
-        cout << cnt;
-        cnt = 0;
-      }
-    }
-    if(cnt)
-      cout << cnt << endl;
-    else cout << endl;
+  cin >> n >> m;
+  ll u,v,l;
+  rep(i,m){
+    cin >> u >> v >> l;
+    --u,--v;
+    d[u][v] = l;
+    d[v][u] = l;
   }
+  memset(dp,-1,sizeof(dp));
+  ll ans = rec(0,0);
+  if(ans == inf) ans = -1;
+  cout << ans <<endl;
   return 0;
 }
