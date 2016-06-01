@@ -27,51 +27,69 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
-constexpr ll imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100000000;
+constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-ll n,m;
-vvl(d,305,305,imax);
+inline bool value(int x,int y,int w,int h){
+  return (x >= 0 && x < w && y >= 0 && y < h);
+}
+
+template<typename T>
+void Unique(vector<T> &v){
+  sort(all(v));
+  v.erase(unique(all(v)),v.end());
+}
+
+template<typename T>
+T ston(string& str, T n){
+  istringstream sin(str) ;
+  T num ;
+  sin >> num ;
+  return num ;
+}
+
+void Ans(bool f){
+  if(f) cout << "YES"<<endl;
+  else cout << "NO"<<endl;
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  cin >> n >> m;
-  ll u,v,l;
-  vector<ll> p;
-  rep(i,m){
-    cin >> u >> v >> l;
-    --u,--v;
-    d[u][v] = l;
-    d[v][u] = l;
-    if( v == 0) swap(v,u);
-    if(u == 0)
-      p.pb(v);
-  }
-  if(p.size() < 2){
-    cout << -1 << endl;
-    return 0;
-  }
-  REP(k,1,n){
-    REP(i,1,n){
-      REP(j,1,n){
-        d[i][j] = min(d[i][j],d[i][k] + d[k][j]);
+  ll m,a,b;
+  while(cin >> m && m){
+    vector<pll> v(m);
+    vary(ll,dp,1010,-1);
+    rep(i,m){
+      cin >> v[i].fi >> v[i].se;
+      dp[v[i].fi] = 1;
+      v[i].se--;
+    }
+    sort(all(v));
+    rep(i,m){
+      rep(j,1001){
+        if(dp[j] >= 0){
+          if(dp[j] == 0) dp[j] = v[i].se;
+          else
+            dp[j] *= v[i].se;
+        }
+        else if(j < v[i].fi || dp[j-v[i].fi] <= 0){
+          dp[j] = -1;
+        }
+        else{
+          dp[j] = dp[j-v[i].fi] - 1;
+        }
       }
     }
-  }
-  ll ans = imax;
-  rep(i,p.size()){
-    REP(j,i+1,p.size()){
-      ans = min(ans,d[0][p[i]]+d[p[i]][p[j]]+d[p[j]][0]);
+    ll g,n;
+    cin >> g;
+    rep(i,g){
+      cin >> n;
+      cout << dp[n]<<endl;
     }
-  }
-  if(ans < inf)
-    cout << ans << endl;
-  else{
-    cout << -1 << endl;
   }
   return 0;
 }
