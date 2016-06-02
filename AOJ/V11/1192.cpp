@@ -56,20 +56,31 @@ void Ans(bool f){
   else cout << "NO"<<endl;
 }
 
-ll tax(ll a,ll b, ll r){
-  a *= (int)((100+x)/100);
-  b *= (int)((100+x)/100);
+ll tax(double a,double b, double r){
+  a *= double((100+r)/100);
+  b *= double((100+r)/100);
+  a = ll(a+eps);
+  b = ll(b+eps);
   return a+b;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll x,y,s;
+  double x,y,s;
   while(cin >> x >> y >> s && x && y && s){
+    vector<ll> v;
     REP(i,1,s){
-      if(tax(i,s-i,x) == s)
+      double a = (((100+x)/100) * i);
+      for(int j = s-1; j >= i; --j){
+        double b =(((100+x)/100)*j);
+        if((int)a + (int)b == s){
+//           cout << i << ":"<<(int)a<<":"<<j<<":"<<(int)b<<endl;
+          v.pb(tax(i,j,y));
+        }
+      }
     }
+    cout << *max_element(all(v))<<endl;
   }
   return 0;
 }

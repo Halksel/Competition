@@ -34,9 +34,13 @@ double eps = 1e-10 ;
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
-ll grid[6][6];
+const int dy[] = {0,1, 0,-1,-1, 0, 1, 0};
+const int dx[] = {1,0,-1, 0, 1, 1, 1, 0};
+const int cy[] = {-1,-1, 0, 1,-1, 0, 1, 0};
+const int cx[] = {0,1 , 2,-1, 1, 1, 1, 0};
+const int chdir[] = {-1,0,1,2};
+const string Dir = "URDLURD";
+ll grid[10][10];
 // u = 1,r = 2, d = 4, l = 8
 int main(){
   cin.tie(0);
@@ -47,122 +51,43 @@ int main(){
       rep(j,5){
         cin >> v[j];
         v[j] -= '0';
-          grid[j+1][i/2+1] |= 8 *v[j];
-          grid[j][i/2+1] |= 2 * v[j];
+        grid[j*2][i] = v[j];
       }
     }
     else{
       rep(j,4){
         cin >> v[j];
         v[j] -= '0';
-        grid[j+1][i/2+1] |= v[j];
-        grid[j+1][i/2] |= v[j]* 4;
+        grid[j*2+1][i] = v[j];
       }
     }
   }
-  ll x = 1,y = 0,c=0,dir = 2;
-  ll u = 1,r = 2, d = 4,l = 8;
+  ll x = 1,y = 0,c = 0,dir = 0;
   cout << "R";
   while(1){
     if(x == 1 && y == 0 && c) break;
+    rep(i,4){
+      ll nx = x + (dx[i] + cx[dir])*2,ny = y + (dy[i] + cy[dir])*2;
+      debug(nx),debug(ny);
+      if(value(nx,ny,10,10) && grid[nx][ny]){
+        x = nx,y = ny;
+        dir += chdir[i];
+        cout << Dir[i+dir];
+        debug(dir);
+        if(dir < 0) dir = 3;
+        dir %= 4;
+        break;
+      }
+    }
     ++c;
-    if(c > 100)break;
-    if(dir == 0){
-      if(grid[x][y+1] & l){
-        ++y;
-        cout << "D";
-      }
-      else if(grid[x-1][y+1] & u){
-        --x;
-        ++y;
-        dir = 1;
-        cout << "L";
-      }
-    }
-    else if(dir == 1){
-      if(grid[x-1][y] & u){
-        --x;
-        cout << "L";
-      }
-      else if(grid[x-1][y-1] & r){
-        --x;
-        --y;
-        dir = 3;
-        cout << "U";
-      }
-    }
-    else if(dir == 2){
-      if(grid[x+1][y] & d){
-        ++x;
-        cout << "R";
-      }
-      else if(grid[x+1][y+1] & l){
-        ++x;
-        ++y;
-        dir = 0;
-        cout << "D";
-      }
-    }
-    else if(dir == 3){
-      if(grid[x][y-1] & r){
-        --y;
-        cout << "U";
-      }
-      else if(grid[x+1][y-1] & d){
-        ++x;
-        --y;
-        dir =2;
-        cout << "R";
-      }
-    }
-    if(dir == 0){
-      if(grid[x][y] & d){
-        dir = 2;
-        cout << "R";
-        if(grid[x][y] & r){
-          dir = 3;
-          cout << "U";
-        }
-      }
-    }
-    else if(dir == 1){
-      if(grid[x][y] & l){
-        dir = 0;
-        cout << "D";
-        if(grid[x][y] & d){
-          dir = 2;
-          cout << "R";
-        }
-      }
-    }
-    else if(dir == 2){
-      if(grid[x][y] & r){
-        dir = 3;
-        cout << "U";
-        if(grid[x][y] & u){
-          dir = 1;
-          cout <<"L";
-        }
-      }
-    }
-    else if(dir == 3){
-      if(grid[x][y] & u){
-        dir = 1;
-        cout <<"L";
-        if(grid[x][y] & l){
-          dir = 0;
-          cout << "D";
-        }
-      }
-    }
+    if(c > 100) break;
   }
   cout << endl;
-//   cout << "u = 1,r = 2, d = 4, l = 8"<<endl;
-//   rep(i,6){
-//     rep(j,6){
-//       scout(3) << grid[j][i];
-//     }
-//     cout << endl;
-//   }
+  rep(i,10){
+    rep(j,10){
+      scout(3) << grid[j][i];
+    }
+    cout << endl;
+  }
   return 0;
 }

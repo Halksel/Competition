@@ -62,33 +62,32 @@ int main(){
   ll m,a,b;
   while(cin >> m && m){
     vector<pll> v(m);
-    vary(ll,dp,1010,-1);
+    vvl(dp,m+1,1010,0);
     rep(i,m){
       cin >> v[i].fi >> v[i].se;
-      dp[v[i].fi] = 1;
-      v[i].se--;
     }
     sort(all(v));
-    rep(i,m){
-      rep(j,1001){
-        if(dp[j] >= 0){
-          if(dp[j] == 0) dp[j] = v[i].se;
-          else
-            dp[j] *= v[i].se;
+    rep(j,m){
+      rep(i,1001){
+        dp[j+1][i] += dp[j][i];
+        if(v[j].se > 0 && i - v[j].fi >= 0){
+          dp[j+1][i] += ((dp[j][i-v[j].fi]==0)?1:dp[j][i-v[j].fi]) * v[j].se;
+          if(i % v[j].fi == 0){
+            v[j].se--;
+          }
         }
-        else if(j < v[i].fi || dp[j-v[i].fi] <= 0){
-          dp[j] = -1;
-        }
-        else{
-          dp[j] = dp[j-v[i].fi] - 1;
-        }
+//         cout << dp[j+1][i]<< " ";
       }
+//       cout << endl;
     }
     ll g,n;
     cin >> g;
     rep(i,g){
       cin >> n;
-      cout << dp[n]<<endl;
+      rep(j,n+1){
+        cout << dp[m][j]<< " ";
+      }
+      cout << dp[m][n]<<endl;
     }
   }
   return 0;
