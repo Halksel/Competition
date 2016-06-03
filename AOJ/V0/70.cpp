@@ -27,7 +27,7 @@ typedef deque<ll> dl ;
 typedef map<string,int> dict;
 typedef complex<double> comd;
 typedef pair<int,int> pii;
-
+using pll = pair<ll,ll> ;
 constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
@@ -56,19 +56,43 @@ T ston(string& str, T n){
   return num ;
 }
 
-int n,s;
 
+int numofbits5(long bits)
+{
+  bits = (bits & 0x55555555) + (bits >> 1 & 0x55555555);
+  bits = (bits & 0x33333333) + (bits >> 2 & 0x33333333);
+  bits = (bits & 0x0f0f0f0f) + (bits >> 4 & 0x0f0f0f0f);
+  bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);
+  return (bits & 0x0000ffff) + (bits >>16 & 0x0000ffff);
+}
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
   vector<int> nums = {0,1,2,3,4,5,6,7,8,9};
-  cin >> n >> s;
-  do{
-    int ans = 0;
-    rep(i,n){
-      ans += nums[i] * (i*1);
+  int n,s2;
+  while(cin >> n >> s2){
+    queue<pll> q;
+    q.push({0,0});
+    ll ans = 0;
+    while(q.size()){
+      ll s = q.size();
+      rep(i,s){
+        pll a = q.front();q.pop();
+        rep(i,10){
+          if(!(a.se & (1 << i))){
+            ll b = (a.fi + (numofbits5(a.se)+1)*i);
+            if(b < s2){
+              q.push({b,a.se|(1<<i)});
+            }
+            else if(b == s && numofbits5(a.se) == n-1){
+              ans++;
+            }
+          }
+        }
+      }
     }
+    if(ans) --ans;
     cout << ans << endl;
-  }while(next_combination(nums.begin(),nums.begin()+n,nums.end())) ;
+  }
   return 0;
 }

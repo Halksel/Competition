@@ -30,64 +30,53 @@ const int mod = 1000000007;
 constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
-const int dy[] = {0,1, 0,-1,-1, 0, 1, 0};
-const int dx[] = {1,0,-1, 0, 1, 1, 1, 0};
-const int cy[] = {-1,-1, 0, 1,-1, 0, 1, 0};
-const int cx[] = {0,1 , 2,-1, 1, 1, 1, 0};
-const int chdir[] = {-1,0,1,2};
-const string Dir = "URDLURD";
-ll grid[10][10];
-// u = 1,r = 2, d = 4, l = 8
+
+template<typename T>
+void Unique(vector<T> &v){
+  sort(all(v));
+  v.erase(unique(all(v)),v.end());
+}
+
+template<typename T>
+T ston(string& str, T n){
+  istringstream sin(str) ;
+  T num ;
+  sin >> num ;
+  return num ;
+}
+
+void Ans(bool f){
+  if(f) cout << "YES"<<endl;
+  else cout << "NO"<<endl;
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  vary(char,v,5,0);
-  rep(i,9){
-    if(i % 2){
-      rep(j,5){
-        cin >> v[j];
-        v[j] -= '0';
-        grid[j*2][i] = v[j];
-      }
-    }
-    else{
-      rep(j,4){
-        cin >> v[j];
-        v[j] -= '0';
-        grid[j*2+1][i] = v[j];
-      }
-    }
-  }
-  ll x = 1,y = 0,c = 0,dir = 0;
-  cout << "R";
+  ll a, b, c;
+  cin >> a >> b >> c;
+  set<ll> s;
+  ll t = 0;
   while(1){
-    if(x == 1 && y == 0 && c) break;
-    rep(i,4){
-      ll nx = x + (dx[i] + cx[dir])*2,ny = y + (dy[i] + cy[dir])*2;
-      debug(nx),debug(ny);
-      if(value(nx,ny,10,10) && grid[nx][ny]){
-        x = nx,y = ny;
-        dir += chdir[i];
-        cout << Dir[i+dir];
-        debug(dir);
-        if(dir < 0) dir = 3;
-        dir %= 4;
-        break;
+    rep(i,a){
+      ++t;
+      if(t%60 == c){
+        cout << t << endl;
+        goto LABEL;
       }
     }
-    ++c;
-    if(c > 100) break;
-  }
-  cout << endl;
-  rep(i,10){
-    rep(j,10){
-      scout(3) << grid[j][i];
+    if(!s.insert(t%60).se){
+      cout << -1 << endl;
+      break;
     }
-    cout << endl;
+    t += b;
   }
+LABEL:
   return 0;
 }
