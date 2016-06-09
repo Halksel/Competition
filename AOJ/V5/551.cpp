@@ -35,20 +35,22 @@ const int dx[] = {0,-1,0,1};
 
 ll L;
 struct icicle{
-  ll len,id;
+  ll len,id,time;
   icicle *l,*r;
-  bool Grow(){
+  int Grow(){
     if(len == 0) return false;
     if( ( l == nullptr || l->len < len) && ( r == nullptr || r->len < len)){
-      ++len;
-    }
-    if(len == L){
-      len = 0;
-      l->r = r;
-      r->l = l;
-      return true;
+      time += max(l->time,r->time) + L - len;
+      len = L;
+      ll a = l->Grow();
+      return true + a;
     }
     return false;
+  }
+  void Cut(){
+    if(len == L){
+      len = 0;
+    }
   }
 };
 
@@ -58,27 +60,26 @@ int main(){
   ll n;
   cin >> n >> L;
   vector<icicle> vi(n+2);
-  vi[0] = icicle{0,0,nullptr,&vi[1]};
-  vi[n+1] = icicle{0,n+1,&vi[n],nullptr};
+  vi[0] = icicle{-1,0,0,nullptr,&vi[1]};
+  vi[n+1] = icicle{-1,n+1,0,&vi[n],nullptr};
   REP(i,1,n+1){
     cin >> vi[i].len;
     vi[i].id = i;
     vi[i].l = &vi[i-1];
     vi[i].r = &vi[i+1];
+    vi[i].time = 0;
   }
   ll cnt = n,ans = 0;
-  icicle ice{-1,-1,nullptr,nullptr};
   while(cnt){
     REP(i,0,n+2){
-      if(vi[i].Grow()) --cnt;
-//       cout << i << " " ;
+      cnt -= vi[i].Grow();
     }
-//     cout << endl;
-//     REP(i,0,n+2){
-//       cout << vi[i].len << " ";
-//     }
-//     cout << cnt << endl;
-    ++ans;
+    REP(i,0,n+2){
+      vi[i].Cut();
+    }
+  }
+  REP(i,0,n+2){
+    ans = max(ans,vi[i].time);
   }
   cout << ans <<endl;
   return 0;
