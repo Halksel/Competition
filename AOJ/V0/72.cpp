@@ -33,60 +33,68 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+struct Edge{
+  int to;
+  long long cost;
+};
+
+struct NODE{
+  int pos;
+  long long cost;
+};
+bool operator < (const NODE &a,const NODE &b){
+  return a.cost > b.cost;
 }
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-
-ll tax(double a,double b, double r){
-  a *= double((100+r)/100);
-  b *= double((100+r)/100);
-  debug(a);
-  debug(b);
-  a = (int)(a);
-  b = (int)(b);
-  return a+b;
+vector<Edge> g[100000],rg[100000];
+const int MAX_V = 105;
+//infで初期化
+vector<vector<ll>> cost;
+ll mincost[MAX_V];
+bool used[MAX_V];
+ll V,path;
+ll prim(){
+  ll res = 0;
+  path = 0;
+  for(ll i = 0; i < V; ++i){
+    mincost[i] = inf;
+    used[i] = false;
+  }
+  priority_queue<NODE> q;
+  q.push({0,0});
+  while(q.size()){
+    auto v = q.top();q.pop();
+    if(mincost[v.pos] == inf){
+      mincost[v.pos] = v.cost;
+      res += v.cost;
+      if(v.cost)
+        path += v.cost/100 - 1;
+      for(auto n : g[v.pos]){
+        q.push({n.to,n.cost});
+      }
+    }
+  }
+  rep(i,V){
+    g[i].clear();
+  }
+  return res;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  double x,y,s;
-  while(cin >> x >> y >> s && x && y && s){
-    vector<ll> v;
-    double r = (100+x)/100,r2 = (100+y)/100;
-    REP(i,1,s){
-      double a,b;
-      int f = 0;
-      for(int j = 0; j <i+1;++j ){
-        if(floor(r * j +eps)== i){
-          a = floor(j*r2+eps);
-//           cout << i<< "j:" << j<<":"<<a<<endl;
-          ++f;
-          break;
-        }
-      }
-      for(int j = 0; j < s-1; ++j ){
-        if(floor(r * j+eps) == s-i){
-          b = floor(j*r2+eps);
-//           cout << j << ":"<<b<<endl;
-          ++f;
-          break;
-        }
-      }
-      if(f == 2){
-        ll ans = a+b;
-//         cout << ans<<endl;
-        v.pb(ans);
-      }
+  ll n,m;
+  while(cin >> n && n){
+    V = n;
+    cin >> m;
+    int a,b,c;
+    char d;
+    rep(i,m){
+      cin >> a >> d >> b >> d >> c;
+      g[a].push_back({b,c});
+      g[b].push_back({a,c});
     }
-    cout << *max_element(all(v))<<endl;
+    ll ans = prim();
+    cout << ans/100-n+1 << endl;
   }
   return 0;
 }

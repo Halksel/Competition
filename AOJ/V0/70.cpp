@@ -71,26 +71,7 @@ int main(){
   vector<int> nums = {0,1,2,3,4,5,6,7,8,9};
   int n,s2;
   while(cin >> n >> s2){
-    queue<pll> q;
-    q.push({0,0});
-    ll ans = 0;
-    while(q.size()){
-      ll s = q.size();
-      rep(i,s){
-        pll a = q.front();q.pop();
-        rep(i,10){
-          if(!(a.se & (1 << i))){
-            ll b = (a.fi + (numofbits5(a.se)+1)*i);
-            if(b < s2){
-              q.push({b,a.se|(1<<i)});
-            }
-            else if(b == s && numofbits5(a.se) == n-1){
-              ans++;
-            }
-          }
-        }
-      }
-    }
+
     if(ans) --ans;
     cout << ans << endl;
   }

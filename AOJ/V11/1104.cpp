@@ -30,8 +30,8 @@ const int mod = 1000000007;
 constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
+const int dy[] = { 0,1,0,-1,1,-1,1,-1};
+const int dx[] = { 1,0,-1, 0,1,-1,-1,1};
 
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
@@ -42,51 +42,79 @@ void Unique(vector<T> &v){
   sort(all(v));
   v.erase(unique(all(v)),v.end());
 }
+template<typename T>
+ll FindErase(vector<T> &v,T tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
+}
 
+template<typename T>
+bool SuffixErase(vector<T> &v,size_t suf){
+  if(suf > v.size()) return false;
+  for(auto it = v.begin(); it != v.end();){
+    if(distance(v.begin(),it) == suf){
+      v.erase(it);
+      return true;
+    }
+    else{
+      ++it;
+    }
+  }
+  return false;
+}
 
-ll tax(double a,double b, double r){
-  a *= double((100+r)/100);
-  b *= double((100+r)/100);
-  debug(a);
-  debug(b);
-  a = (int)(a);
-  b = (int)(b);
-  return a+b;
+template<typename T>
+T ston(string& str, T n){
+  istringstream sin(str) ;
+  T num ;
+  sin >> num ;
+  return num ;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  double x,y,s;
-  while(cin >> x >> y >> s && x && y && s){
-    vector<ll> v;
-    double r = (100+x)/100,r2 = (100+y)/100;
-    REP(i,1,s){
-      double a,b;
-      int f = 0;
-      for(int j = 0; j <i+1;++j ){
-        if(floor(r * j +eps)== i){
-          a = floor(j*r2+eps);
-//           cout << i<< "j:" << j<<":"<<a<<endl;
-          ++f;
-          break;
-        }
+  ll n,m;
+  while(cin >> n >> m && n && m){
+    string s;
+    ll k,x=1,y=1,dir = 0;
+    while(cin >> s ){
+      if(s == "STOP") break;
+      if(s == "FORWARD"){
+        cin >> k;
+        x += k * dx[dir];
+        y += k * dy[dir];
       }
-      for(int j = 0; j < s-1; ++j ){
-        if(floor(r * j+eps) == s-i){
-          b = floor(j*r2+eps);
-//           cout << j << ":"<<b<<endl;
-          ++f;
-          break;
-        }
+      else if(s == "BACKWARD"){
+        cin >> k;
+        x -= k * dx[dir];
+        y -= k * dy[dir];
       }
-      if(f == 2){
-        ll ans = a+b;
-//         cout << ans<<endl;
-        v.pb(ans);
+      else if(s == "RIGHT"){
+        ++dir;
       }
+      else{
+        --dir;
+      }
+      dir +=4;
+      dir %= 4;
+      if(x < 1) x = 1;
+      if(y < 1) y = 1;
+      if(x > m) x = m;
+      if(y > n) y = n;
     }
-    cout << *max_element(all(v))<<endl;
+    if(x > m) x = m;
+    if(y > n) y = n;
+    cout << y << ' ' << x << endl;
   }
   return 0;
 }
