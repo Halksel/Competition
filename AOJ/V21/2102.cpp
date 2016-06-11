@@ -27,8 +27,7 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
-constexpr int imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100000000;
+constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
@@ -43,6 +42,35 @@ void Unique(vector<T> &v){
   sort(all(v));
   v.erase(unique(all(v)),v.end());
 }
+template<typename T>
+ll FindErase(vector<T> &v,T tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
+}
+
+template<typename T>
+bool SuffixErase(vector<T> &v,size_t suf){
+  if(suf > v.size()) return false;
+  for(auto it = v.begin(); it != v.end();){
+    if(distance(v.begin(),it) == suf){
+      v.erase(it);
+      return true;
+    }
+    else{
+      ++it;
+    }
+  }
+  return false;
+}
 
 template<typename T>
 T ston(string& str, T n){
@@ -52,9 +80,16 @@ T ston(string& str, T n){
   return num ;
 }
 
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
+template<typename T>
+bool check(T a,T b,T c){
+  if(a.se != b.se || b.se != c.se){
+    return false;
+  }
+  if(a.fi +1 == b.fi && a.fi +2 == c.fi){
+    return true;
+  }
+  else if(a.fi == b.fi && b.fi == c.fi) return true;
+  return false;
 }
 
 int main(){
@@ -62,11 +97,25 @@ int main(){
   ios::sync_with_stdio(false);
   ll n;
   cin >> n;
-  vector<string> v(n);
   rep(i,n){
-    cin >> v[i];
+    vector<pair<ll,char>> v(9);
+    rep(j,9){
+      cin >> v[j].fi;
+    }
+    rep(j,9){
+      cin >> v[j].se;
+    }
+    sort(all(v));
+    bool f = 0;
+    do{
+      if(check(v[0],v[1],v[2]) && check(v[3],v[4],v[5]) && check(v[6],v[7],v[8])){
+        cout << 1 << endl;
+        f = 1;
+        break;
+      }
+    }while(next_permutation(all(v)));
+    if(!f)
+      cout << 0 << endl;
   }
-  sort(all(v));
-  v.resize(min(n,5));
   return 0;
 }

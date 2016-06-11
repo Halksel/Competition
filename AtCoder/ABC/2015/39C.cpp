@@ -27,8 +27,7 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
-constexpr int imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100000000;
+constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
@@ -43,6 +42,35 @@ void Unique(vector<T> &v){
   sort(all(v));
   v.erase(unique(all(v)),v.end());
 }
+template<typename T>
+ll FindErase(vector<T> &v,T tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
+}
+
+template<typename T>
+bool SuffixErase(vector<T> &v,size_t suf){
+  if(suf > v.size()) return false;
+  for(auto it = v.begin(); it != v.end();){
+    if(distance(v.begin(),it) == suf){
+      v.erase(it);
+      return true;
+    }
+    else{
+      ++it;
+    }
+  }
+  return false;
+}
 
 template<typename T>
 T ston(string& str, T n){
@@ -52,21 +80,22 @@ T ston(string& str, T n){
   return num ;
 }
 
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
+const string key = "WBWBWWBWBWBW";
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  vector<string> v(n);
-  rep(i,n){
-    cin >> v[i];
+  string k ,s;
+  rep(i,24){
+    k += key;
   }
-  sort(all(v));
-  v.resize(min(n,5));
+  cin >> s;
+  ll n = k.find(s)%12;
+  string ans[12] = {"Do","","Re","","Mi","Fa","","So","","La","","Si"};
+  rep(i,12){
+    if(n == i){
+      cout << ans[i]<<endl;
+    }
+  }
   return 0;
 }
