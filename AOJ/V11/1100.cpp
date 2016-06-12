@@ -57,29 +57,77 @@ void Ans(bool f){
   else cout << "NO"<<endl;
 }
 
+double EPS = 1e-10;
+double add(double a, double b){
+  if(abs(a+b) < EPS* (abs(a) + abs(b))) return 0;
+  return a+b;
+}
+
+struct P{
+  double x,y;
+  P(){}
+  P(double _x,double _y):x(_x),y(_y){}
+  P operator + (P p){
+    return P(add(x,p.x) ,add(y,p.y));
+  }
+  P operator - (P p){
+    return P(add(x,-p.x) ,add(y,-p.y));
+  }
+  P operator * (double d){
+    return P(x * d,y * d);
+  }
+  bool operator==(const P p){
+    return (x == p.x && y == p.y);
+  }
+  friend ostream& operator<<(ostream& os,const P& p){
+    os << "("<<p.x <<","<<p.y<<")";
+    return os;
+  }
+  double norm(){
+    return sqrt(x*x + y*y);
+  }
+  double dot(P p){
+    return add(x * p.x,y*p.y);
+  }
+  double det(P p){
+    return add(x*p.y,-y*p.x);
+  }
+  double dist2(P p){
+    return ((*this-p).x * (*this-p).x) + ((*this-p).y * (*this-p).y);
+  }
+  P GetCenter(P &p){
+    return P((*this+p).x/2,(*this+p).y/2);
+  }
+  double GetSlope(P &p){
+    P tmp = *this - p;
+    return tmp.y/tmp.x;
+  }
+};
+//線分上に点が存在するか
+bool on_seg(P p1,P p2,P q){
+  return (p1-q).det(p2-q) == 0 && (p1-q).dot(p2-q) <= 0;
+}
+//交点導出
+P intersection(P p1, P p2, P q1,P q2){
+  return p1 + (p2-p1) * ((q2 - q1).det(q1-p1) / (q2 - q1).det(p2-p1)) ;
+}
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
   ll n;
   ll num = 1;
   while(cin >> n && n){
-    vary(ll,x,n,0);
-    vary(ll,y,n,0);
     double ans = 0;
+    vector<P> v(n+1);
     rep(i,n){
-      cin >> x[i] >> y[i];
+      cin >> v[i].x >> v[i].y;
     }
-    REP(i,1,n){
-      x[i] -= x[0];
-      y[i] -= y[0];
-    }
-    REP(i,1,n-1){
-      double a =abs(x[i] * y[i+1] - y[i]*x[i+1]);
-      ans += a;
-      debug(a);
+    v[n] = v[0];
+    REP(i,0,n){
+      ans += v[i].det(v[i+1]);
     }
     ans *= 0.5;
-    fcout(10) << num << " " << ans << endl;
+    fcout(1) << num << " " << abs(ans) << endl;
     ++num;
   }
   return 0;
