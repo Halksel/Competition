@@ -54,14 +54,34 @@ void Ans(bool f){
   if(f) cout << "YES"<<endl;
   else cout << "NO"<<endl;
 }
-const ll m = 1000000001;
-vector<int> ans(m);
+const int m = 1000000001;
+static vector<string> dp[11][4][6];
+static vector<string> dp2[11][4];
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
   ll n;
-  while(cin>>n&&n){
-    cout << <<endl;
+  cin >> n;
+  dp[0][0][0].push_back("");
+  dp2[0][0].push_back("");
+  rep(i,n){
+    rep(j,4){
+      rep(k,6){
+        for(auto s : dp[i][j][k]){
+          for(char d = '0'; d <= '9'; ++d){
+            dp[i+1][(j + (d - '0')) % 4][(k + (d-'0'))%6].push_back(s+d);
+          }
+        }
+      }
+      for(auto s : dp2[i][j]){
+        for(char d = '0'; d <= '9'; ++d){
+          dp2[i+1][(j+(d-'0'))%4].push_back(s+d);
+        }
+      }
+    }
+  }
+  rep(i,dp2[n][0].size()){
+    cout << dp2[n][0][i]<<endl;
   }
   return 0;
 }

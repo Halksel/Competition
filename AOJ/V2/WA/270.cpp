@@ -58,7 +58,7 @@ ll FindErase(T &v,U tar){
 }
 
 template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
+bool SuffixErase(T &v,size_t suf){
   if(suf > v.size()) return false;
   for(auto it = v.begin(); it != v.end();){
     if(distance(v.begin(),it) == suf){
@@ -72,51 +72,48 @@ bool SuffixErase(vector<T> &v,size_t suf){
   return false;
 }
 
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
+const int PrimeMax = 300001;
+int is_prime[PrimeMax];
+vector<int> v;
+void Eratosthenes(int N){
+  for(int i = 0; i < N; i++){
+    is_prime[i] = 1;
+  }
+  is_prime[0] = 0;
+  is_prime[1] = 0;
+  for(int i = 2; i*i < N ; i++){
+    if(is_prime[i]){
+      v.push_back(i);
+      for(int j = 0; i * (j + 2) < N; j++){
+        is_prime[i *(j + 2)] = 0;
+      }
+    }
+  }
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  string s;
+  ll n,q;
+  cin >> n >> q;
+  vector<int> c(n);
   rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
+    cin >> c[i];
+  }
+  sort(all(c));
+  ll a;
+  rep(i,q){
+    cin >> a;
+    ll ans = 0;
+    set<int> s;
+    rep(j,n){
+      if(s.size() == a || ans == a-1){
+        break;
       }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
-        }
-      }
-      else{
-        ++w;
-        if(g < 1){
-          f = false;
-        }
-      }
+      ans = max(ans,c[j]%a);
+      s.insert(c[j]%a);
     }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
-    }
+    cout << ans<<endl;
   }
   return 0;
 }

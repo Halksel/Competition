@@ -26,6 +26,7 @@ using vi = vector<int>;
 using vl = vector<ll>;
 using dict = map<string,int>;
 using pii = pair<int,int> ;
+const int MAX_V = 1000000;
 
 constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
@@ -99,7 +100,50 @@ ll Prim(){
   }
   return res;
 }
+//SCC
+const int MAX_V = 100000000;
+vector<int> g[MAX_V];
+vector<int> rg[MAX_V];
+vector<ll> vs;
+array<bool,MAX_V> use;
+array<int,MAX_V> cmp;
 
+void add_edge(int from,int to){
+  g[from].push_back(to);
+  rg[to].push_back(from);
+}
+
+void dfs(int v){
+  use[v] = true;
+  rep(i,g[v].size()){
+    if(!use[g[v][i]]){
+      dfs(g[v][i]);
+    }
+  }
+  vs.push_back(v);
+}
+
+void rdfs(int v,int k){
+  use[v] = true;
+  cmp[v] = k;
+  rep(i,rg[v].size()){
+    if(!use[rg[v][i]]) rdfs(rg[v][i],k);
+  }
+}
+
+int scc(){
+  fill(all(use),false);
+  vs.clear();
+  rep(i,V){
+    if(!use[i]) dfs(i);
+  }
+  fill(all(use),false);
+  int k = 0;
+  for(int i = vs.size()-1; i >= 0; --i){
+    if(!use[vs[i]]) rdfs(vs[i],k++);
+  }
+  return k;
+}
 //幾何
 double EPS = 1e-10;
 double add(double a, double b){
@@ -244,6 +288,23 @@ vector<string> Split(char c,string s){
   res.push_back(str);
   return res;
 }
+template<typename T>
+int compress( T &x1, T &x2,int w){
+  vector<int> xs;
+  rep(i,n){
+    for(int d = -1; d <= 1;++d){
+      int tx1 = x1[i]+d,tx2 = x2[i]+d;
+      if(1 <= tx1 && tx1 <= w) xs.push_back(tx1);
+      if(1 <= tx2 && tx2 <= w) xs.push_back(tx2);
+    }
+  }
+  Unique(xs);
+  rep(i,n){
+    x1[i] = find(all(xs),x1[i])-xs.begin();
+    x2[i] = find(all(xs),x2[i]) - xs.begin();
+  }
+  return xs.size();
+}
 
 // 数値を２進数文字列に変換
 std::string to_binString(unsigned int val)
@@ -269,56 +330,94 @@ int numofbits5(long bits)
   bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);
   return (bits & 0x0000ffff) + (bits >>16 & 0x0000ffff);
 }
+//Dice
 enum{
-  t = 0,
-  f ,
-  r ,
-  b ,
-  l ,
-  d,
+  t = 0,f ,r ,b ,l ,d ,
 };
-
-array<int,6> dice = {1,3,5,4,2,6};
-
-void Spin(array<int,6> &D,int dir){
-  if(dir == l){//
-    swap(D[t],D[r]);
-    swap(D[r],D[d]);
-    swap(D[d],D[l]);
-  }
-  else if(dir == r){
-    swap(D[t],D[l]);
-    swap(D[l],D[d]);
-    swap(D[d],D[r]);
-  }
-  else if(dir == f){
-    swap(D[t],D[b]);
-    swap(D[b],D[d]);
-    swap(D[d],D[f]);
-  }
-  else if(dir == b){
-    swap(D[t],D[f]);
-    swap(D[f],D[d]);
-    swap(D[d],D[b]);
-  }
-  else if(dir == d){//leftspin
-    swap(D[f],D[r]);
-    swap(D[r],D[b]);
-    swap(D[b],D[l]);
-  }
-  else if(dir == t){
-    swap(D[f],D[l]);
-    swap(D[l],D[b]);
-    swap(D[b],D[r]);
-  }
-}
-
-void ViewDice(array<int,6> D){
-  rep(i,6){
-    cout << D[i]<< " ";
-  }
-  cout << endl;
-}
+template<typename S>
+class Dice{
+  public:
+    array<S,6> D;
+    Dice(){
+    }
+    Dice(array<S,6> d){
+      copy(all(D),d.begin());
+    }
+    void Spin(int dir){
+      if(dir == l){//
+        swap(D[t],D[r]);
+        swap(D[r],D[d]);
+        swap(D[d],D[l]);
+      }
+      else if(dir == r){
+        swap(D[t],D[l]);
+        swap(D[l],D[d]);
+        swap(D[d],D[r]);
+      }
+      else if(dir == f){
+        swap(D[t],D[b]);
+        swap(D[b],D[d]);
+        swap(D[d],D[f]);
+      }
+      else if(dir == b){
+        swap(D[t],D[f]);
+        swap(D[f],D[d]);
+        swap(D[d],D[b]);
+      }
+      else if(dir == d){//leftspin
+        swap(D[f],D[r]);
+        swap(D[r],D[b]);
+        swap(D[b],D[l]);
+      }
+      else if(dir == t){
+        swap(D[f],D[l]);
+        swap(D[l],D[b]);
+        swap(D[b],D[r]);
+      }
+    }
+    void MatchDice(int T,int F){
+      rep(i,4){
+        Spin(r);
+        if(D[t] == T)break;
+      }
+      if(D[t] != T){
+        rep(i,4){
+          Spin(f);
+          if(D[t] == T)break;
+        }
+      }
+      rep(i,4){
+        Spin(t);
+        if(D[f] == F) break;
+      }
+    }
+    S& operator[](const int i){
+      return D[i];
+    }
+    bool operator==(Dice& di2){
+      rep(i,4){
+        di2.Spin(r);
+        rep(j,4){
+          di2.Spin(t);
+          rep(k,4){
+            di2.Spin(r);
+            if(D == di2.D){
+              return true;
+            }
+          }
+        }
+      }
+      return false;
+    }
+    friend ostream& operator<<(ostream& os,const Dice& di){
+      os << "t f r l b d\n" ;
+      rep(i,6){
+        if(i) os << ' ';
+        os << di.D[i] ;
+      }
+      return os;
+    }
+};
 
 int main(){
   cin.tie(0);

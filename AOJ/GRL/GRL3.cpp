@@ -36,87 +36,66 @@ const int dx[] = {0,-1,0,1,1,-1,-1,1};
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
+ll V,E;
+const int MAX_V = 1000000;
+vector<int> g[MAX_V];
+vector<int> rg[MAX_V];
+vector<ll> vs;
+array<bool,MAX_V> use;
+array<int,MAX_V> cmp;
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
+void add_edge(int from,int to){
+  g[from].push_back(to);
+  rg[to].push_back(from);
 }
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
+
+void dfs(int v){
+  use[v] = true;
+  rep(i,g[v].size()){
+    if(!use[g[v][i]]){
+      dfs(g[v][i]);
     }
   }
-  return cnt;
+  vs.push_back(v);
 }
 
-template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
+void rdfs(int v,int k){
+  use[v] = true;
+  cmp[v] = k;
+  rep(i,rg[v].size()){
+    if(!use[rg[v][i]]) rdfs(rg[v][i],k);
   }
-  return false;
 }
 
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
+int scc(){
+  fill(all(use),false);
+  vs.clear();
+  rep(i,V){
+    if(!use[i]) dfs(i);
+  }
+  fill(all(use),false);
+  int k = 0;
+  for(int i = vs.size()-1; i >= 0; --i){
+    if(!use[vs[i]]) rdfs(vs[i],k++);
+  }
+  return k;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  string s;
-  rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
-      }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
-        }
-      }
-      else{
-        ++w;
-        if(g < 1){
-          f = false;
-        }
-      }
-    }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
-    }
+  cin >> V >> E;
+  int s,t;
+  rep(i,E){
+    cin >> s >> t;
+    add_edge(s,t);
+  }
+  scc();
+  ll q;
+  cin >> q;
+  rep(i,q){
+    cin >> s >> t;
+    cout << (cmp[s] ==cmp[t]) <<endl;
   }
   return 0;
 }

@@ -1,3 +1,4 @@
+#define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
 using namespace std ;
 
@@ -58,7 +59,7 @@ ll FindErase(T &v,U tar){
 }
 
 template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
+bool SuffixErase(T &v,size_t suf){
   if(suf > v.size()) return false;
   for(auto it = v.begin(); it != v.end();){
     if(distance(v.begin(),it) == suf){
@@ -83,40 +84,43 @@ T ston(string& str, T n){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  string s;
-  rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
+  ll h,w,q;
+  cin >> h >> w >> q;
+  vector<vector<ll>> j,o,I(h+2,vector<ll>(w+2,0));
+  j = o = I;
+  char c;
+  REP(i,1,h+1){
+    REP(k,1,w+1){
+      cin >> c;
+      if(c == 'J'){
+        j[i][k] = 1;
       }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
-        }
+      else if(c == 'O'){
+        o[i][k] = 1;
       }
       else{
-        ++w;
-        if(g < 1){
-          f = false;
-        }
+        I[i][k] = 1;
       }
     }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
+  }
+  REP(i,1,h+1){
+    REP(k,1,w+1){
+      j[i][k+1] += j[i][k];
+      o[i][k+1] += o[i][k];
+      I[i][k+1] += I[i][k];
     }
+  }
+  REP(k,1,w+1){
+    REP(i,1,h+1){
+      j[i+1][k] += j[i][k];
+      o[i+1][k] += o[i][k];
+      I[i+1][k] += I[i][k];
+    }
+  }
+  ll a,b,e,d;
+  rep(i,q){
+    cin >> a >> b >> e >> d;
+    cout << j[e][d]+j[a-1][b-1]-j[a-1][d]-j[e][b-1]<< ' '<<o[e][d] + o[a-1][b-1] -o[a-1][d]-o[e][b-1]<< ' '<<I[e][d] +I[a-1][b-1]-I[a-1][d]-I[e][b-1]<<endl;
   }
   return 0;
 }

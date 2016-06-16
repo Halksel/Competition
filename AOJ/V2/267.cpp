@@ -58,7 +58,7 @@ ll FindErase(T &v,U tar){
 }
 
 template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
+bool SuffixErase(T &v,size_t suf){
   if(suf > v.size()) return false;
   for(auto it = v.begin(); it != v.end();){
     if(distance(v.begin(),it) == suf){
@@ -80,43 +80,74 @@ T ston(string& str, T n){
   return num ;
 }
 
+bool check(vector<ll> v){
+  ll n = 1;
+  bool f = false;
+  rep(i,v.size()){
+    if(!f){
+      if(v[i] == n){
+        f = true;
+        ++n;
+      }
+      else if(v[i] != 0){
+        return false;
+      }
+    }
+    else if(f){
+      if(v[i] != n){
+        return false;
+      }
+      ++n;
+    }
+  }
+  return f;
+}
+
+
+bool tnum[1000000];
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
   ll n;
-  cin >> n;
-  string s;
-  rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
-      }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
+  rep(i,1000){
+    tnum[i * (i+1)/2] = true;
+  }
+  while(cin >> n && n){
+    vector<ll> v(n),v2;
+    ll sum = 0;
+    bool f = false;
+    rep(i,n){
+      cin >> v[i];
+      sum += v[i];
+    }
+    if(tnum[sum]){
+      rep(l,10000){
+        if(check(v)){
+          cout << l << endl;
+          f = true;
+          break;
         }
-      }
-      else{
-        ++w;
-        if(g < 1){
-          f = false;
+        ll num = 0;
+        rep(i,v.size()){
+          if(v[i]){
+            --v[i];
+            ++num;
+          }
         }
+        v2.clear();
+        v2.push_back(num);
+        for(int i = v.size()-1; i >= 0 ; --i){
+          if(v[i]){
+            v2.push_back(v[i]);
+          }
+        }
+        reverse(all(v2));
+        v.clear();
+        v = v2;
       }
     }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
-    }
+    if(!f)
+      cout << -1<<endl;
   }
   return 0;
 }

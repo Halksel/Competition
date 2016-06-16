@@ -58,7 +58,7 @@ ll FindErase(T &v,U tar){
 }
 
 template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
+bool SuffixErase(T &v,size_t suf){
   if(suf > v.size()) return false;
   for(auto it = v.begin(); it != v.end();){
     if(distance(v.begin(),it) == suf){
@@ -71,52 +71,31 @@ bool SuffixErase(vector<T> &v,size_t suf){
   }
   return false;
 }
-
+int n,k;
 template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
+int compress( T &x1, T &x2,int w){
+  vector<int> xs;
+  rep(i,n){
+    for(int d = -1; d <= 1;++d){
+      int tx1 = x1[i]+d,tx2 = x2[i]+d;
+      if(1 <= tx1 && tx1 <= w) xs.push_back(tx1);
+      if(1 <= tx2 && tx2 <= w) xs.push_back(tx2);
+    }
+  }
+  Unique(xs);
+  rep(i,n){
+    x1[i] = find(all(xs),x1[i])-xs.begin();
+    x2[i] = find(all(xs),x2[i]) - xs.begin();
+  }
+  return xs.size();
 }
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  string s;
+  cin >> n >> k;
+  vector<int> x1(n),y1(n),z1(n),x2(n),y2(n),z2(n);
   rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
-      }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
-        }
-      }
-      else{
-        ++w;
-        if(g < 1){
-          f = false;
-        }
-      }
-    }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
-    }
+    cin >> x1[i] >> y1[i] >> z1[i] >> x2[i] >> y2[i] >> z2[i];
   }
   return 0;
 }

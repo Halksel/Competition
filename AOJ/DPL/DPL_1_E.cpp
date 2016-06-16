@@ -58,7 +58,7 @@ ll FindErase(T &v,U tar){
 }
 
 template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
+bool SuffixErase(T &v,size_t suf){
   if(suf > v.size()) return false;
   for(auto it = v.begin(); it != v.end();){
     if(distance(v.begin(),it) == suf){
@@ -80,43 +80,29 @@ T ston(string& str, T n){
   return num ;
 }
 
+int dp[1001][1001];
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  string s;
-  rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
-      }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
-        }
+  string s1,s2;
+  cin >> s1 >> s2;
+//   reverse(all(s2));
+  rep(i,s1.size()+1){
+    dp[i][0] = i;
+  }
+  rep(j,s2.size()+1){
+    dp[0][j] = j;
+  }
+  REP(i,1,s1.size()+1){
+    REP(j,1,s2.size()+1){
+      if(s1[i-1] == s2[j-1]){
+        dp[i][j] = min(dp[i-1][j]+1,min(dp[i][j-1]+1,dp[i-1][j-1]+0));
       }
       else{
-        ++w;
-        if(g < 1){
-          f = false;
-        }
+        dp[i][j] = min(dp[i-1][j]+1,min(dp[i][j-1]+1,dp[i-1][j-1]+1));
       }
     }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
-    }
   }
+  cout << dp[s1.size()][s2.size()]<<endl;
   return 0;
 }

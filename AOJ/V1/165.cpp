@@ -54,56 +54,42 @@ void Ans(bool f){
   else cout << "NO"<<endl;
 }
 
-const int PrimeMax = 1000100;
-int is_prime[PrimeMax];
-void Eratosthenes(int N){
-  for(int i = 0; i < N; i++){
+const int PrimeMax = 999983;
+int is_prime[1000001],sum[1000001];
+void Eratosthenes(){
+  ll N = PrimeMax;
+  for(int i = 2; i <= N; i++){
     is_prime[i] = 1;
   }
   is_prime[0] = 0;
   is_prime[1] = 0;
-  for(int i = 2; i*i < N ; i++){
+  for(int i = 2; i*i <= N; i++){
     if(is_prime[i]){
-      for(int j = 0; i * (j + 2) < N; j++){
-        is_prime[i *(j + 2)] = 0;
+      for(int j = i*2; j <= N; j+=i){
+        is_prime[j] = 0;
       }
     }
   }
-  REP(i,1000002,PrimeMax){
-    is_prime[i] = 0;
-  }
-  REP(i,1,N){
-    is_prime[i] += is_prime[i-1];
+  ll c = 0;
+  REP(i,1,N+1){
+    sum[i] = sum[i-1] + is_prime[i];
   }
 }
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
   int n;
-  Eratosthenes(PrimeMax);
+  Eratosthenes();
   while(cin>>n && n){
     ll p,m,ans = 0;
     rep(i,n){
       ll f,s;
       cin >> p>>m;
-      if(p - m < 0){
-        s = 0;
-      }
-      else{
-        s = p -m;
-      }
-      f = (p+m > PrimeMax) ? PrimeMax: p + m;
-      if(is_prime[s]- is_prime[f] == 0){
-        ans -= 1;
-      }
-      else{
-        ans -= (is_prime[s]-is_prime[f]);
-      }
+      s = max(1LL,p-m);
+      f = min(p+m,(ll)PrimeMax);
+      ans += (sum[f]-sum[s-1])-1;
     }
-    if(ans)
-      cout << ans-1 << endl;
-    else
-      cout << 0 << endl;
+    cout << ans << endl;
   }
   return 0;
 }

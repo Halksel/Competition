@@ -42,35 +42,6 @@ void Unique(vector<T> &v){
   sort(all(v));
   v.erase(unique(all(v)),v.end());
 }
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
-    }
-  }
-  return cnt;
-}
-
-template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
-  }
-  return false;
-}
 
 template<typename T>
 T ston(string& str, T n){
@@ -80,42 +51,46 @@ T ston(string& str, T n){
   return num ;
 }
 
+void Ans(bool f){
+  if(f) cout << "YES"<<endl;
+  else cout << "NO"<<endl;
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  string s;
-  rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
-      }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
-        }
-      }
-      else{
-        ++w;
-        if(g < 1){
-          f = false;
+  ll m,a,b;
+  while(cin >> m && m){
+    vector<pll> v(m);
+    vector<ll> dp(10000,0);
+    rep(i,m){
+      cin >> v[i].fi >> v[i].se;
+    }
+    sort(all(v));
+    REP(i,1,1001){
+      rep(j,m){
+        if(v[j].se > 0){
+          if(dp[i] == 0 && i % v[j].fi == 0){
+            dp[i] = v[j].se;
+            v[j].se--;
+          }
+          else if(i % v[j].fi == 0){
+            v[j].se--;
+            if(v[j].se <= 0) break;
+          }
+          dp[i+v[j].fi] += dp[i] * v[j].se;
         }
       }
     }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
+    rep(i,100){
+      cout << dp[i] << ' ';
+    }
+    cout << endl;
+    ll g,n;
+    cin >> g;
+    rep(i,g){
+      cin >> n;
+      cout << dp[n]<<endl;
     }
   }
   return 0;

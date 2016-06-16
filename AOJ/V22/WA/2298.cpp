@@ -1,3 +1,4 @@
+#define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
 using namespace std ;
 
@@ -58,7 +59,7 @@ ll FindErase(T &v,U tar){
 }
 
 template<typename T>
-bool SuffixErase(vector<T> &v,size_t suf){
+bool SuffixErase(T &v,size_t suf){
   if(suf > v.size()) return false;
   for(auto it = v.begin(); it != v.end();){
     if(distance(v.begin(),it) == suf){
@@ -83,40 +84,50 @@ T ston(string& str, T n){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  cin >> n;
-  string s;
+  ll n,k,t,u,v,l;
+  cin >> n >> k >> t >> u >> v >> l;
+  double time = 0;
+  vector<ll> d(n);
   rep(i,n){
-    cin >> s;
-    ll l = 0;
-    ll g = count(all(s),'G'),g2 = 0;
-    ll w = 0;
-    bool f = true;
-    rep(i,s.size()){
-      if(s[i] == 'G'){
-        ++l;
-        --g;
-        ++g2;
-        if(g2 > w) f = false;
-      }
-      else if(s[i] == 'R'){
-        --l;
-        if(l < 0){
-          f = false;
-        }
-      }
-      else{
-        ++w;
-        if(g < 1){
-          f = false;
-        }
-      }
-    }
-    if(l) f = false;
-    if(f && s.back() == 'R' && s.size() > 2) cout << "possible"<<endl;
-    else{
-      cout << "impossible"<<endl;
-    }
+    cin >> d[i];
   }
+  d.push_back(l);
+  ll have = 0,suf = 0;
+  double pos = 0;
+  time += d[0]/u;
+  ++have;
+  pos += d[0];
+  while(pos < l){
+    if(have){
+      time += t*have;
+      pos += t*have * v;
+      have = 0;
+      REP(i,1,d.size()){
+        if(pos > d[i]){
+          if(d[i])
+            ++have;
+          d[i] = 0;
+        }
+        else{
+          break;
+        }
+      }
+      if(have>k) have = k;
+    }
+    else{
+      rep(i,d.size()){
+        if(pos<d[i]){
+          time += (d[i] - pos)/u;
+          pos = d[i];
+          ++have;
+          d[i] = 0;
+          break;
+        }
+      }
+    }
+    debug(time);
+    debug(pos);
+  }
+  cout << time << endl;
   return 0;
 }
