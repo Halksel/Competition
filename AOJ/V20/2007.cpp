@@ -85,7 +85,7 @@ int main(){
   ios::sync_with_stdio(false);
   ll m = 0;
   ll k = 0;
-  int c[4],u[4],s[4] = {10,50,100,500};
+  ll c[4],u[4],s[4] = {10,50,100,500};
   while(cin >> m && m){
     if(k){
       cout << endl;
@@ -95,6 +95,18 @@ int main(){
       cin >> c[i];
       u[i] = 0;
     }
+    for(int i = 3; i >= 0; --i){
+      u[i] += min(m/s[i],c[i]);
+      m -= u[i]*s[i];
+      if(s[i] - m < s[i]/2){
+        m = 0;
+        u[i]++;
+      }
+    }
+    rep(i,4){
+      cout << s[i] << ' ' << u[i]<<endl;
+    }
+    cout << endl;
   }
   return 0;
 }

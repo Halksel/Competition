@@ -27,9 +27,9 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
-constexpr double inf = 100000000000 ;
+constexpr ll inf = 10000000000000 ;
 string e = "";
-pair<string,pair<double,int>> dp[(2<<16)+1],ans = make_pair(e,make_pair(inf,0));
+pair<string,pair<ll,int>> dp[(2<<16)+1],ans = make_pair(e,make_pair(inf,0));
 array<int,16> d,m,num;
 void init(){
   rep(i,(2<<16)+1){
@@ -51,36 +51,21 @@ void bitdp(int k){
       string s = dp[k].fi ;
       ll dis;
       if(s.size()){
-        dis = abs(d[s.back()] - d[i]);
+        dis = abs(d[s.back()-'0'] - d[i]);
       }
       else{
         dis = 0;
       }
-      int w = (dp[k].se.se);
-      double t = dp[k].se.fi + dis/(2000.0/(70+w*20));
+      int w = dp[k].se.se;
+      ll t = dp[k].se.fi + dis*(70+w*20);
       w += m[i];
-      s += char(i);
+      s += to_string(i);
       if(dp[k|(1 << i)].se.fi > t){
         dp[k|(1<<i)] = make_pair(s,make_pair(t,w));
         bitdp(k|(1<<i));
       }
     }
   }
-}
-
-std::string to_binString(unsigned int val)
-{
-  if( !val )
-    return std::string("0");
-  std::string str;
-  while( val != 0 ) {
-    if( (val & 1) == 0 )
-      str.insert(str.begin(), '0');
-    else
-      str.insert(str.begin(), '1');
-    val >>= 1;
-  }
-  return str;
 }
 int main(){
   cin.tie(0);
@@ -90,11 +75,13 @@ int main(){
   rep(i,n){
     cin >> num[i] >> d[i] >> m[i];
   }
-  dp[0] = make_pair(e,make_pair(0,0));
-  bitdp(0);
+  rep(i,n){
+    dp[(1 << i)] = make_pair(to_string(i),make_pair(0,m[i]));
+    bitdp((1<<i));
+  }
   rep(i,n){
     if(i) cout << ' ';
-    cout << num[ans.fi[i]] ;
+    cout << num[ans.fi[i]-'0'] ;
   }
   cout << endl;
   return 0;

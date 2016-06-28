@@ -50,36 +50,27 @@ T ston(string& str, T n){
   return num ;
 }
 
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-vector<vector<int>> dp(11,vector<int>(101,-1));
-
-int solve(int n, int k){
-  if(dp[n][k] != -1) return dp[n][k];
-  int ans = 0;
-  rep(i,n){
-    rep(j,k){
-
-    }
-  }
-}
+int dp[101][10][1001];
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  REP(j,0,101){
-    dp[1][j] = 1;
-  }
-  REP(i,1,10){
-    rep(j,1001){
-      dp[i][j] += dp[i-1][j-i];
+  dp[0][0][0] = 1;
+  REP(i,1,101){ //iまでの数で
+    REP(j,0,10){ //j個の数を取り出して
+      REP(k,0,1001){ //kを作る時の組み合わせの数
+        rep(l,k+1){
+          if(j - l >= 0 && k >= l){
+            dp[i][j][k] += dp[i-1][j-l][l];
+          }
+        }
+      }
     }
   }
   int n,k;
   while(cin >> n >> k&&(n + k != 0)){
-    cout << dp[n][k]<<endl;
+    cout << dp[100][n][k]<<endl;
   }
   return 0;
 }
+

@@ -66,6 +66,10 @@ void chain(vector<pll> &v){
         it = v.erase(it);
         it = v.erase(it);
       }
+      else if(it->se > 3){
+        f = false;
+        it = v.erase(it);
+      }
       else
         ++it;
     }
@@ -98,22 +102,37 @@ int main(){
       }
     }
     v2.push_back(make_pair(a,cnt));
+    v2.push_back(make_pair(inf,0));
     auto v3 = v2;
     auto it = v2.begin();
     ll si = v2.size(),ans = inf,sum;
-    REP(i,1,si){
-      if(v2[i].se == 1){
-        sum = 0;
+    rep(j,v2.size()){
+      sum += v2[j].se;
+    }
+    debug(sum);
+    REP(i,0,si){
+      sum = 0;
+      v2[i+1].se++;
+      v2.erase(it + i);
+      chain(v2);
+      rep(j,v2.size()){
+        sum += v2[j].se;
+      }
+      int X = v2.size();
+      ans = min(ans,sum);
+      v2 = v3;
+      sum = 0;
+      if(i>1){
         v2[i-1].se++;
         v2.erase(it + i);
         chain(v2);
         rep(j,v2.size()){
           sum += v2[j].se;
-          if(sum > ans) break;
         }
+        int X = v2.size();
         ans = min(ans,sum);
-        v2 = v3;
       }
+      v2 = v3;
     }
     cout << ans << endl;
   }

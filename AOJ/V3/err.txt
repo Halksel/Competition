@@ -1,0 +1,2 @@
+g++  -g -std=c++14 -fdiagnostics-color=always -Wall -Wextra -ftrapv  -c -o 312.o 312.cpp
+g++ -o 312.out 312.o

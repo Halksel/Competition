@@ -62,19 +62,12 @@ int main(){
   string s,s2;
   while(cin >> s >> s2){
     ll ans = 0;
+    vector<vector<ll>> dp(s.size()+1,vector<ll>(s2.size()+1,0));
     rep(i,s.size()){
-      ll len = 0;
-      cout << s[i]<<endl;
-      for(int j = 0; j < s2.size();){
-        cout << s[i+len] << "\t" << s2[j+len] << endl;
-        if(s[i+len] == s2[j+len]){
-          len++;
-          ans = max(len,ans);
-          if(i+len >= s.size() || j+len >= s2.size()) break;
-        }
-        else{
-          ++j;
-          len = 0;
+      rep(j,s2.size()){
+        if(s[i] == s2[j]){
+          dp[i+1][j+1] += dp[i][j]+1;
+          ans = max(ans,dp[i+1][j+1]);
         }
       }
     }

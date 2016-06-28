@@ -55,33 +55,45 @@ void Ans(bool f){
   else cout << "NO"<<endl;
 }
 const int m = 1000000001;
-static vector<string> dp[11][4][6];
-static vector<string> dp2[11][4];
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
   ll n;
-  cin >> n;
-  dp[0][0][0].push_back("");
-  dp2[0][0].push_back("");
-  rep(i,n){
-    rep(j,4){
-      rep(k,6){
-        for(auto s : dp[i][j][k]){
-          for(char d = '0'; d <= '9'; ++d){
-            dp[i+1][(j + (d - '0')) % 4][(k + (d-'0'))%6].push_back(s+d);
-          }
-        }
-      }
-      for(auto s : dp2[i][j]){
-        for(char d = '0'; d <= '9'; ++d){
-          dp2[i+1][(j+(d-'0'))%4].push_back(s+d);
-        }
+  while(cin >> n && n){
+    ll lim = 10;
+    ll cnt = 8;
+    ll ans = 1;
+    if(n < 10){
+      cnt = 1;
+      while(cnt != n){
+        ++cnt;
+        if(cnt == 4 || cnt == 6)
+          ++ans;
+        ++ans;
       }
     }
-  }
-  rep(i,dp2[n][0].size()){
-    cout << dp2[n][0][i]<<endl;
+    else{
+      int x = 2;
+      REP(i,1,9){
+        if(n < lim * 10){
+          ans = lim + lim/10*2+ x* 8;
+          cnt = lim;
+          if(i == 1){
+            ans = 11;
+          }
+          ++ans;
+          lim /= 10;
+          cout << ans << endl;
+          break;
+        }
+        x = lim/10 * 2 + x * 8;
+        if(i == 1){
+          x = 2;
+        }
+        lim *= 10;
+      }
+    }
+    cout << ans << endl;
   }
   return 0;
 }

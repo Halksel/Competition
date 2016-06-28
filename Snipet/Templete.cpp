@@ -216,7 +216,7 @@ void Eratosthenes(int N){
   }
   is_prime[0] = 0;
   is_prime[1] = 0;
-  for(int i = 2; i*i < N ; i++){
+  for(int i = 2; i < N ; i++){
     if(is_prime[i]){
       for(int j = 0; i * (j + 2) < N; j++){
         is_prime[i *(j + 2)] = 0;
@@ -262,6 +262,41 @@ int query(int a,int b,int k,int l, int r){
   }
   return min(vl,vr);
 }
+//Union-Find
+const int MAX_N =10001;
+int par[MAX_N];
+int ranks[MAX_N];
+void init(int n){
+  rep(i,n){
+    par[i] = i;
+    ranks[i] = 1;
+  }
+}
+int find(int x){
+  if(par[x] == x){
+    return x;
+  }
+  else{
+    return par[x] = find(par[x]);
+  }
+}
+
+void Unite(int a, int b){
+  a = find(a);
+  b = find(b);
+  if(a == b) return ;
+  if(ranks[a] < ranks[b]){
+    par[a] = b;
+  }
+  else{
+    par[b] = a;
+    if(ranks[a] == ranks[b]) ranks[b]++;
+  }
+}
+
+bool same(int a,int b){
+  return find(a) == find(b);
+}
 //GCD & LCM
 int gcd(int a,int b){
   if(a < b) swap(a,b);
@@ -273,19 +308,16 @@ int lcm(int a,int b){
   return a*b/ gcd(a,b);
 }
 //Split
-vector<string> Split(char c,string s){
+vector<string> Split(const string& s,const string d){
+  string item(s);
   vector<string> res(0);
-  string str = "";
-  rep(i,s.size()){
-    if(s[i] == c){
-      res.push_back(str);
-      str.clear();
-    }
-    else{
-      str += s[i];
-    }
+  for(int pos = item.find(d); pos != string::npos; pos = item.find(d,pos)){
+    item.replace(pos,d.size()," ");
   }
-  res.push_back(str);
+  stringstream buf(item);
+  while(buf >> item){
+    res.push_back(item);
+  }
   return res;
 }
 template<typename T>
@@ -306,30 +338,6 @@ int compress( T &x1, T &x2,int w){
   return xs.size();
 }
 
-// 数値を２進数文字列に変換
-std::string to_binString(unsigned int val)
-{
-  if( !val )
-    return std::string("0");
-  std::string str;
-  while( val != 0 ) {
-    if( (val & 1) == 0 )
-      str.insert(str.begin(), '0');
-    else
-      str.insert(str.begin(), '1');
-    val >>= 1;
-  }
-  return str;
-}
-
-int numofbits5(long bits)
-{
-  bits = (bits & 0x55555555) + (bits >> 1 & 0x55555555);
-  bits = (bits & 0x33333333) + (bits >> 2 & 0x33333333);
-  bits = (bits & 0x0f0f0f0f) + (bits >> 4 & 0x0f0f0f0f);
-  bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);
-  return (bits & 0x0000ffff) + (bits >>16 & 0x0000ffff);
-}
 //Dice
 enum{
   t = 0,f ,r ,b ,l ,d ,

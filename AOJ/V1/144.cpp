@@ -106,7 +106,6 @@ int main(){
   rep(i,p){
     cin >> s >> d >> v;
     auto rt = dijkstra(g,s);
-//     debug(rt[d]);
     if(rt[d] >= v){
       cout << "NA"<<endl;
     }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include<iostream>
 using namespace std ;
 
 #define pb(n) push_back(n)
@@ -43,17 +44,19 @@ void Unique(vector<T> &v){
   v.erase(unique(all(v)),v.end());
 }
 
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
+template<typename T,typename U>
+ll FindErase(T &v,U tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
 }
 
 int main(){
@@ -61,10 +64,40 @@ int main(){
   ios::sync_with_stdio(false);
   ll n,k,m;
   while(cin >> n >> k && n && k){
-    vary(ll,v,k+1,0);
+    vary(ll,v,k,0);
     rep(i,k){
-      cin >> m;
-
+      cin >> v[i];
+    }
+    sort(all(v));
+    ll ans = 0;
+    while(v.size()){
+      bool f = false;
+      vector<ll> v2(1,0);
+      ll l = 0,last = v[0];
+      REP(i,1,v.size()){
+        rep(j,v.size()){
+          cout << "\t"<<v[j]<<endl;
+        }
+        cout << endl;
+        if(v[i] - last == 1){
+          ++l;
+          ans = max(ans,l);
+        }
+        else if(v[i] - last == 2 && !f){
+          ++l;
+          ans = max(ans,l);
+          f = true;
+        }
+        else{
+          break;
+        }
+        if(!f){
+          v2.push_back(i);
+        }
+      }
+      rep(i,v2.size()){
+        FindErase(v,v[v2[i]]);
+      }
     }
     cout << ans<<endl;
   }
