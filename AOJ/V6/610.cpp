@@ -5,14 +5,14 @@ using namespace std ;
 #define fi first
 #define se second
 #define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
-#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -27,8 +27,7 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
-constexpr int imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100000000;
+constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
@@ -43,6 +42,35 @@ void Unique(vector<T> &v){
   sort(all(v));
   v.erase(unique(all(v)),v.end());
 }
+template<typename T,typename U>
+ll FindErase(T &v,U tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
+}
+
+template<typename T>
+bool SuffixErase(T &v,size_t suf){
+  if(suf > v.size()) return false;
+  for(auto it = v.begin(); it != v.end();){
+    if(distance(v.begin(),it) == suf){
+      v.erase(it);
+      return true;
+    }
+    else{
+      ++it;
+    }
+  }
+  return false;
+}
 
 template<typename T>
 T ston(string& str, T n){
@@ -52,30 +80,28 @@ T ston(string& str, T n){
   return num ;
 }
 
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m ,p;
-  while(cin >> n >> m >> p && (n || m || p)){
-    vary(double,x,n,0);
-    double pool = 0;
-    rep(i,n){
-      cin >> x[i];
-      pool += x[i] ;
+  int h,w;
+  cin >> h >> w;
+  vector<vector<int>> vc(h,vector<int>(w,-1));
+  char c;
+  rep(i,h){
+    bool f = false;
+    rep(j,w){
+      if(j) cout << ' ';
+      cin >> c;
+      if(c == 'c'){
+        vc[i][j] = 0;
+        f = true;
+      }
+      else if(f){
+        vc[i][j] = 1 + vc[i][j-1];
+      }
+      cout << vc[i][j] ;
     }
-    pool *= (100-p);
-//     debug(pool);
-    if(x[m-1] != 0){
-      cout << (int)(pool / x[m-1])<<endl;
-    }
-    else{
-      cout << 0 << endl;
-    }
+    cout << endl;
   }
   return 0;
 }

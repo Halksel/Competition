@@ -5,14 +5,14 @@ using namespace std ;
 #define fi first
 #define se second
 #define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
-#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init));
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -60,22 +60,32 @@ void Ans(bool f){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m ,p;
-  while(cin >> n >> m >> p && (n || m || p)){
-    vary(double,x,n,0);
-    double pool = 0;
-    rep(i,n){
-      cin >> x[i];
-      pool += x[i] ;
-    }
-    pool *= (100-p);
-//     debug(pool);
-    if(x[m-1] != 0){
-      cout << (int)(pool / x[m-1])<<endl;
-    }
-    else{
-      cout << 0 << endl;
+  ll n;
+  cin >> n;
+  vector<pair<int,string>> v(n);
+  rep(i,n){
+    cin >> v[i].se;
+    v[i].fi = v[i].se.size();
+  }
+  sort(all(v));
+  vector<int> ans ;
+  ll M = 0;
+  if(n > 1000){
+    v.resize(v.size()/2);
+  }
+  rep(i,v.size()){
+    rep(j,v.size()){
+      if(i != j){
+        auto s = v[i].se + v[j].se;
+        ll k = ston(s,0);
+        if( k < M || ans.size() < 4){
+          M = max(M,k);
+          ans.push_back(ston(s,0));
+        }
+      }
     }
   }
+  sort(all(ans));
+  cout << ans[2] << endl;
   return 0;
 }

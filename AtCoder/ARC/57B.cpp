@@ -57,48 +57,77 @@ ll FindErase(T &v,U tar){
   return cnt;
 }
 
-const int PrimeMax = 300001;
-int is_prime[PrimeMax];
-vector<int> v;
-void Eratosthenes(int N){
-  for(int i = 0; i < N; i++){
-    is_prime[i] = 1;
-  }
-  is_prime[0] = 0;
-  is_prime[1] = 0;
-  for(int i = 2; i*i < N ; i++){
-    if(is_prime[i]){
-      v.push_back(i);
-      for(int j = 0; i * (j + 2) < N; j++){
-        is_prime[i *(j + 2)] = 0;
-      }
+template<typename T>
+bool SuffixErase(T &v,size_t suf){
+  if(suf > v.size()) return false;
+  for(auto it = v.begin(); it != v.end();){
+    if(distance(v.begin(),it) == suf){
+      v.erase(it);
+      return true;
+    }
+    else{
+      ++it;
     }
   }
+  return false;
+}
+
+template<typename T>
+T ston(string& str, T n){
+  istringstream sin(str) ;
+  T num ;
+  sin >> num ;
+  return num ;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,q;
-  cin >> n >> q;
-  vector<int> c(n);
+  ll n,k;
+  cin >> n >> k;
+  vary(ll,a,n+1,0);
+  vary(ll,sum,n+1,inf);
+  vector<vector<ll>> dp(n+1,vector<ll>(k+1,0));
   rep(i,n){
-    cin >> c[i];
+    cin >> a[i] ;
   }
-  sort(all(c));
-  ll a;
-  rep(i,q){
-    cin >> a;
-    ll ans = 0;
-    set<int> s;
-    rep(j,n){
-      if(s.size() == a || ans == a-1){
-        break;
-      }
-      ans = max(ans,c[j]%a);
-      s.insert(c[j]%a);
+  rep(i,n){
+    sum[i] = a[i];
+    if(i){
+      sum[i] += sum[i-1];
     }
-    cout << ans<<endl;
+    cout << sum[i] << endl;
   }
+  rep(i,n){
+    rep(j,k+1){
+      ll l = j+1,r = k+1;
+      bool f = false;
+      rep(x,100){
+        ll mid = (l + r)/2;
+        if(double(mid/sum[i+1]) < double(j/sum[i])){
+          r = mid;
+          f = true;
+        }
+        else{
+          l = mid;
+        }
+      }
+      if(f)
+        dp[i+1][r] += dp[i][j]+1;
+      else{
+        rep(x,j)
+          dp[i+1][r] = dp[i][j];
+      }
+    }
+  }
+  rep(i,n+1){
+    rep(j,k+1){
+      cout << dp[i][j] << ' ';
+    }
+    cout << endl;
+  }
+  cout << dp[n][k] << endl;
   return 0;
 }
+
+

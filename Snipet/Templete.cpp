@@ -305,7 +305,7 @@ int gcd(int a,int b){
 }
 
 int lcm(int a,int b){
-  return a*b/ gcd(a,b);
+  return a/ gcd(a,b) * b;
 }
 //Split
 vector<string> Split(const string& s,const string d){

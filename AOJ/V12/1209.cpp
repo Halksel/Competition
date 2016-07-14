@@ -30,48 +30,34 @@ const int mod = 1000000007;
 constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
+vector<ll> dp(1000,0);
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-void solve(int k){
-  ll res = 0;
-  REP(i,1,sqrt(k)+1){
-    if(k % i == 0 && k != i){
-      res += i;
-      if(i != k/i && k/i != k){
-        res += k/i;
-      }
+vary(int,v,0,0);
+int solve(int n){
+  rep(i,1000){
+    dp[i] = 0;
+  }
+  dp[1] = 1;
+  REP(i,1,18){
+    REP(j,1,400){
+      if(j - v[i]>= 0)
+        dp[j] += dp[j-v[i]];
     }
   }
-  string s[3] = {"deficient number","abundant number","perfect number"};
-  if(k == res) cout << s[2] << endl;
-  else if(k < res) cout << s[1] << endl;
-  else cout << s[0] << endl;
+  return dp[n+1];
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
-  while(cin >> n && n){
-    solve(n);
+  v.clear();
+  REP(i,0,18){
+    v.pb(i*i);
+  }
+  int n;
+  while(cin >> n&&n){
+    cout << solve(n) << endl;
   }
   return 0;
 }

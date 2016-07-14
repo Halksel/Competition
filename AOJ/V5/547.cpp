@@ -26,7 +26,7 @@ using dict = map<string,int>;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-const int mod = 1000000007;
+const int mod = 100000;
 constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
@@ -57,48 +57,59 @@ ll FindErase(T &v,U tar){
   return cnt;
 }
 
-const int PrimeMax = 300001;
-int is_prime[PrimeMax];
-vector<int> v;
-void Eratosthenes(int N){
-  for(int i = 0; i < N; i++){
-    is_prime[i] = 1;
-  }
-  is_prime[0] = 0;
-  is_prime[1] = 0;
-  for(int i = 2; i*i < N ; i++){
-    if(is_prime[i]){
-      v.push_back(i);
-      for(int j = 0; i * (j + 2) < N; j++){
-        is_prime[i *(j + 2)] = 0;
-      }
+template<typename T>
+bool SuffixErase(T &v,size_t suf){
+  if(suf > v.size()) return false;
+  for(auto it = v.begin(); it != v.end();){
+    if(distance(v.begin(),it) == suf){
+      v.erase(it);
+      return true;
+    }
+    else{
+      ++it;
     }
   }
+  return false;
+}
+
+template<typename T>
+T ston(string& str, T n){
+  istringstream sin(str) ;
+  T num ;
+  sin >> num ;
+  return num ;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,q;
-  cin >> n >> q;
-  vector<int> c(n);
-  rep(i,n){
-    cin >> c[i];
-  }
-  sort(all(c));
-  ll a;
-  rep(i,q){
-    cin >> a;
-    ll ans = 0;
-    set<int> s;
-    rep(j,n){
-      if(s.size() == a || ans == a-1){
-        break;
+  int w,h;
+  while(cin >> w >> h && w){
+    vector<vector<vector<ll>>> v(w+4, vector<vector<ll>>(h+4,vector<ll>(8,0)));
+    v[0][0][0] = 1;
+    v[0][0][3] = 1;
+    v[0][1][1] = -1;
+    v[1][0][4] = -1;
+    rep(j,h){
+      rep(i,w){
+        v[i+1][j][0] += v[i][j][0] % mod;
+        v[i][j+1][1] += v[i][j][0] % mod;
+        v[i][j+1][2] += v[i][j][1] % mod;
+        v[i][j+1][3] += v[i][j][2] % mod;
+        v[i+1][j][4] += v[i][j][2] % mod;
+
+        v[i][j+1][3] += v[i][j][3] % mod;
+        v[i+1][j][4] += v[i][j][3] % mod;
+        v[i+1][j][5] += v[i][j][4] % mod;
+        v[i+1][j][0] += v[i][j][5] % mod;
+        v[i][j+1][1] += v[i][j][5] % mod;
       }
-      ans = max(ans,c[j]%a);
-      s.insert(c[j]%a);
     }
-    cout << ans<<endl;
+    ll ans = 0;
+    rep(i,6){
+      ans += v[w-1][h-1][i] % mod;
+    }
+    cout << ans % mod<< endl;
   }
   return 0;
 }

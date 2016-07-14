@@ -5,13 +5,14 @@ using namespace std ;
 #define fi first
 #define se second
 #define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -23,94 +24,85 @@ using vi = vector<int>;
 using vl = vector<ll>;
 using dict = map<string,int>;
 using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
 
-constexpr int imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100000000;
+const int mod = 1000000007;
+constexpr int inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0};
-const int dx[] = {0,-1,0,1};
+const int dx[] = {-1,1,-4,4,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+inline bool value(int x,int w){
+  return x >= 0 && x < w;
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
+bool check(vector<int> v){
+  rep(i,8){
+    if(v[i] != i){
+      return false;
+    }
+    if(i == 7){
+      return true;
+    }
+  }
+  return true;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  vector<vector<int>> v(4,vector<int>(2,0));
-  while(1){
-    pii pos ;
-    rep(i,2){
-      rep(j,4){
-        cin >> v[j][i];
-        if(v[j][i] == 0) pos = make_pair(j,i);
-      }
+  vector<int> v(8);
+  while(cin >> v[0]){
+    REP(i,1,8){
+      cin >> v[i];
     }
-    if(cin.eof())break;
-    int ans = 0;
-    queue<pii> q;
-    queue<vector<vector<int>>> qv;
-    q.push(pos);
-    qv.push(v);
-    set<string> s;
-    string str;
-    while(!(q.empty() && qv.empty())){
-      int size = q.size();
-      rep(l,size){
-        pii P = q.front();q.pop();
-        auto v2 = qv.front();qv.pop();
-        bool f = true;
-        rep(i,2){
-          rep(j,4){
-            if(v2[j][i] != i*4+j){
-              f = false;
-            }
-          }
+    queue<vector<int>> q;
+    queue<int> cnt;
+    set<vector<int>> s;
+    q.push(v);
+    cnt.push(0);
+    s.insert(v);
+    while(1){
+      bool f= false;
+      f = false;
+      auto Q = q.front();q.pop();
+      int C = cnt.front();cnt.pop();
+      if(check(Q)){
+        cout << C << endl;
+        f = true;
+        break;
+      }
+      else{
+        rep(i,8){
+          cout << Q[i] ;
         }
-        if(f) break;
-        str = "";
-        rep(i,2){
-          rep(j,4){
-            str += to_string(v2[j][i]);
-          }
+        cout << endl;
+      }
+      int p = 0;
+      rep(i,8){
+        if(Q[i] == 0){
+          p = i;
+          break;
         }
-        if(s.find(str) == s.end()){
-          auto tmp = v2;
-          s.insert(str);
-          rep(i,4){
-            int x = P.fi+dx[i],y = P.se+dy[i];
-            v2 = tmp;
-            if(value(x,y,4,2)){
-              swap(v2[x][y],v2[P.fi][P.se]);
-              q.push(make_pair(x,y));
-              qv.push(v2);
-            }
+      }
+      auto tmp = Q;
+      rep(i,4){
+        Q = tmp;
+        if(value(p+dx[i],8)){
+          swap(Q[p],Q[p+dx[i]]);
+          if(s.insert(Q).se){
+            q.push(Q);
+            cnt.push(C+1);
           }
         }
       }
-      ++ans;
+      if(C > 31){
+        break;
+      }
+      if(f){
+        break;
+      }
     }
-    cout << ans << endl;
   }
   return 0;
 }

@@ -1,0 +1,42 @@
+-- Example 0
+We dont need no education
+ed
+N
+13
+
+16
+-- Example 1
+We dont need no thought control
+We
+Y
+0
+
+0
+-- Example 2
+No dark sarcasm in the classroom
+The
+Y
+5
+
+-1
+-- Example 3
+Teachers leave them kids alone
+kid
+Y
+1
+
+-1
+-- Example 4
+All in all its just another brick in the wall
+all
+Y
+9
+
+-1
+-- Example 5
+All in all youre just another brick in the wall
+just
+Y
+17
+
+17
