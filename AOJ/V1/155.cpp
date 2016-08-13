@@ -38,12 +38,12 @@ inline bool value(int x,int y,int w,int h){
 }
 struct Edge{
   int to;
-  long long cost;
+  double cost;
 };
 
 struct NODE{
   int pos;
-  long long cost;
+  double cost;
 };
 bool operator < (const NODE &a,const NODE &b){
   return a.cost > b.cost;
@@ -51,11 +51,12 @@ bool operator < (const NODE &a,const NODE &b){
 vector<Edge> g[100000],rg[100000];
 
 int N;
+int s,t;
 const ll INF = 1e15;
-vector<ll> dijkstra(vector<Edge> g[100000], int s){
+vector<double> dijkstra(vector<Edge> g[100000], int s){
   priority_queue<NODE> Q;
   Q.push({s,0});
-  vector<ll> res(N,INF);
+  vector<double> res(N,INF);
   while(Q.size()){
     NODE q= Q.top();Q.pop();
     if(res[q.pos] == INF){
@@ -73,28 +74,68 @@ vector<ll> dijkstra(vector<Edge> g[100000], int s){
 struct Bill{
   ll id,x,y;
 };
+vector<Bill> B(1000);
+vector<int> r;
+vector<double> dis;
+vector<bool> f;
+
+void rdfs(int rs){
+  if(f[rs]) return ;
+  r.push_back(rs);
+  f[rs] = true;
+  if(rs == s) return ;
+  for(auto e:g[rs]){
+    if(dis[rs] == dis[e.to] + e.cost){
+      rdfs(e.to);
+    }
+  }
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n;
+  ll n,m;
   while(cin >> n && n){
-    ll b,x,y;
+    N = n;
     rep(i,1000){
       g[i].clear();
     }
-    vector<Bill> B(n);
+    map<int,int> b;
     rep(i,n){
       cin >> B[i].id >> B[i].x >> B[i].y;
+      b[B[i].id] = i;
     }
     rep(i,n){
       rep(j,n){
         if(i != j){
-          ll dis = pow(B[i].x - B[j].x,2) + pow(B[i].y - B[j].y,2);
-          if(dis  <= 2500){
+          double dis = (B[i].x - B[j].x) * (B[i].x - B[j].x) +  (B[i].y - B[j].y) * (B[i].y - B[j].y);
+          dis = sqrt(dis);
+          if(dis  <= 50.0){
             g[i].push_back({j,dis});
-            g[j].push_back({i,dis});
+//             g[j].push_back({i,dis});
           }
         }
+      }
+    }
+    cin >> m;
+    rep(i,m){
+      cin >> s >> t;
+      s = b[s];
+      t = b[t];
+      dis = dijkstra(g,s);
+      r.clear();
+      f = vector<bool>(n,false);
+      rdfs(t);
+      if(dis[t] == INF){
+        cout << "NA" << endl;
+      }
+      else{
+        reverse(all(r));
+        rep(i,r.size()){
+          if(i) cout << ' ';
+          cout << B[r[i]].id;
+        }
+        cout << endl;
       }
     }
   }

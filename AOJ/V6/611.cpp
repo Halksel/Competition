@@ -97,20 +97,13 @@ int main(){
   dp[0][0] = 0;
   rep(i,m){
     rep(j,n){
-      dp[i+1][j+1] = min(dp[i+1][j+1],dp[i][j] + d[j] * c[i]);
       dp[i+1][j] = min(dp[i+1][j],dp[i][j]);
+      dp[i+1][j+1] = min(dp[i+1][j+1],dp[i][j] + c[i] * d[j]);
     }
-  }
-  rep(i,m){
-    rep(j,n){
-      cout << dp[i][j] << ' ';
-    }
-    cout << endl;
   }
   ll ans = inf;
-  rep(i,n){
-    if(dp[i][n-1] != 0)
-    ans = min(ans,dp[i][n-1]);
+  rep(i,m+1){
+    ans = min(ans,dp[i][n]);
   }
   cout << ans << endl;
   return 0;

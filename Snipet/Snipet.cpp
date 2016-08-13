@@ -20,9 +20,6 @@ using namespace std ;
 #define repa(n,array) for(auto &n :(array))
 
 using ll = long long;
-using vi = vector<int>;
-using vl = vector<ll>;
-using dict = map<string,int>;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
