@@ -29,56 +29,51 @@ constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
-
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+vector<int> v(300001,0),v2(300001,0);
+ll s = 0;
+void solve(ll n){
+  cout << n << ":";
+  REP(i,1,s){
+    if(n % v2[i] == 0){
+      cout << " " << v2[i];
+    }
+  }
+  cout << endl;
 }
-
 template<typename T>
 void Unique(vector<T> &v){
   sort(all(v));
   v.erase(unique(all(v)),v.end());
 }
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
-    }
-  }
-  return cnt;
-}
-
-template<typename T>
-bool SuffixErase(T &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
-  }
-  return false;
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n;
+  rep(i,300001){
+    if(i % 7 == 1 || i % 7 == 6){
+      v[i] = i;
+    }
+  }
+  Unique(v);
+  REP(i,1,v.size()){
+    bool f = false;
+    REP(j,2,i){
+      if(v[j] * v[j] > v[i]) break;
+      if(v[i] % v[j] == 0){
+        f = true;
+        break;
+      }
+    }
+    if(!f){
+      v2[s] = v[i];
+      ++s;
+    }
+  }
+  while(cin >> n){
+    if(n == 1) break;
+    solve(n);
+  }
   return 0;
 }
+

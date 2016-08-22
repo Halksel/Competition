@@ -34,51 +34,42 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
-    }
-  }
-  return cnt;
-}
+struct train{
+  string s,t;
+};
 
-template<typename T>
-bool SuffixErase(T &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
+struct Comp{
+  bool operator()(pair<string,string> a,pair<string,string> b)const{
+    return a.fi < b.fi;
   }
-  return false;
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
+};
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  string s,t;
+  ll n;
+  while(cin >> n && n){
+    vector<train> ans;
+    vector<pair<string,string>> v(n);
+    rep(i,n){
+      cin >> v[i].fi >> v[i].se;
+    }
+    sort(all(v),Comp());
+    ans.push_back({v[0].fi,v[0].se});
+    REP(i,1,n){
+      bool f = false;
+      rep(j,ans.size()){
+        if(ans[j].t <= v[i].fi){
+          ans[j] = {v[i].fi,v[i].se};
+          f = true;
+          break;
+        }
+      }
+      if(!f) ans.push_back({v[i].fi,v[i].se});
+    }
+    cout << ans.size() << endl;
+  }
   return 0;
 }
+

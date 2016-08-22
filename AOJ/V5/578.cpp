@@ -80,5 +80,34 @@ T ston(string& str, T n){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n;
+  cin >> n;
+  ll ans = 0,cnt;
+  string s,t;
+  cin >> s;
+  rep(i,n){
+    cin >> t;
+    rep(j,t.size()){
+      if(t[j] == s[0]){
+        rep(k,t.size()){
+          cnt = 0;
+          rep(l,s.size()){
+            if(j+k*l < t.size() && t[j+k*l] == s[l]){
+              ++cnt;
+            }
+          }
+          if(cnt == s.size()){
+            ++ans;
+            break;
+          }
+        }
+        if(cnt == s.size()){
+          break;
+        }
+      }
+    }
+  }
+  cout << ans << endl;
   return 0;
 }
+

@@ -80,5 +80,25 @@ T ston(string& str, T n){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  string s;
+  bool r = 0,u = 0,d = 0,l = 0;
+  cin >> s;
+  rep(i,s.size()){
+    if(s[i] == 'W'){
+      l = true;
+    }
+    if(s[i] == 'E'){
+      r = true;
+    }
+    if(s[i] == 'N'){
+      u = true;
+    }
+    if(s[i] == 'S'){
+      d = true;
+    }
+  }
+  if(l == r && u == d) cout << "Yes" << endl;
+  else cout << "No"<<endl;
   return 0;
 }
+

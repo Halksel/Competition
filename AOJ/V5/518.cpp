@@ -34,51 +34,59 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
-    }
+struct Comp{
+  bool operator()(pll a,pll b) const
+  {
+    if(a.fi == b.fi) return a.se <= b.se;
+    return a.fi < b.fi;
   }
-  return cnt;
-}
+};
 
-template<typename T>
-bool SuffixErase(T &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
-  }
-  return false;
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
+vector<pll> v(3001);
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n;
+  while(cin >> n && n){
+    int x,y;
+    multimap<int,int> m;
+    rep(i,n){
+      cin >> x >> y;
+      v[i] = mp(x,y);
+      m.insert(v[i]);
+    }
+    sort(begin(v),begin(v)+n);
+    ll res = 0;
+    rep(i,n){
+      REP(j,i+1,n){
+        int dx = v[j].fi - v[i].fi,dy = v[j].se - v[i].se;
+        int CX = v[i].fi - dy,CY = v[i].se + dx;
+        int DX = v[j].fi - dy,DY = v[j].se + dx;
+        if(value(CX,CY,5001,5001) && value(DX,DY,5001,5001)){
+          bool f1 = false,f2 = false;
+          auto tmp = m.equal_range(CX);
+          for(auto it = tmp.fi; it != tmp.se; ++it){
+            if(it->se == CY){
+              f1 = true;
+              break;
+            }
+          }
+          tmp = m.equal_range(DX);
+          for(auto it = tmp.fi; it != tmp.se; ++it){
+            if(it->se == DY){
+              f2 = true;
+              break;
+            }
+          }
+          if(f1 && f2){
+            ll dis = (dx * dx + dy * dy);
+            res = max(res,dis) ;
+          }
+        }
+      }
+    }
+    cout << res << endl;
+  }
   return 0;
 }
+

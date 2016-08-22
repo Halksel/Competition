@@ -33,52 +33,49 @@ const int dx[] = {0,-1,0,1,1,-1,-1,1};
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
-    }
-  }
-  return cnt;
-}
-
-template<typename T>
-bool SuffixErase(T &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
-  }
-  return false;
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
+multimap<ll,ll> pos;
+ll m,n;
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  while(cin >> m && m){
+    pos.clear();
+    ll x, y;
+    vector<pll> v(m);
+    rep(i,m){
+      cin >> x >> y;
+      v[i] = mp(x,y);
+    }
+    cin >> n;
+    vector<pll> v2(n);
+    rep(i,n){
+      cin >> x >> y;
+      v2[i] = mp(x,y);
+      pos.insert(mp(x,y));
+    }
+    rep(i,n){
+      int dx = v2[i].fi - v[0].fi,dy = v2[i].se - v[0].se;
+      int s = 1;
+      bool f = true;
+      while(f){
+        auto tmp = pos.equal_range(v[s].fi + dx);
+        auto it = tmp.fi;
+        for(; it != tmp.se; ++it){
+          if(it->se == v[s].se + dy){
+            ++s;
+            break;
+          }
+        }
+        if(it == tmp.se){
+          f = false;
+        }
+      }
+      if(s == m){
+        cout << dx << ' ' << dy << endl;
+        break;
+      }
+    }
+  }
   return 0;
 }
+

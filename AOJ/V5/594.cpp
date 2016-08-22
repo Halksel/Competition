@@ -34,51 +34,44 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
+ll calc(pll s, pll t){
+  if(s.fi > t.fi) swap(s,t);
+  ll x1 = s.fi,y1 = s.se, x2 = t.fi, y2 = t.se;
+  ll res = 0;
+  if(x2 > x1 && y1 > y2){
+    res = x2 - x1 + abs(y2 - y1);
+  }
+  else if(x2 == x1 || y2 == y1){
+    res = abs(x2 - x1 + y2 - y1);
+  }
+  else{
+    ll dif2 = x2 - y2;
+    ll dif  = x1 - y1;
+    res += abs(dif2 - dif);
+    if(dif2 - dif > 0){
+      x1 += res;
+      res += abs(x2 - x1);
     }
     else{
-      ++it;
+      res += abs(x2 - x1);
     }
   }
-  return cnt;
-}
-
-template<typename T>
-bool SuffixErase(T &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
-  }
-  return false;
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
+  return res;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll w,h,n,ans = 0;
+  cin >> w >> h >> n;
+  vector<pll> v(n);
+  rep(i,n){
+    cin >> v[i].fi >> v[i].se;
+  }
+  rep(i,n-1){
+    ans += calc(v[i],v[i+1]);
+  }
+  cout << ans << endl;
   return 0;
 }
+

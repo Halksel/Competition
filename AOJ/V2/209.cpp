@@ -33,52 +33,79 @@ const int dx[] = {0,-1,0,1,1,-1,-1,1};
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
+ll n,m,sum;
+vector<vector<ll>> scene(100,vector<ll>(100,0));
+vector<vector<vector<ll>>> pic(4,vector<vector<ll>>(50,vector<ll>(50,0)));
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
+bool check(int x,int y){
+  rep(i,4){
+    ll cnt = 0;
+    rep(j,m){
+      rep(k,m){
+        if(value(x+k,y+j,n,n)){
+          if(pic[i][k][j] != -1 && pic[i][k][j] != scene[x+k][y+j]) break;
+          else if(pic[i][k][j] == scene[x+k][y+j]) ++cnt;
+        }
+      }
     }
-    else{
-      ++it;
-    }
-  }
-  return cnt;
-}
-
-template<typename T>
-bool SuffixErase(T &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
+    if(cnt == sum){
+      rep(j,m){
+        rep(k,m){
+          if(pic[i][k][j] != -1){
+            cout << x+k+1 << ' ' << y+j+1 << endl;
+            return true;
+          }
+        }
+      }
     }
   }
   return false;
 }
 
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
+void solve(){
+  rep(i,n){
+    rep(j,n){
+      if(check(j,i)){
+        return ;
+      }
+    }
+  }
+  cout << "NA"<<endl;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  while(cin >> n >> m && n+m){
+    rep(i,n){
+      rep(j,n){
+        cin >> scene[j][i];
+      }
+    }
+    sum =0;
+    rep(i,m){
+      rep(j,m){
+        cin >> pic[0][j][i];
+        if(pic[0][j][i] != -1) ++sum;
+      }
+    }
+    rep(i,m){
+      rep(j,m){
+        pic[1][m-i-1][j] = pic[0][j][i];
+      }
+    }
+    rep(i,m){
+      rep(j,m){
+        pic[2][m-j-1][m-i-1] = pic[0][j][i];
+      }
+    }
+    rep(i,m){
+      rep(j,m){
+        pic[3][i][m-j-1] = pic[0][j][i];
+      }
+    }
+    solve();
+  }
   return 0;
 }
+

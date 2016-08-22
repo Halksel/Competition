@@ -27,7 +27,7 @@ using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
 constexpr int imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100;
+constexpr int inf = 1000000000;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0};
@@ -37,59 +37,37 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
+ll n,m;
+multimap<ll,ll> mm;
+vary(ll,s,1001,0);
+ll dfs(ll cnt, ll sum){
+  auto r = mm.equal_range(sum);
+  for(auto it = r.fi; it != r.se; ++ it){
+    if(it->se <= cnt){
+      return sum;
+    }
+  }
+  if(cnt == 4) return sum;
+  mm.insert(make_pair(sum,cnt));
+  ll res = sum;
+  rep(i,n){
+    if(sum + s[i] <= m){
+      res = max(res,dfs(cnt+1,sum + s[i]));
+    }
+  }
+  return res;
 }
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
   while(cin >> n >> m && n && m){
-    vary(ll,s,n,0);
     rep(i,n){
       cin >> s[i];
     }
-    sort(all(s));
-    vector<vector<ll>> dp(5,vector<ll>(n+1,0));
-    rep(i,4){
-      rep(k,n){
-        rep(j,n){
-          if(dp[i][j] + s[k] <= m){
-            dp[i+1][k] = max(dp[i+1][k],dp[i][j]+s[k]);
-          }
-        }
-      }
-    }
-    rep(i,5){
-      rep(j,n){
-        cout << dp[i][j] << " ";
-      }
-      cout << endl;
-    }
-    ll ans = 0;
-    rep(i,5){
-      rep(j,n){
-        ans = max(ans,dp[i][j]);
-      }
-    }
-    cout << ans << endl;
+    sort(s.begin(),s.begin()+n);
+    mm.clear();
+    cout << dfs(0,0) << endl;
   }
   return 0;
 }

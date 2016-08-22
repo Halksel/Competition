@@ -87,20 +87,45 @@ int main(){
   while(cin >> a >> b >> c >> d >> e && a+b+c+d+e){
     cin >> na >> nb >> nc;
     ll ans = 0;
-    if(c > e){
-      ans += nc*e;
-      if(b > e){
-        ans += nb * e;
+    ll S = na+nb + nc,Sum = 0;
+    vector<ll> v(S);
+    rep(i,S){
+      if(i < na){
+        v[i] = a;
+      }
+      else if(i < na + nb){
+        v[i] = b;
       }
       else{
-        rep(i,nb){
-          if(((i+1)+nc)*e < nc*c + (i+1)*b){
-            ans = e*(i+1+nc);
-          }
-          else{
+        v[i] = c;
+      }
+      Sum += v[i];
+    }
+    reverse(all(v));
+    int sum = 0,cnt = 0,suf;
+    rep(i,S){
+      sum += v[i];
+      ++cnt;
+      if(cnt >= d){
+        if(cnt * d > sum){
+          sum -= v[i];
+          cnt--;
+          if(cnt * d > sum){
+            --i;
+            Sum -= sum;
+            Sum += cnt * d;
+            suf = i;
             break;
           }
         }
+      }
+    }
+    sum = 0,cnt = 0;
+    REP(i,suf,S){
+      sum += v[i];
+      ++cnt;
+      if(cnt < d){
+
       }
     }
   }

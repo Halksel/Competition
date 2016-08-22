@@ -80,5 +80,24 @@ T ston(string& str, T n){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n;
+  cin >> n;
+  vector<ll> v(n);
+  rep(i,n){
+    cin >> v[i];
+  }
+  ll ans = 0,sum = 0;
+  rep(i,n){
+    if(v[i]){
+      sum += v[i];
+    }
+    else {
+      ans += sum/2;
+      sum = 0;
+    }
+  }
+  ans += sum/2;
+  cout << ans << endl;
   return 0;
 }
+
