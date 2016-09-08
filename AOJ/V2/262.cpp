@@ -37,25 +37,6 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
@@ -63,30 +44,48 @@ int main(){
   while(cin >> m &&m){
     cin >> n;
     vary(ll,v,n,0);
-    vary(ll,v2,n,0);
     rep(i,n){
       cin >> v[i];
     }
-    v2[0]= 1;
-    rep(i,n){
-      if(v2[i]){
-        bool f = false;
-        REP(j,1,m+1){
-          if(v[j]+j >= 0 && v[j]+j <= m){
-            if(v2[v[j]+j] == 0){
-              v2[v[j]+j] = 1;
-              f = true;
+    bool ans = true;
+    rep(x,n){
+      vary(bool,dp,2 * n+1,false);
+      dp[0] = true;
+      int s = x+1;
+      if(s < 0) s = 0;
+      if(s > n) dp[s] = true;
+      if(s > 0 && s <= n){
+        s += v[s-1];
+      }
+      if(s < 0) s = 0;
+      dp[s] = true;
+      if(s)
+        dp[0] = false;
+      rep(y,255){
+        rep(i,n+1){
+          rep(j,m){
+            int s = j+1 + i;
+            if(s < 0) s = 0;
+            if(s > n) dp[s] = dp[s] | dp[i];
+            if(s > 0 && s <= n){
+              s += v[s-1];
             }
+            if(s < 0) s = 0;
+            dp[s] = dp[i] | dp[s];
           }
         }
-        if(!f){
-          cout << "NG"<<endl;
-          i = n;
-        }
       }
-      if(i == n-1){
-        cout << "OK" << endl;
+      bool f = false;
+      REP(i,n+1,2 * n+1){
+        f |= dp[i];
       }
+      ans = ans & f;
+    }
+    if(ans){
+      cout << "OK" << endl;
+    }
+    else{
+      cout << "NG" << endl;
     }
   }
   return 0;

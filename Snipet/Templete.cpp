@@ -225,22 +225,33 @@ double ceilN(double a, int N){
   return ans * pow(10.0,-N);
 }
 //Eratosthenes
-const int PrimeMax = 100001;
+const ll PrimeMax = 10000001;
 int is_prime[PrimeMax];
-void Eratosthenes(int N){
-  for(int i = 0; i < N; i++){
+void Eratosthenes(){
+  for(int i = 0; i < PrimeMax; i++){
     is_prime[i] = 1;
   }
   is_prime[0] = 0;
   is_prime[1] = 0;
-  for(int i = 2; i < N ; i++){
+  for(int i = 2; i < PrimeMax ; i++){
     if(is_prime[i]){
-      for(int j = 0; i * (j + 2) < N; j++){
+      for(int j = 0; i * (j + 2) < PrimeMax; j++){
         is_prime[i *(j + 2)] = 0;
       }
     }
   }
 }
+int ans[1000000];
+int suf = 0;
+void Solve(ll n){
+  for(ll i = 2; i * i <= n;++i){
+    if(n % i == 0){
+      ans[suf] = i;
+      ++suf;
+    }
+  }
+}
+
 
 namespace RMQ{
   const int MAX_N = 1 << 17;
@@ -265,8 +276,8 @@ namespace RMQ{
       dat[k] = min(dat[k*2+1],dat[k*2+2]);
     }
   }
-
-  int query(int a,int b,int k,int l, int r){
+  //min = query(a,b,0,0,n)
+  int rec(int a,int b,int k,int l, int r){
     int vl,vr;
     if(r <= a || b <= l){
       return INT_MAX;
@@ -275,10 +286,13 @@ namespace RMQ{
       return dat[k];
     }
     else{
-      vl = query(a,b,k*2+1,l,(l+r)/2);
-      vr = query(a,b,k*2+2,(l+r)/2,r);
+      vl = rec(a,b,k*2+1,l,(l+r)/2);
+      vr = rec(a,b,k*2+2,(l+r)/2,r);
     }
     return min(vl,vr);
+  }
+  int query(int a,int b){
+    return rec(a,b+1,0,0,n);
   }
 }
 using namespace RMQ;
@@ -588,6 +602,58 @@ namespace powmod{
   ll getC(int a, int b){
     return (fact[a] * revfact[b] % mod) * revfact[a-b] % mod;
   }
+}
+//Useful
+
+int numofbits5(long bits)
+{
+  bits = (bits & 0x55555555) + (bits >> 1 & 0x55555555);
+  bits = (bits & 0x33333333) + (bits >> 2 & 0x33333333);
+  bits = (bits & 0x0f0f0f0f) + (bits >> 4 & 0x0f0f0f0f);
+  bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);
+  return (bits & 0x0000ffff) + (bits >>16 & 0x0000ffff);
+}
+template<typename T>
+void Unique(vector<T> &v){
+  sort(all(v));
+  v.erase(unique(all(v)),v.end());
+}
+template<typename T,typename U>
+ll FindErase(T &v,U tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
+}
+
+template<typename T>
+bool SuffixErase(T &v,size_t suf){
+  if(suf > v.size()) return false;
+  for(auto it = v.begin(); it != v.end();){
+    if(distance(v.begin(),it) == suf){
+      v.erase(it);
+      return true;
+    }
+    else{
+      ++it;
+    }
+  }
+  return false;
+}
+
+template<typename T>
+T ston(string& str, T n){
+  istringstream sin(str) ;
+  T num ;
+  sin >> num ;
+  return num ;
 }
 
 int main(){

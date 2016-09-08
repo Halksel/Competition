@@ -38,36 +38,38 @@ inline bool value(int x,int y,int w,int h){
 }
 
 ll n,m;
-multimap<ll,ll> mm;
-vary(ll,s,1001,0);
-ll dfs(ll cnt, ll sum){
-  auto r = mm.equal_range(sum);
-  for(auto it = r.fi; it != r.se; ++ it){
-    if(it->se <= cnt){
-      return sum;
-    }
-  }
-  if(cnt == 4) return sum;
-  mm.insert(make_pair(sum,cnt));
-  ll res = sum;
-  rep(i,n){
-    if(sum + s[i] <= m){
-      res = max(res,dfs(cnt+1,sum + s[i]));
-    }
-  }
-  return res;
-}
+vector<set<ll>> dp(5);
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
   while(cin >> n >> m && n && m){
+    vary(ll,s,1001,0);
     rep(i,n){
       cin >> s[i];
     }
     sort(s.begin(),s.begin()+n);
-    mm.clear();
-    cout << dfs(0,0) << endl;
+    dp = vector<set<ll>>(5);
+    dp[0].insert(0LL);
+    ll ans = -1;
+    rep(i,4){
+      for(auto &&e : dp[i]){
+        if(e > m) break;
+        dp[i+1].insert(e) ;
+        rep(k,n){
+          if(e+s[k] <= m){
+            if(i == 3){
+              ans = max(ans,e+s[k]);
+            }
+            else{
+              dp[i+1].insert(e+s[k]);
+            }
+          }
+        }
+      }
+      dp[i].clear();
+    }
+    cout << ans << endl;
   }
   return 0;
 }

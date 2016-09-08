@@ -4,17 +4,15 @@ using namespace std ;
 #define pb(n) push_back(n)
 #define fi first
 #define se second
-#define X real()
-#define Y imag()
-#define value(x,y,w,h) (x >= 0 && x < w && y >= 0 && y < h)
-#define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
+#define all(r) begin(r),end(r)
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -22,90 +20,93 @@ using namespace std ;
 #define repa(n,array) for(auto &n :(array))
 
 using ll = long long;
-using vi = vector<int>;
-using vl = vector<ll>;
-using dict = map<string,int>;
-using comd = complex<double>;
 using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
 
-constexpr int imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100000000;
+const int mod = 1000000007;
+constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0};
-const int dx[] = {0,-1,0,1};
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-double CalcDist(comd p1, comd p2){
-  return sqrt(pow(p1.X - p2.X,2.0) + pow(p1.Y -p2.Y,2.0));
+inline bool value(int x,int y,int w,int h){
+  return (x >= 0 && x < w && y >= 0 && y < h);
 }
-int N,W;
-vector<vector<char>> square;
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  while(cin >> N>>W&&N){
-    int ans = -1;
-    square = vector<vector<char>>(N,vector<char>(W));
-    vector<vector<int>> imos(N+5,vector<int>(W+5));
-    rep(i,N){
-      rep(j,W){
-        cin >> square[j][i];
-        if(square[j][i] != '.'){
-          imos[j+1][i+1] = 1;
+  int h,w;
+  char c;
+  while(cin >> h >> w && h+w){
+    vector<vector<ll>> v(h,vector<ll>(w));
+    auto v2 = v;
+    rep(j,h){
+      rep(i,w){
+        cin >> c;
+        if(c == '.'){
+          v[j][i] = 1;
         }
       }
     }
-    rep(i,N+1){
-      rep(j,W+1){
-        imos[j+1][i] += imos[j][i];
-      }
-    }
-    rep(j,W+1){
-      rep(i,N+1){
-        imos[j][i+1] += imos[j][i];
-      }
-    }
-    REP(j,1,N+1){
-      REP(i,1,W+1){
-        if(imos[i][j] == 0){
-          ans = max(0,ans);
+    ll ans = 0;
+    {
+      stack<pll> st;
+      rep(i,w){
+        v2[0][i] = v[0][i];
+        if(st.empty()){
+          st.push(mp(v2[0][i],i));
         }
-        int lb=0,ub = W+1;
-        rep(k,15){
-          int mid = (lb+ub)/2;
-          if(mid == lb) break;
-          if(mid+i >= W+1){
-            mid = W - i;
-          }
-          if(imos[mid+i][j] - imos[i-1][j] == 0){
-            lb = mid;
-            ans = max(ans,mid);
-            int lb2=0,ub2 = N+1;
-            rep(k,15){
-              int mid2 = (lb2+ub2)/2;
-              if(mid2 == lb2) break;
-              if(mid2+i >= N+1){
-                mid2 = N - i;
-              }
-              if(imos[i+mid][mid2+j] + imos[i-1][j-1] - imos[i-1][j+mid2] == 0){
-                lb2 = mid2;
-                cout << i << " " << j << " " <<mid << " " << mid2<<endl;
-                ans = max(ans,mid2*mid);
-              }
-              else{
-                ub2 = mid2;
-              }
+        else if(st.top().fi < v2[0][i]){
+          st.push(mp(v2[0][i],i));
+        }
+        else if(st.top().fi > v2[0][i]){
+          ll pos = i;
+          while(!st.empty()){
+            if(st.top().fi >= v2[0][i]){
+              auto t = st.top();st.pop();
+              ans = max(ans,t.fi * (i - t.se));
+              pos = t.se;
             }
+            else break;
           }
-          else{
-            ub = mid;
-          }
+          st.push(mp(v2[0][i],pos));
         }
       }
+      ans = max(ans,st.top().fi * (w - st.top().se));
     }
-    cout << ans<< endl;
+    REP(j,1,h){
+      stack<pll> st;
+      rep(i,w){
+        if(v[j][i]){
+          v2[j][i] += v2[j-1][i] + 1;
+        }
+        if(st.empty()){
+          st.push(mp(v2[j][i],i));
+        }
+        else if(st.top().fi < v2[j][i]){
+          st.push(mp(v2[j][i],i));
+        }
+        else if(st.top().fi > v2[j][i]){
+          ll pos = i;
+          while(!st.empty()){
+            if(st.top().fi >= v2[j][i]){
+              auto t = st.top();st.pop();
+              ans = max(ans,t.fi * (i - t.se));
+              pos = t.se;
+            }
+            else break;
+          }
+          st.push(mp(v2[j][i],pos));
+        }
+      }
+      while(!st.empty()){
+        auto t = st.top();st.pop();
+        ans = max(ans,t.fi * (w - t.se));
+      }
+    }
+    cout << ans << endl;
   }
   return 0;
 }
-

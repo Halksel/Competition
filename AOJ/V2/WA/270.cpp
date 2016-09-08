@@ -33,49 +33,6 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
-    }
-  }
-  return cnt;
-}
-
-const int PrimeMax = 300001;
-int is_prime[PrimeMax];
-vector<int> v;
-void Eratosthenes(int N){
-  for(int i = 0; i < N; i++){
-    is_prime[i] = 1;
-  }
-  is_prime[0] = 0;
-  is_prime[1] = 0;
-  for(int i = 2; i*i < N ; i++){
-    if(is_prime[i]){
-      v.push_back(i);
-      for(int j = 0; i * (j + 2) < N; j++){
-        is_prime[i *(j + 2)] = 0;
-      }
-    }
-  }
-}
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
@@ -86,19 +43,28 @@ int main(){
     cin >> c[i];
   }
   sort(all(c));
-  ll a;
+  vector<int> Q(q),tmp(q);
   rep(i,q){
-    cin >> a;
-    ll ans = 0;
-    set<int> s;
-    rep(j,n){
-      if(s.size() == a || ans == a-1){
-        break;
-      }
-      ans = max(ans,c[j]%a);
-      s.insert(c[j]%a);
+    cin >> Q[i];
+    tmp[i] = Q[i];
+  }
+  sort(all(tmp));
+  map<int,ll> m;
+  int s = 0;
+  int M = 0;
+  rep(i,q){
+    while( s < n && tmp[i] > c[s]){
+      M = max(M,c[s]);
+      ++s;
     }
-    cout << ans<<endl;
+    int ans = M;
+    REP(j,s,n){
+      ans = max(M,c[j] % tmp[i]) ;
+    }
+    m[tmp[i]] = ans;
+  }
+  rep(i,q){
+    cout << m[Q[i]] << endl;
   }
   return 0;
 }

@@ -37,31 +37,12 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
-}
-
 void chain(vector<pll> &v){
   bool f = true;
-  rep(i,v.size()){
+  while(1){
     f = true;
     for(auto it = v.begin(); it != v.end();){
-      if(it->fi == (it+1)->fi && it->se + (it+1)->se > 3){
+      if((it+1) != v.end() && it->fi == (it+1)->fi && it->se + (it+1)->se > 3){
         f = false;
         it = v.erase(it);
         it = v.erase(it);
@@ -102,34 +83,35 @@ int main(){
       }
     }
     v2.push_back(make_pair(a,cnt));
+    ll si = v2.size(),ans = inf,sum;
     v2.push_back(make_pair(inf,0));
     auto v3 = v2;
     auto it = v2.begin();
-    ll si = v2.size(),ans = inf,sum;
     rep(j,v2.size()){
       sum += v2[j].se;
     }
-    debug(sum);
     REP(i,0,si){
       sum = 0;
       v2[i+1].se++;
-      v2.erase(it + i);
+      v2[i].se--;
+      if(v2[i].se == 0)
+        v2.erase(it + i);
       chain(v2);
       rep(j,v2.size()){
         sum += v2[j].se;
       }
-      int X = v2.size();
       ans = min(ans,sum);
       v2 = v3;
       sum = 0;
       if(i>1){
         v2[i-1].se++;
-        v2.erase(it + i);
+        v2[i].se--;
+        if(v2[i].se == 0)
+          v2.erase(it + i);
         chain(v2);
         rep(j,v2.size()){
           sum += v2[j].se;
         }
-        int X = v2.size();
         ans = min(ans,sum);
       }
       v2 = v3;
