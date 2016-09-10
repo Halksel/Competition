@@ -472,6 +472,45 @@ class Dice{
       return os;
     }
 };
+class Time{
+  public:
+  int h,m,s,sec;
+  Time(){
+    h = m = 0;
+    sec = 0;
+  }
+  Time(int _sec):sec(_sec){
+    *this = Time().Convert(sec);
+  }
+  Time(int _h,int _m,int _s):h(_h),m(_m),s(_s){
+    *this = Time().Convert(h,m,s);
+  }
+  Time& Convert(int _sec){
+    int tmp = _sec;
+    sec = _sec;
+    h = sec / 3600;
+    sec %= 3600;
+    m = sec / 60;
+    s = sec % 60;
+    sec = tmp;
+    return *this;
+  }
+  Time& Convert(int _h,int _m,int _s){
+    h = _h,m = _m,s = _s;
+    sec = s + m * 60 + h * 3600;
+    return *this;
+  }
+  Time& operator+(const Time& a){
+    sec += a.sec;
+    return Convert(sec);
+  }
+  friend ostream& operator<<(ostream& os,const Time& t){
+    os << t.h << ':' << t.m << ':' << t.s << endl;
+    os << t.sec ;
+    return os;
+  }
+};
+
 namespace CalcEquations{
   const int M = 4;
 

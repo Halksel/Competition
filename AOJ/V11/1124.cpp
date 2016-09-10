@@ -62,27 +62,21 @@ int main(){
   ios::sync_with_stdio(false);
   ll n,m;
   while(cin >> n >> m && n && m){
-    vector<pll> v(101);
-    rep(i,101){
-      v[i].se = i;
-    }
-    string s;
-    cin.ignore();
+    vector<ll> v(101);
+    ll k,tmp;
     rep(i,n){
-      getline(cin,s);
-      auto vs = Split(' ',s);
-      auto tmp = v;
-      rep(j,vs.size()){
-        if(tmp[ston(vs[j],0)] == v[ston(vs[j],0)])
-          v[ston(vs[j],0)].fi++;
+      cin >> k;
+      rep(j,k){
+        cin >> tmp;
+        v[tmp]++;
       }
     }
-    ll ans = 0;
-    sort(all(v),greater<pll>());
+    ll ans = 0,cnt = m-1;
     rep(i,101){
-      if(v[i].fi >= m){
-        ans = v[i].se;
-        break;
+      if(v[i] >= cnt){
+        if(v[i] > cnt)
+          ans = i;
+        cnt = v[i];
       }
     }
     if(ans) cout << ans << endl;

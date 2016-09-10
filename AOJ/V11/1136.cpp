@@ -30,31 +30,16 @@ const int mod = 1000000007;
 constexpr int imax = ((1<<30)-1)*2+1 ;
 constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
+double eps = 1e-6 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
-
-template<typename T>
-void Unique(vector<T> &v){
-  sort(all(v));
-  v.erase(unique(all(v)),v.end());
-}
-
-template<typename T>
-T ston(string& str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
-
-void Ans(bool f){
-  if(f) cout << "YES"<<endl;
-  else cout << "NO"<<endl;
+void Correct(complex<double> &a){
+  double real = a.real();
+  double imag = a.imag();
+  if(abs(real) == 0) real = 0;
+  if(abs(imag) == 0) imag = 0;
+  a = complex<double>(real,imag);
 }
 
 int main(){
@@ -63,28 +48,54 @@ int main(){
   ll n;
   while(cin >> n && n){
     ll m;
-    vector<vector<pll>> v(n+1);
-    vector<vector<pll>> v2(n+1);
-    rep(i,n+1){
-      cin >> m;
-      v[i].resize(m);
-      v2[i].resize(m);
-      rep(j,m){
-        cin >> v[i][j].fi >> v[i][j].se;
-      }
-      REP(j,1,m){
-        v2[i][j].fi = v[i][j].fi - v[i][j-1].fi;
-        v2[i][j].se = v[i][j].se - v[i][j-1].se;
-        v2[i][0] = make_pair(0,0);
+    vector<vector<complex<double>>> v(8);
+    vector<vector<complex<double>>> v2(n+1);
+    double a,b;
+    cin >> m;
+    v[0].resize(m);
+    v[4].resize(m);
+    rep(i,m){
+      cin >> a >> b;
+      v[0][i] = complex<double>(a,b);
+    }
+    auto tmp = v[0];
+    reverse(all(tmp));
+    v[4] = tmp;
+    REP(i,1,m){
+      v[0][i] -= v[0][0];
+      v[4][i] -= v[4][0];
+    }
+    v[0][0] -= v[0][0];
+    v[4][0] -= v[4][0];
+    REP(j,1,4){
+      v[j].resize(m);
+      v[j+4].resize(m);
+      REP(i,0,m){
+        v[j][i] = v[j-1][i] * complex<double> (0,1);
+        v[j+4][i] = v[j+3][i] * complex<double> (0,1);
+        Correct(v[j][i]);
+        Correct(v[j+4][i]);
       }
     }
-    REP(i,0,n+1){
-      rep(j,5){
-      cout << v2[i][j].fi << ":"<<v2[i][j].se<<endl;
+    rep(i,n){
+      cin >> m;
+      v2[i].resize(m);
+      rep(j,m){
+        cin >> a >> b;
+        v2[i][j] =complex<double>(a,b);
       }
-//       if(v2[0] == v2[i]){
-//         cout << i << endl;
-//       }
+      REP(j,1,m){
+        v2[i][j] -= v2[i][0];
+      }
+      v2[i][0] -= v2[i][0];
+    }
+    rep(i,n){
+      rep(j,8){
+        if(v[j] == v2[i]){
+          cout << i + 1 << endl;
+          break;
+        }
+      }
     }
     cout << "+++++"<<endl;
   }
