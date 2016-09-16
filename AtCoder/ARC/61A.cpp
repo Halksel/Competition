@@ -34,48 +34,40 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
+template<typename T>
+T ston(string& str, T n){
+  istringstream sin(str) ;
+  T num ;
+  sin >> num ;
+  return num ;
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll h,w;
-  cin >> h >> w;
-  vector<vector<char>> v(w,vector<char>(h));
-  ll sx,sy,gx,gy;
-  rep(i,h){
-    rep(j,w){
-      cin >> v[j][i];
-      if(v[j][i] == 's'){
-        sx = j,sy = i;
+  string s;
+  cin >> s;
+  ll ans = ston(s,1LL);
+  ll S = s.size();
+  s += "0";
+  REP(i,1,1 << S){
+    ll tmp = 0,tmp2 = 0;
+    rep(j,S){
+      if(i & (1 << j)){
+        tmp *= 10;
+        tmp += (s[j] -'0') ;
+        tmp2 += tmp;
+        tmp =0;
       }
-      else if(v[j][i] == 'g'){
-        gx = j,gy = i;
-      }
-    }
-  }
-  queue<pll> q;
-  vector<vector<int>> v2(w,vector<int>(h,inf));
-  v2[sx][sy] = 0;
-  q.push(make_pair(sx,sy));
-  ll ans = 0;
-  while(q.size()){
-    auto t = q.front();q.pop();
-    rep(i,4){
-      int nx = t.fi + dx[i],ny = t.se + dy[i];
-      if(value(nx,ny,w,h) && v2[nx][ny] == inf && (v[nx][ny] == '.'|| v[nx][ny] == 'g') ){
-        v2[nx][ny] = v2[t.fi][t.se] + 1;
-        q.push(mp(nx,ny));
-        if(v[nx][ny] == 'g'){
-          ans = v2[t.fi][t.se] + 1;
-          break;
-        }
+      else{
+        tmp *= 10;
+        tmp += (s[j] -'0') ;
       }
     }
+    if(tmp){
+      ans += tmp2+tmp;
+    }
   }
-  if(ans == 0){
-    cout << -1 << endl;
-  }
-  else
-    cout << ans << endl;
+  cout << ans << endl;
   return 0;
 }
-

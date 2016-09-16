@@ -23,20 +23,58 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-const int mod = 1000000007;
-constexpr ll inf = ((1<<30)-1)*2+1 ;
-constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
+struct team{
+  int id,ac,sec;
+  vector<ll> v;
+  bool operator<(const team& a){
+    if(ac == a.ac){
+      if(sec == a.sec) return id < a.id;
+      return sec > a.sec;
+    }
+    return ac < a.ac;
+  }
+  bool operator>(const team& a){
+    if(ac == a.ac){
+      return sec > a.sec;
+    }
+    return ac < a.ac;
+  }
+};
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll h,m;
-  cin >> h >> m;
-  h %= 12;
-    double ans = (double)((60 * h - 11 * m + 720) % 720)/ 11;
-  cout << (int)(ans + 0.5) << endl;
+  ll M,T,P,R;
+  while(cin >> M >> T >> P >> R && M+T+P+R){
+    vector<team> v(T);
+    rep(i,T){
+      v[i].id = i+1;
+      v[i].v.resize(P);
+    }
+    ll m,t,p,j;
+    rep(i,R){
+      cin >> m >> t >> p >> j;
+      if(j == 0){
+        v[t-1].ac++;
+        v[t-1].sec += m + 20 * v[t-1].v[p-1];
+      }
+      else{
+        v[t-1].v[p-1]++;
+      }
+    }
+    sort(all(v));
+    reverse(all(v));
+    cout << v[0].id;
+    REP(i,1,T){
+      if(v[i] > v[i-1]){
+        cout << ',' << v[i].id ;
+      }
+      else{
+        cout << '=' << v[i].id ;
+      }
+    }
+    cout << endl;
+  }
   return 0;
 }
+

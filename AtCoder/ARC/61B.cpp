@@ -27,8 +27,7 @@ const int mod = 1000000007;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
+const int d[] = {-1,0,1};
 
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
@@ -37,45 +36,46 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll h,w;
-  cin >> h >> w;
-  vector<vector<char>> v(w,vector<char>(h));
-  ll sx,sy,gx,gy;
-  rep(i,h){
-    rep(j,w){
-      cin >> v[j][i];
-      if(v[j][i] == 's'){
-        sx = j,sy = i;
-      }
-      else if(v[j][i] == 'g'){
-        gx = j,gy = i;
-      }
-    }
-  }
-  queue<pll> q;
-  vector<vector<int>> v2(w,vector<int>(h,inf));
-  v2[sx][sy] = 0;
-  q.push(make_pair(sx,sy));
-  ll ans = 0;
-  while(q.size()){
-    auto t = q.front();q.pop();
-    rep(i,4){
-      int nx = t.fi + dx[i],ny = t.se + dy[i];
-      if(value(nx,ny,w,h) && v2[nx][ny] == inf && (v[nx][ny] == '.'|| v[nx][ny] == 'g') ){
-        v2[nx][ny] = v2[t.fi][t.se] + 1;
-        q.push(mp(nx,ny));
-        if(v[nx][ny] == 'g'){
-          ans = v2[t.fi][t.se] + 1;
-          break;
+  map<pii,ll> m;
+  ll h,w,n,a,b;
+  cin >> h >> w >> n;
+  vector<pii> v(n);
+  ll d2[] = {0,-1,-2};
+  rep(u,n){
+    cin >> b >> a;
+    --a,--b;
+    v[u] = mp(a,b);
+    rep(i,3){
+      rep(j,3){
+        ll dx = a + d2[j],dy=b+d2[i];
+        if(value(dx,dy,w,h) && value(dx+2,dy+2,w,h)){
+          m[mp(dx,dy)] = 0;
         }
       }
     }
   }
-  if(ans == 0){
-    cout << -1 << endl;
+  rep(i,n){
+    ll x = v[i].fi,y = v[i].se;
+    rep(j,3){
+      rep(k,3){
+        ll dx = x+d2[k],dy = y+d2[j];
+        if(m.count(mp(dx,dy))){
+          m[mp(dx,dy)]++;
+        }
+      }
+    }
   }
-  else
-    cout << ans << endl;
+  ll ans[10]= {};
+  ans[0] = (w-2)*(h-2);
+  for(auto&& e:m){
+    ans[e.se]++;
+  }
+  REP(i,1,10){
+    ans[0] -= ans[i];
+  }
+  rep(i,10){
+    cout << ans[i] << endl;
+  }
   return 0;
 }
 

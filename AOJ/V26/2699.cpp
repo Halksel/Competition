@@ -37,45 +37,15 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll h,w;
-  cin >> h >> w;
-  vector<vector<char>> v(w,vector<char>(h));
-  ll sx,sy,gx,gy;
-  rep(i,h){
-    rep(j,w){
-      cin >> v[j][i];
-      if(v[j][i] == 's'){
-        sx = j,sy = i;
-      }
-      else if(v[j][i] == 'g'){
-        gx = j,gy = i;
-      }
+  double e;
+  ll d;
+  while(cin >> d >> e && d && e != 0.0){
+    double ans = inf;
+    REP(i,1,d+1){
+      ans = min(ans,abs(sqrt(i*i+(d-i)*(d-i)) - e));
     }
-  }
-  queue<pll> q;
-  vector<vector<int>> v2(w,vector<int>(h,inf));
-  v2[sx][sy] = 0;
-  q.push(make_pair(sx,sy));
-  ll ans = 0;
-  while(q.size()){
-    auto t = q.front();q.pop();
-    rep(i,4){
-      int nx = t.fi + dx[i],ny = t.se + dy[i];
-      if(value(nx,ny,w,h) && v2[nx][ny] == inf && (v[nx][ny] == '.'|| v[nx][ny] == 'g') ){
-        v2[nx][ny] = v2[t.fi][t.se] + 1;
-        q.push(mp(nx,ny));
-        if(v[nx][ny] == 'g'){
-          ans = v2[t.fi][t.se] + 1;
-          break;
-        }
-      }
-    }
-  }
-  if(ans == 0){
-    cout << -1 << endl;
-  }
-  else
     cout << ans << endl;
+  }
   return 0;
 }
 

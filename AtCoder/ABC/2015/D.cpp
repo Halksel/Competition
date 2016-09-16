@@ -1,148 +1,64 @@
-#include<iostream>
-#include<sstream>
-#include<vector>
-#include<string>
-#include<algorithm>
-#include<cmath>
-#include<cstdio>
-#include<map>
-#include<numeric>
-
+#include <bits/stdc++.h>
 using namespace std ;
 
 #define pb(n) push_back(n)
 #define fi first
 #define se second
-#define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
+#define all(r) begin(r),end(r)
 #define vmax(ary) *max_element(all(ary))
+#define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
+#define fcout(n) cout<<fixed<<setprecision((n))
+#define scout(n) cout<<setw(n)
+#define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
-#define repc(i,a,b) for(int i = (a);i < (int)(b);++i)
-#define repi(it,array) for(auto it = array.begin(); it != array.end();++it)
-#define repa(n,array) for(auto n :(array))
+#define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
+#define repi(it,array) for(auto it = array.begin(),end = array.end(); it != end;++it)
+#define repa(n,array) for(auto &n :(array))
 
-typedef long long ll ;
-typedef vector<int> vi ;
-typedef vector<ll> vl ;
-//template<class Value>
-//using dict = std::map< string, Value >;
-typedef map<string,int> dict ;
+using ll = long long;
+using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
 
-constexpr int imax = ((1<<30)-1)*2+1 ;
-constexpr int inf = 100000000;
+const int mod = 1000000007;
+constexpr ll inf = ((1<<30)-1)*2+1 ;
+constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-template <typename T>
-void out(vector < T > v)
-{
-  for(size_t i = 0; i < v.size(); i++)
-  {
-    debug(v[i]);
-  }
-}
-
-template<typename T>
-string ntos( T i ) {
-  ostringstream s ;
-  s << i ;
-  return s.str() ;
-}
-
-template<typename T>
-T ston(string str, T n){
-  istringstream sin(str) ;
-  T num ;
-  sin >> num ;
-  return num ;
-}
+ll dp[251][100001];
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  int N,M,num,ans;
-  double lnum,rnum;
-  map<int,int> men;
-  bool lflag = true, rflag = true;
-  cin >> N >> M ;
-  vi train(N,0), ment(N,0),menl(N,0),menr(N,0) ;
-  while(cin >> num){
-    ment[num-1] = 1 ;
-    train[num-1] = 1;
+  ll n,m;
+  cin >>n >> m;
+  vector<ll> a(n),b(n);
+  rep(i,n){
+    cin >> a[i];
   }
-  rep(i,N){
-    if(ment[i] == 1){
-      lflag = true;
-      rflag = true;
-      for(int j = 1; j < N; ++j){
-        if(i-j > -1 ){
-          if(ment[i-j] == 0 && train[i-j] == 0 && lflag){
-            ++menl[i] ;
-          }
-          else if(ment[i-j] != 0 || train[i-j] != 0){
-            lflag = false ;
-          }
-        }
-        if(i+j < N){
-          if(ment[i+j] == 0 && train[i+j] == 0 && rflag){
-            ++menr[i] ;
-          }
-          else if(ment[i+j] != 0 || train[i+j] != 0){
-            rflag = false ;
-          }
-        }
-      }
-    }
+  rep(i,n){
+    cin >> b[i];
   }
-  //men 1:存在,2:確定右へ,3:確定左へ,4:右へ,5:左へ
-  rep(i,N){
-    if(ment[i] == 1){
-      if(menl[i] == 0 && menr[i] != 0){
-        men[i] = 2;
-      }
-      else if(menr[i] == 0 && menl[i] != 0){
-        men[i] = 3;
-      }
-      else if(menr[i] > menl[i]){
-        men[i] = 4;
+  rep(i,n){
+    rep(j,m+1){
+      if(j < a[i]){
+        dp[i+1][j] = dp[i][j];
       }
       else{
-        men[i] = 5;
+        dp[i+1][j] = max(dp[i][j],dp[i+1][j - a[i]] + b[i]);
       }
     }
   }
-  auto it = men.begin();
-  for(int i = 0; i < N; ++i){
-    if(ment[i] == 1){
-      it = men.find(i);
-      if(it->se != 2 || it->se != 3){
-        if(it->se == 4){
-          ++it;
-          if(it->se == 5){
-            rnum = 1.0*(it->fi - i -1)/2;
-          }
-        }
-        else if(it->se == 5){
-          --it;
-          if(it->se == 4){
-            lnum = 1.0*(i - it->fi-1)/2;
-          }
-        }
-        ment[i] = (rnum > lnum)?2:3;
-      }
-      else{
-        ment[i] = it->fi;
-      }
-    }
-    ++it;
+  ll ans = 0;
+  rep(i,m+1){
+    ans = max(ans,dp[n][i]);
   }
-  cout << "ment 2:右へ,3:左へ" << endl;
-  /*repi(it,men){
-    cout << "fi" << it->fi << " se" << it->se << endl;
-  }*/
-  out(menr);
-  cout << "menr outputed" << endl;
-  out(menl);
+  cout << ans << endl;
   return 0;
 }
+

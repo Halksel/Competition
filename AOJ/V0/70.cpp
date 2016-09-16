@@ -20,32 +20,37 @@ using namespace std ;
 #define repa(n,array) for(auto &n :(array))
 
 using ll = long long;
-
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+int numofbits5(long bits)
+{
+  bits = (bits & 0x55555555) + (bits >> 1 & 0x55555555);
+  bits = (bits & 0x33333333) + (bits >> 2 & 0x33333333);
+  bits = (bits & 0x0f0f0f0f) + (bits >> 4 & 0x0f0f0f0f);
+  bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);
+  return (bits & 0x0000ffff) + (bits >>16 & 0x0000ffff);
 }
-
-vector<vector<vector<ll>>> dp(11,vector<vector<ll>>(11,vector<ll>(10001,0)));
+ll dp[1 << 10][1000];
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  dp[0][0][0] = 1;
-  dp[0][1][0] = 1;
-  REP(i,1,10){
-    REP(j,0,10){
-      REP(k,0,10001){
-        dp[i][j][k] += dp[i-1][j][k];
-        REP(l,0,i){
-          if(j && k-i*j >= 0){
-            dp[i][j][k] += dp[l][j-1][k-i*j];
-          }
-        }
+  dp[0][0] = 1;
+  rep(i,1 << 10){
+    rep(k,10){
+      if(i & (1 << k)) continue;
+      rep(l,800){
+        dp[i | (1 << k)][l + (numofbits5(i)+1) * k] += dp[i][l];
       }
     }
   }
+  ll n,s;
   while(cin >> n >> s){
-    cout << dp[9][n][s] << endl;
+    ll ans = 0;
+    if(s > 999) cout << ans << endl;
+    else{
+      rep(i,1 << 10){
+        if(numofbits5(i) == n) ans += dp[i][s];
+      }
+      cout << ans << endl;
+    }
   }
   return 0;
 }

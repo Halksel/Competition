@@ -37,45 +37,52 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll h,w;
-  cin >> h >> w;
-  vector<vector<char>> v(w,vector<char>(h));
-  ll sx,sy,gx,gy;
-  rep(i,h){
-    rep(j,w){
-      cin >> v[j][i];
-      if(v[j][i] == 's'){
-        sx = j,sy = i;
+  ll n,m;
+  while(cin >> n >> m && n+m){
+    vector<vector<char>> v(m+1,vector<char>(n+1,' '));
+    using piii = pair<int,pair<int,int>>;
+    priority_queue<piii> q;
+    vector<vector<int>> d(m+1,vector<int>(n+1,inf));
+    {
+      int x = 0,y = 0;
+      rep(j,m){
+        rep(i,n){
+          cin >> v[j][i];
+          if(v[j][i] == '&'){
+            x = i;
+            y = j;
+          }
+        }
       }
-      else if(v[j][i] == 'g'){
-        gx = j,gy = i;
-      }
+      piii pos = mp(0,mp(y,x));
+      d[y][x] = 0;
+      q.push(pos);
     }
-  }
-  queue<pll> q;
-  vector<vector<int>> v2(w,vector<int>(h,inf));
-  v2[sx][sy] = 0;
-  q.push(make_pair(sx,sy));
-  ll ans = 0;
-  while(q.size()){
-    auto t = q.front();q.pop();
-    rep(i,4){
-      int nx = t.fi + dx[i],ny = t.se + dy[i];
-      if(value(nx,ny,w,h) && v2[nx][ny] == inf && (v[nx][ny] == '.'|| v[nx][ny] == 'g') ){
-        v2[nx][ny] = v2[t.fi][t.se] + 1;
-        q.push(mp(nx,ny));
-        if(v[nx][ny] == 'g'){
-          ans = v2[t.fi][t.se] + 1;
-          break;
+    int ans = inf;
+    while(q.size()){
+      auto Q = q.top();q.pop();
+      auto p = Q.se;
+      int dpt = Q.fi;
+      int x = p.se,y = p.fi;
+      rep(i,4){
+        int nx = x + dx[i],ny = y + dy[i];
+        if(value(nx,ny,n,m)){
+          if(v[y][x] == v[ny][nx] && d[ny][nx] > d[y][x]){
+            d[ny][nx] = d[y][x];
+            q.push(mp(-dpt,mp(ny,nx)));
+          }
+          else if(d[ny][nx] > d[y][x] + (v[ny][nx] == '#')){
+            d[ny][nx] = (v[ny][nx] == '#') + d[y][x];
+            q.push(mp(-(dpt+1),mp(ny,nx)));
+          }
+        }
+        else{
+          ans = min(ans,d[y][x]);
         }
       }
     }
-  }
-  if(ans == 0){
-    cout << -1 << endl;
-  }
-  else
     cout << ans << endl;
+  }
   return 0;
 }
 

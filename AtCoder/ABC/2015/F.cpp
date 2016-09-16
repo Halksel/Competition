@@ -33,49 +33,36 @@ const int dx[] = {0,-1,0,1,1,-1,-1,1};
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
-
+ll dp[3001][2];
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll h,w;
-  cin >> h >> w;
-  vector<vector<char>> v(w,vector<char>(h));
-  ll sx,sy,gx,gy;
-  rep(i,h){
-    rep(j,w){
-      cin >> v[j][i];
-      if(v[j][i] == 's'){
-        sx = j,sy = i;
+  ll n;
+  cin >> n;
+  vector<ll> v(n);
+  rep(i,n){
+    cin >> v[i];
+  }
+  rep(i,2)rep(j,n) dp[j][i] = 1;
+  rep(i,n){
+    REP(j,i+1,n){
+      if(v[i] > v[j]){
+        dp[j][0] = max(dp[j][0],dp[i][1]+1);
       }
-      else if(v[j][i] == 'g'){
-        gx = j,gy = i;
+      else if(v[i] < v[j]){
+        dp[j][1] = max(dp[j][1],dp[i][0]+1);
       }
     }
   }
-  queue<pll> q;
-  vector<vector<int>> v2(w,vector<int>(h,inf));
-  v2[sx][sy] = 0;
-  q.push(make_pair(sx,sy));
   ll ans = 0;
-  while(q.size()){
-    auto t = q.front();q.pop();
-    rep(i,4){
-      int nx = t.fi + dx[i],ny = t.se + dy[i];
-      if(value(nx,ny,w,h) && v2[nx][ny] == inf && (v[nx][ny] == '.'|| v[nx][ny] == 'g') ){
-        v2[nx][ny] = v2[t.fi][t.se] + 1;
-        q.push(mp(nx,ny));
-        if(v[nx][ny] == 'g'){
-          ans = v2[t.fi][t.se] + 1;
-          break;
-        }
-      }
-    }
+  rep(i,2)rep(j,n){
+    ans = max(ans,dp[j][i]) ;
   }
-  if(ans == 0){
-    cout << -1 << endl;
+  if(ans >= 3){
+    cout << ans << endl;
   }
   else
-    cout << ans << endl;
+    cout << 0 << endl;
   return 0;
 }
 

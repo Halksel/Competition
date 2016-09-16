@@ -62,8 +62,7 @@ int main(){
         }
       }
     }
-    debug(cnt);
-    if(cnt % 2 == 0){
+    if(cnt == 2 || cnt == 0){
       cout << "Yes" << endl;
     }
     else{
