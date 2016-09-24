@@ -24,11 +24,12 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
-constexpr int inf = ((1<<30)-1)*2+1 ;
+constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dx[] = {1,0,-1,-1,0,1};
-const int dy[] = {1,1,0,-1,-1,0};
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
+
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
@@ -36,42 +37,10 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll t,n,x,y,cnt;
-  while(cin >> t >> n && t+n){
-    vector<vector<ll>> v(65,vector<ll>(65,inf));
-
-    rep(i,n){
-      cin >> x >> y;
-      x += 30;
-      y += 30;
-      v[x][y] = -1;
-    }
-    cin >> x >> y;
-    x += 30;
-    y += 30;
-    cnt = 1;
-    queue<pll> q;
-    q.push(mp(x,y));
-    ll d = 0;
-    v[x][y] = d;
-    while(q.size()){
-      if(d == t) break;
-      auto S = q.size();
-      rep(j,S){
-        auto Q = q.front();q.pop();
-        rep(i,6){
-          ll nx = Q.fi + dx[i],ny = Q.se + dy[i];
-          if(value(nx,ny,61,61) && v[nx][ny] > d+1){
-            q.push(mp(nx,ny));
-            if(v[nx][ny] == inf)
-              ++cnt;
-            v[nx][ny] = d+1;
-          }
-        }
-      }
-      ++d;
-    }
-    cout << cnt << endl;
-  }
+  ll a,b;
+  string s;
+  cin >> s;
+  cout << s.substr(0,4) + " " + s.substr(4,8) << endl;
   return 0;
 }
+

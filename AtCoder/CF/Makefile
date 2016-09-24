@@ -4,9 +4,10 @@ SRC=
 OBJ=$(SRC:.cpp=.o)
 PROG=$(SRC:.cpp=.out)
 
+CXX = g++
 $(PROG):$(OBJ)
 		$(CXX) -o $@ $<
 
 .PHONY : clean
 clean:
-	rm -rf *.o .* *.out
+	rm -rf *.o *.out .*

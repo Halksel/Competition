@@ -4,7 +4,7 @@ SRC=
 OBJ=$(SRC:.cpp=.o)
 PROG=$(SRC:.cpp=.out)
 
-CXX=g++
+CXX=g++-6
 $(PROG):$(OBJ)
 		$(CXX) -o $@ $<
 

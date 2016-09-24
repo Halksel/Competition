@@ -24,54 +24,59 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 const int mod = 1000000007;
-constexpr int inf = ((1<<30)-1)*2+1 ;
+constexpr double inf = 10000000000 ;
 constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
-const int dx[] = {1,0,-1,-1,0,1};
-const int dy[] = {1,1,0,-1,-1,0};
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
+double eps = 1e-3 ;
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
+
+struct Data{
+  ll f,a,x,y;
+  bool u ;
+  double ti,di;
+  double dis(ll s,ll t){
+    return sqrt((x - s) * (x - s) + (y - t) * (y - t));
+  }
+};
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll t,n,x,y,cnt;
-  while(cin >> t >> n && t+n){
-    vector<vector<ll>> v(65,vector<ll>(65,inf));
-
-    rep(i,n){
-      cin >> x >> y;
-      x += 30;
-      y += 30;
-      v[x][y] = -1;
+  ll n,f,a,t,x,y;
+  cin >> n;
+  Data A[2];
+  A[0].u = false;
+  A[1].u = false;
+  A[0].di = 0;
+  A[1].di = 0;
+  rep(i,n){
+    cin >> f >> a >> t >> x >> y;
+    if(A[t].u == false){
+      A[t] = {f,a,x,y,true,inf,0};
     }
-    cin >> x >> y;
-    x += 30;
-    y += 30;
-    cnt = 1;
-    queue<pll> q;
-    q.push(mp(x,y));
-    ll d = 0;
-    v[x][y] = d;
-    while(q.size()){
-      if(d == t) break;
-      auto S = q.size();
-      rep(j,S){
-        auto Q = q.front();q.pop();
-        rep(i,6){
-          ll nx = Q.fi + dx[i],ny = Q.se + dy[i];
-          if(value(nx,ny,61,61) && v[nx][ny] > d+1){
-            q.push(mp(nx,ny));
-            if(v[nx][ny] == inf)
-              ++cnt;
-            v[nx][ny] = d+1;
-          }
+    else{
+      if(A[t].a != a){
+        if(A[t].di < A[t].dis(x,y)){
+          A[t].di = A[t].dis(x,y);
+          A[t].ti = f - A[t].f;
         }
+        else if(abs(A[t].di- A[t].dis(x,y)) <= eps){
+          if(A[t].ti > f - A[t].f)
+            A[t].ti = f - A[t].f;
+        }
+
       }
-      ++d;
+      A[t] = {f,a,x,y,true,A[t].ti,A[t].di};
     }
-    cout << cnt << endl;
+  }
+  rep(i,2){
+    if(A[i].di == 0){
+      cout << -1 << ' ' << -1 << endl;
+    }
+    else
+      fcout(10) << A[i].di << ' ' << A[i].ti/60.0 << endl;
   }
   return 0;
 }
+
+

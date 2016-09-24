@@ -1,4 +1,8 @@
-#include <bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<map>
+#include<cmath>
+
 using namespace std ;
 
 #define pb(n) push_back(n)

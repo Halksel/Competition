@@ -52,24 +52,21 @@ int main(){
     cnt = 1;
     queue<pll> q;
     q.push(mp(x,y));
-    ll d = 0;
-    v[x][y] = d;
+    v[x][y] = 0;
     while(q.size()){
-      if(d == t) break;
-      auto S = q.size();
-      rep(j,S){
-        auto Q = q.front();q.pop();
-        rep(i,6){
-          ll nx = Q.fi + dx[i],ny = Q.se + dy[i];
-          if(value(nx,ny,61,61) && v[nx][ny] > d+1){
-            q.push(mp(nx,ny));
-            if(v[nx][ny] == inf)
-              ++cnt;
-            v[nx][ny] = d+1;
-          }
+      auto Q = q.front();q.pop();
+      int x = Q.fi,y = Q.se;
+      int d = v[x][y];
+      if(d >= t) continue;
+      rep(i,6){
+        ll nx = x + dx[i],ny = y + dy[i];
+        if(value(nx,ny,61,61) && v[nx][ny] > d){
+          q.push(mp(nx,ny));
+          if(v[nx][ny] == inf)
+            ++cnt;
+          v[nx][ny] = d + 1;
         }
       }
-      ++d;
     }
     cout << cnt << endl;
   }
