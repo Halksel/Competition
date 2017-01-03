@@ -42,5 +42,9 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n;
+  cin >> n;
+  cout << min(100 * (n / 10) + 15 * (n % 10),100 * (n / 10 + 1)) << endl;
   return 0;
 }
+

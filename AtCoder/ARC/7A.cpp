@@ -35,12 +35,29 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+template<typename T,typename U>
+ll FindErase(T &v,U tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  char c;
+  string s;
+  cin >> c >> s;
+  FindErase(s,c);
+  cout << s << endl;
   return 0;
 }
+

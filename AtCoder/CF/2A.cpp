@@ -23,11 +23,6 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
-
 const int mod = 1000000007;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
@@ -38,9 +33,20 @@ const int dx[] = {0,-1,0,1,1,-1,-1,1};
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
-
+string st = "CODEFESTIVAL2016";
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll a = 0,b;
+  string s;
+  cin >> s;
+  rep(i,16){
+    if(s[i] != st[i])
+    {
+      ++a;
+    }
+  }
+  cout << a << endl;
   return 0;
 }
+

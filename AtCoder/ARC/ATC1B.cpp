@@ -20,27 +20,61 @@ using namespace std ;
 #define repa(n,array) for(auto &n :(array))
 
 using ll = long long;
-using pii = pair<int,int> ;
-using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
+class Union_Find{
+  public:
+  Union_Find(){};
+  static const ll MAX_N = 100000*2+1;
+  int par[MAX_N];
+  int ranks[MAX_N];
+  void init(int n){
+    rep(i,MAX_N){
+      par[i] = i;
+      ranks[i] = 0;
+    }
+  }
+  int find(int x){
+    if(par[x] == x){
+      return x;
+    }
+    else{
+      return par[x] = find(par[x]);
+    }
+  }
 
-const int mod = 1000000007;
-constexpr ll inf = ((1<<30)-1)*2+1 ;
-constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
-
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
+  void Unite(int a, int b){
+    a = find(a);
+    b = find(b);
+    if(a == b) return ;
+    if(ranks[a] < ranks[b]){
+      par[a] = b;
+    }
+    else{
+      par[b] = a;
+      if(ranks[a] == ranks[b]) ranks[a]++;
+    }
+  }
+  bool same(int a,int b){
+    return find(a) == find(b);
+  }
+};
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  Union_Find u;
+  u.init(0);
+  ll n,q;
+  cin >> n >> q;
+  ll p,a,b;
+  rep(i,q){
+    cin >> p >> a >> b;
+    if(p){
+      cout << ((u.same(a,b)) ? ("Yes"):("No")) << endl;
+    }
+    else{
+      u.Unite(a,b);
+    }
+  }
   return 0;
 }

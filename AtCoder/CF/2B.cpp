@@ -23,11 +23,6 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
-
 const int mod = 1000000007;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
@@ -42,5 +37,23 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n,a,b;
+  cin >> n >> a >> b;
+  string s;
+  cin >> s;
+  ll ca = 0,cb = 0;
+  rep(i,s.size()){
+    if(s[i] == 'a' && ca+cb < a+b){
+      ++ca;
+      cout << "Yes" << endl;
+    }
+    else if(s[i] =='b' && ca+cb<a+b && cb < b){
+      ++cb;
+      cout << "Yes" << endl;
+    }
+    else
+      cout << "No"<< endl;
+  }
   return 0;
 }
+

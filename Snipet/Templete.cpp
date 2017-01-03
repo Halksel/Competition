@@ -176,6 +176,7 @@ namespace Geometry{
   }
 
   struct L : public vector<P> {
+    L(){};
     L(const P &a, const P &b) {
       push_back(a); push_back(b);
     }
@@ -185,6 +186,7 @@ namespace Geometry{
 
   struct C {
     P p; double r;
+    C(){};
     C(const P &p, double r) : p(p), r(r) { }
   };
   int ccw(P a, P b, P c) {
@@ -216,8 +218,8 @@ namespace Geometry{
   }
   // L & P intersection
   P projection(const L &l, const P &p) {
-      double t = dot(p-l[0], l[0]-l[1]) / norm(l[0]-l[1]);
-        return l[0] + t*(l[0]-l[1]);
+    double t = dot(p-l[0], l[0]-l[1]) / norm(l[0]-l[1]);
+    return l[0] + t*(l[0]-l[1]);
   }
   // L & P Symmetry
   P reflection(const L &l, const P &p) {
@@ -242,6 +244,9 @@ namespace Geometry{
     if (intersectSS(s, t)) return 0;
     return min(min(distanceSP(s, t[0]), distanceSP(s, t[1])),
         min(distanceSP(t, s[0]), distanceSP(t, s[1])));
+  }
+  double distancePP(const P &p,const P &q){
+    return dot((p - q), (p - q));
   }
   P crosspoint(const L &l, const L &m) {
     double A = cross(l[1] - l[0], m[1] - m[0]);
@@ -339,14 +344,16 @@ namespace RMQ{
   }
 }
 using namespace RMQ;
-namespace Union_Find{
-  const int MAX_N =10001;
+class Union_Find{
+  public:
+  Union_Find(){};
+  static const ll MAX_N = 100000*2+1;
   int par[MAX_N];
   int ranks[MAX_N];
   void init(int n){
-    rep(i,n){
+    rep(i,MAX_N){
       par[i] = i;
-      ranks[i] = 1;
+      ranks[i] = 0;
     }
   }
   int find(int x){
@@ -367,15 +374,13 @@ namespace Union_Find{
     }
     else{
       par[b] = a;
-      if(ranks[a] == ranks[b]) ranks[b]++;
+      if(ranks[a] == ranks[b]) ranks[a]++;
     }
   }
-
   bool same(int a,int b){
     return find(a) == find(b);
   }
-}
-using namespace Union_Find;
+};
 //GCD & LCM
 int gcd(int a,int b){
   if(a < b) swap(a,b);
@@ -517,41 +522,41 @@ class Dice{
 };
 class Time{
   public:
-  int h,m,s,sec;
-  Time(){
-    h = m = 0;
-    sec = 0;
-  }
-  Time(int _sec):sec(_sec){
-    *this = Time().Convert(sec);
-  }
-  Time(int _h,int _m,int _s):h(_h),m(_m),s(_s){
-    *this = Time().Convert(h,m,s);
-  }
-  Time& Convert(int _sec){
-    int tmp = _sec;
-    sec = _sec;
-    h = sec / 3600;
-    sec %= 3600;
-    m = sec / 60;
-    s = sec % 60;
-    sec = tmp;
-    return *this;
-  }
-  Time& Convert(int _h,int _m,int _s){
-    h = _h,m = _m,s = _s;
-    sec = s + m * 60 + h * 3600;
-    return *this;
-  }
-  Time& operator+(const Time& a){
-    sec += a.sec;
-    return Convert(sec);
-  }
-  friend ostream& operator<<(ostream& os,const Time& t){
-    os << t.h << ':' << t.m << ':' << t.s << endl;
-    os << t.sec ;
-    return os;
-  }
+    int h,m,s,sec;
+    Time(){
+      h = m = 0;
+      sec = 0;
+    }
+    Time(int _sec):sec(_sec){
+      *this = Time().Convert(sec);
+    }
+    Time(int _h,int _m,int _s):h(_h),m(_m),s(_s){
+      *this = Time().Convert(h,m,s);
+    }
+    Time& Convert(int _sec){
+      int tmp = _sec;
+      sec = _sec;
+      h = sec / 3600;
+      sec %= 3600;
+      m = sec / 60;
+      s = sec % 60;
+      sec = tmp;
+      return *this;
+    }
+    Time& Convert(int _h,int _m,int _s){
+      h = _h,m = _m,s = _s;
+      sec = s + m * 60 + h * 3600;
+      return *this;
+    }
+    Time& operator+(const Time& a){
+      sec += a.sec;
+      return Convert(sec);
+    }
+    friend ostream& operator<<(ostream& os,const Time& t){
+      os << t.h << ':' << t.m << ':' << t.s << endl;
+      os << t.sec ;
+      return os;
+    }
 };
 
 namespace CalcEquations{
@@ -658,7 +663,7 @@ namespace powmod{
     ll ans = 1;
     ll mul = a;
     for(; p > 0; p >>= 1, mul = (mul*mul) % mod){ //初期条件なし、pを2で割り続け、mulの値を更新
-      if((p & 1) == 1) ans = ( ans * mul) % mod;//pが1なら ansの値を更新
+      if((p & 1) == 1) ans = ( ans * mul) % mod;//最下位Bitが1なら ansの値を更新
     }
     return ans;
   }

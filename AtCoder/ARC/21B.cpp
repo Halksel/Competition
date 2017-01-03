@@ -42,5 +42,22 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll l;
+  cin >> l;
+  vector<ll> b(l),a(l);
+  rep(i,l){
+    cin >> b[i];
+  }
+  a[0] = 0;
+  rep(i,l-1){
+    a[i+1] = b[i] ^ a[i];
+  }
+  if(a[l-1] != b[l-1]) cout << -1 << endl;
+  else{
+    rep(i,l){
+      O(a[i]);
+    }
+  }
   return 0;
 }
+

@@ -49,23 +49,26 @@ int main(){
   A[1].u = false;
   A[0].di = 0;
   A[1].di = 0;
+  ll bfr = -1LL;
   rep(i,n){
     cin >> f >> a >> t >> x >> y;
     if(A[t].u == false){
       A[t] = {f,a,x,y,true,inf,0};
+      bfr = t;
     }
     else{
-      if(A[t].a != a){
-        if(A[t].di < A[t].dis(x,y)){
+      if(A[t].a != a && bfr == t){
+        if(A[t].di < A[t].dis(x,y) + eps){
           A[t].di = A[t].dis(x,y);
           A[t].ti = f - A[t].f;
         }
         else if(abs(A[t].di- A[t].dis(x,y)) <= eps){
-          if(A[t].ti > f - A[t].f)
+          if(A[t].ti > f - A[t].f){
             A[t].ti = f - A[t].f;
+          }
         }
-
       }
+      bfr = t;
       A[t] = {f,a,x,y,true,A[t].ti,A[t].di};
     }
   }

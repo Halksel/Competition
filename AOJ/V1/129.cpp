@@ -112,6 +112,9 @@ double distanceSS(const L &s, const L &t) {
   if (intersectSS(s, t)) return 0;
   return min(min(distanceSP(s, t[0]), distanceSP(s, t[1])),min(distanceSP(t, s[0]), distanceSP(t, s[1])));
 }
+double distancePP(const P &p,const P &q){
+  return sqrt(dot((p - q), (p - q)));
+}
 P crosspoint(const L &l, const L &m) {
   double A = cross(l[1] - l[0], m[1] - m[0]);
   double B = cross(l[1] - l[0], l[1] - m[0]);
@@ -142,7 +145,7 @@ int main(){
     rep(i,m){
       bool ans = false;
       rep(j,n){
-        if(w[j].r >= distanceSP(l[i],w[j].p)){
+        if(w[j].r >= distanceSP(l[i],w[j].p) && !((distancePP(l[i][0],w[j].p) + EPS<  + w[j].r ) && (distancePP(l[i][1],w[j].p) +EPS < w[j].r))){
           ans = true;
         }
       }

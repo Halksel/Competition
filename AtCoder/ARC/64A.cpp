@@ -23,24 +23,28 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
-
-const int mod = 1000000007;
-constexpr ll inf = ((1<<30)-1)*2+1 ;
-constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
-
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n,x;
+  cin >> n >> x;
+  vector<ll> a(n);
+  rep(i,n){
+    cin >> a[i];
+  }
+  ll ans = 0;
+  auto base = a;
+  if(x < a[0]){
+    a[0] -= a[0] - x;
+  }
+  for(int i = 0; i < n-1;++i){
+    if(a[i+1] + a[i] > x){
+      a[i+1] -= (a[i+1] + a[i]) - x;
+    }
+  }
+  for(int i = 0; i < n; ++i){
+    ans += base[i] - a[i];
+  }
+  cout << ans << endl;
   return 0;
 }

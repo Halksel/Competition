@@ -42,5 +42,29 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n,m,s,t = 0;
+  cin >> n >> m;
+  map<ll,ll> d;
+  rep(i,n+1){
+    d[i] = i;
+  }
+  rep(i,m){
+    cin >> s;
+//     swap(t,d[s]);
+//     t = s;
+    int j = 0;
+    for(int k = 0; k < n+1;++k){
+      if(d[k] == s){
+        j = k;
+      }
+    }
+    swap(t,d[j]);
+  }
+
+  rep(i,n){
+    cout << d[i+1] << endl;
+  }
+
   return 0;
 }
+

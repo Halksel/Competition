@@ -23,24 +23,26 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
-
-const int mod = 1000000007;
-constexpr ll inf = ((1<<30)-1)*2+1 ;
-constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
-
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n;
+  cin >> n;
+  ll s = 1;
+  double u = sqrt(n) + 1;
+  REP(i,2,u){
+    if(n % i == 0){
+      if(i <= n / i){
+        s += i + (n / i);
+        if(i == n/i) s -= i;
+      }
+    }
+  }
+  if(n == s && n != 1) cout << "Perfect" << endl;
+  else if(n < s) cout << "Abundant" << endl;
+  else{
+    cout << "Deficient" << endl;
+  }
   return 0;
 }
+

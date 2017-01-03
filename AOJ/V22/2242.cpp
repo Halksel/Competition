@@ -23,11 +23,6 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
-
 const int mod = 1000000007;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
@@ -42,5 +37,31 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n,q;
+  while(cin >> n >> q && n+q){
+    string s;
+    ll a,b;
+    vector<pll> x(n);
+    vector<pair<ll,string>> v(n);
+    rep(i,n){
+      cin >> s >> a >> b;
+      v[i] = mp(a,s);
+      x[i] = mp(b,i);
+    }
+    ll k;
+    sort(all(x));
+    rep(i,q){
+      cin >> k;
+      auto it = lower_bound(all(x),mp(k,-inf));
+      auto dis = it->se;
+      if(dis < n && v[dis].fi + k - it->fi > 0){
+        cout << v[dis].se + " " <<v[dis].fi + ( k - it->fi) << endl;
+      }
+      else{
+        cout << "Unknown" << endl;
+      }
+    }
+  }
   return 0;
 }
+

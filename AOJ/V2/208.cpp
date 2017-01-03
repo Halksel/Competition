@@ -42,5 +42,18 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  string s = "01235789";
+  ll k;
+  while(cin >> k && k){
+    string s2;
+    while(k){
+      int n = k % 8;
+      s2 += s[n];
+      k /= 8;
+    }
+    reverse(all(s2));
+    cout << s2 << endl;
+  }
   return 0;
 }
+

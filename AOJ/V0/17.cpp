@@ -78,7 +78,6 @@ int main(){
   int code;
   vector<string> vs;
   cin >> s;
-  cout << Decode(s,rand()%26)<<endl;
   while(1){
     code = 0;
     getline(cin,s);

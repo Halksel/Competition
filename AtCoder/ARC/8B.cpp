@@ -42,5 +42,37 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n,m;
+  string s,t;
+  cin >> n >> m >> s >> t;
+  map<char,int> d,d2;
+  rep(i,s.size()){
+    d[s[i]]++ ;
+  }
+  rep(i,t.size()){
+    d2[t[i]]++;
+  }
+  rep(i,26){
+    if(d.count(char('A'+i)) && d2.count(char('A'+i)) == 0){
+      cout << -1 << endl;
+      return 0;
+    }
+  }
+  ll ans = 0;
+  while(1){
+    bool f = true;
+    rep(i,t.size()){
+      d[t[i]]--;
+    }
+    ++ans;
+    rep(i,26){
+      if(d[char('A'+i)] > 0){
+        f = false;
+      }
+    }
+    if(f) break;
+  }
+  cout << ans << endl;
   return 0;
 }
+

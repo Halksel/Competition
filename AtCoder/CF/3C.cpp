@@ -23,24 +23,59 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
-
-const int mod = 1000000007;
+const int mod = 1e9+7;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
-constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
-
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
+  ll n,k = 0;;
+  cin >> n;
+  vector<ll> t(n),a(n);
+  bool f = false;
+  rep(i,n){
+    cin >> t[i];
+    if(k > t[i]){
+      f = true;
+    }
+    k = t[i];
+  }
+  k = inf;
+  rep(i,n){
+    cin >> a[i];
+    if(k < a[i]){
+      f = true;
+    }
+    k = a[i];
+  }
+  ll ans = 1,T = *max_element(all(t)),A = *max_element(all(a));
+  if(f || T != A){
+    cout << 0 << endl;
+    return 0;
+  }
+  vector<ll> h(n,0);
+  rep(i,n){
+    if(i == 0 || t[i - 1] < t[i]){
+      h[i] = t[i];
+    }
+  }
+  rep(i,n){
+    if(i == 0 || a[n - i] < a[n-1-i]){
+      h[n-i-1] = max(h[n-i-1],a[n - i - 1]);
+    }
+  }
+  rep(i,n){
+    if(h[i] < t[i] && h[i] < a[i]){
+      ans = ans * min(t[i],a[i]) % mod;
+    }
+    if(h[i] == t[i] && h[i] > a[i]){
+      ans = 0;
+    }
+    else if(h[i] == a[i] && h[i] > t[i]){
+      ans = 0;
+    }
+  }
+  cout << ans % mod << endl;
   return 0;
 }
+
