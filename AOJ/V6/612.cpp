@@ -42,25 +42,20 @@ bool solve(T &v){
   bool f = true;
   rep(i,h){
     rep(j,w){
-      if(!im[i][j] && v[i][j] != '.'){
-        ll cnt = 0,imo = 0;
+      if(v[i][j] != '.'){
+        ll cnt = 0;
         rep(y,3){
           rep(x,3){
             ll nx = j+dx[x],ny = i + dy[y];
             if(value(nx,ny,w,h)){
               if(v[ny][nx] == '.')
-              ++cnt;
-              if(im[ny][nx])
-                ++imo;
+                ++cnt;
             }
           }
         }
         if(cnt >= v[i][j] - '0'){
           tmp[i][j] = '.';
           f = false;
-        }
-        else if(v[i][j] - '0' > 8 - imo){
-          im[i][j] = 1;
         }
       }
     }
@@ -77,7 +72,6 @@ int main(){
   rep(i,h){
     rep(j,w){
       cin >> v[i][j];
-      if(v[i][j] == '9') im[i][j] = 1;
     }
   }
 

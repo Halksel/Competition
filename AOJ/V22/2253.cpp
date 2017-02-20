@@ -36,40 +36,36 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll t,n,x,y,cnt;
+  ll t,n,x,y,cnt,z = 100;
   while(cin >> t >> n && t+n){
-    vector<vector<ll>> v(65,vector<ll>(65,inf));
+    vector<vector<ll>> v(200,vector<ll>(200,inf));
 
     rep(i,n){
       cin >> x >> y;
-      x += 30;
-      y += 30;
+      x += z;
+      y += z;
       v[x][y] = -1;
     }
     cin >> x >> y;
-    x += 30;
-    y += 30;
+    x += z;
+    y += z;
     cnt = 1;
     queue<pll> q;
     q.push(mp(x,y));
     ll d = 0;
     v[x][y] = d;
     while(q.size()){
-      if(d == t) break;
-      auto S = q.size();
-      rep(j,S){
-        auto Q = q.front();q.pop();
-        rep(i,6){
-          ll nx = Q.fi + dx[i],ny = Q.se + dy[i];
-          if(value(nx,ny,61,61) && v[nx][ny] > d+1){
-            q.push(mp(nx,ny));
-            if(v[nx][ny] == inf)
-              ++cnt;
-            v[nx][ny] = d+1;
-          }
+      auto Q = q.front();q.pop();
+      d = v[Q.fi][Q.se];
+      if(d >= t) continue ;
+      rep(i,6){
+        ll nx = Q.fi + dx[i],ny = Q.se + dy[i];
+        if( v[nx][ny] == inf){
+          q.push(mp(nx,ny));
+          ++cnt;
+          v[nx][ny] = d+1;
         }
       }
-      ++d;
     }
     cout << cnt << endl;
   }

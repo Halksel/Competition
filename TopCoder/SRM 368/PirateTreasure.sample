@@ -1,0 +1,49 @@
+-- Example 0
+1
+1
+1
+NORTH
+
+1.0
+-- Example 1
+1
+2
+1
+NORTHWEST
+
+2.0
+-- Example 2
+3
+3
+10
+7
+3
+EAST
+WEST
+EAST
+
+0.0
+-- Example 3
+3
+34
+48
+34
+3
+NORTH
+SOUTHWEST
+EAST
+
+0.08326112068522587
+-- Example 4
+4
+2
+2
+2
+1
+4
+NORTH
+NORTH
+NORTH
+NORTHWEST
+
+6.744277676240694

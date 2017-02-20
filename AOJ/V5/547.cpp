@@ -5,14 +5,13 @@ using namespace std ;
 #define fi first
 #define se second
 #define all(r) (r).begin(),(r).end()
+#define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
 #define fcout(n) cout<<fixed<<setprecision((n))
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
-#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
-#define mp(a,b) make_pair(a,b)
 
 #define rep(i,n) for(int i = 0; i < (int)(n);++i)
 #define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
@@ -26,12 +25,13 @@ using dict = map<string,int>;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-const int mod = 100000;
-constexpr int inf = ((1<<30)-1)*2+1 ;
+const int mod = 1000000007;
+constexpr int imax = ((1<<30)-1)*2+1 ;
+constexpr int inf = 100000000;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
+const int dy[] = {-1,0,1,0};
+const int dx[] = {0,-1,0,1};
 
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
@@ -42,35 +42,6 @@ void Unique(vector<T> &v){
   sort(all(v));
   v.erase(unique(all(v)),v.end());
 }
-template<typename T,typename U>
-ll FindErase(T &v,U tar){
-  ll cnt = 0;
-  for(auto it = v.begin(); it != v.end();){
-    if(*it == tar){
-      it = v.erase(it);
-      ++cnt;
-    }
-    else{
-      ++it;
-    }
-  }
-  return cnt;
-}
-
-template<typename T>
-bool SuffixErase(T &v,size_t suf){
-  if(suf > v.size()) return false;
-  for(auto it = v.begin(); it != v.end();){
-    if(distance(v.begin(),it) == suf){
-      v.erase(it);
-      return true;
-    }
-    else{
-      ++it;
-    }
-  }
-  return false;
-}
 
 template<typename T>
 T ston(string& str, T n){
@@ -80,36 +51,34 @@ T ston(string& str, T n){
   return num ;
 }
 
+void Ans(bool f){
+  if(f) cout << "YES"<<endl;
+  else cout << "NO"<<endl;
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  int w,h;
-  while(cin >> w >> h && w){
-    vector<vector<vector<ll>>> v(w+4, vector<vector<ll>>(h+4,vector<ll>(8,0)));
-    v[0][0][0] = 1;
-    v[0][0][3] = 1;
-    v[0][1][1] = -1;
-    v[1][0][4] = -1;
-    rep(j,h){
-      rep(i,w){
-        v[i+1][j][0] += v[i][j][0] % mod;
-        v[i][j+1][1] += v[i][j][0] % mod;
-        v[i][j+1][2] += v[i][j][1] % mod;
-        v[i][j+1][3] += v[i][j][2] % mod;
-        v[i+1][j][4] += v[i][j][2] % mod;
-
-        v[i][j+1][3] += v[i][j][3] % mod;
-        v[i+1][j][4] += v[i][j][3] % mod;
-        v[i+1][j][5] += v[i][j][4] % mod;
-        v[i+1][j][0] += v[i][j][5] % mod;
-        v[i][j+1][1] += v[i][j][5] % mod;
+  ll w,h;
+  while(cin >> w >> h && w && h){
+    vector<vector<pll>> dp(w+1,vector<pll>(h+1,make_pair(0,0)));
+      dp[0][0].fi = 1;
+      dp[0][0].se = 1;
+    rep(i,h){
+      rep(j,w){
+        dp[j+1][i].fi = dp[j][i].fi + (i > 0)?dp[j][i-1].se : 0LL;
+        dp[j][i+1].se = dp[j][i].se + (j > 0)?dp[j-1][i].fi : 0LL;
+        dp[j+1][i].fi %= 100000;
+        dp[j][i+1].se %= 100000;
       }
     }
-    ll ans = 0;
-    rep(i,6){
-      ans += v[w-1][h-1][i] % mod;
+    rep(i,h+1){
+      rep(j,w+1){
+        cout << dp[j][i].fi + dp[j][i].se << " ";
+      }
+      cout << endl;
     }
-    cout << ans % mod<< endl;
+    cout << (dp[w][h].fi + dp[w][h].se)% 100000<<endl;
   }
   return 0;
 }

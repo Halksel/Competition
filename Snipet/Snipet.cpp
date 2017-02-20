@@ -28,7 +28,7 @@ void O(T t){
   cout << t << endl;
 }
 
-const int mod = 1000000007;
+const ll mod = 1e9+7;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;

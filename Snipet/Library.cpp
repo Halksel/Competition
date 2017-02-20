@@ -180,6 +180,33 @@ int query(int a,int b,int k,int l, int r){
   }
   return min(vl,vr);
 }
+
+class BIT{
+  private:
+    int n,MAX_N;
+    vector<int> bit;
+    BIT(){};
+    BIT(int _n){
+      n = _n;
+      MAX_N = _n;
+      bit.resize(MAX_N+1);
+    }
+    int sum(int i){
+      int s= 0;
+      while(i > 0){
+        s += bit[i];
+        i -= i & -i;
+      }
+      return s;
+    }
+    void add(int i,int x){
+      while(int i <= n){
+        bit[i] += x;
+        i += i & -i;
+      }
+    }
+};
+
 //GCD & LCM
 int gcd(int a,int b){
   if(a < b) swap(a,b);
