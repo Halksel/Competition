@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TopCoder SRM 371 - 250: CondorcetVoting</title>
+    
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.topcoder.com/i/favicon.ico"/>
+    
+
+    
+    <style type="text/css">
+        /* font */
+body {
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.2em;
+}
+ul.constraints > li:before, ul.notes > li:before {
+    font-family: monospace;
+    font-weight: normal;
+}
+.heading {
+    font-weight: bold;
+    font-size: 175%;
+    line-height: 1.2em;
+}
+.section .section-title {
+    font-weight: bold;
+    font-size: 125%;
+}
+ol.testcases > li:before {
+    font-family: monospace;
+}
+type {
+    font-weight: bold;
+    font-family: monospace;
+}
+li.testcase .data {
+    font-family: monospace;
+    line-height: 1.5em;
+}
+
+/* layout */
+.heading {
+    margin-top: 0.1em;
+    margin-bottom:0.1em;
+    text-align: center;
+}
+.section .section-title {
+    margin-top : 1em;
+    margin-bottom: 1em;
+}
+.problem-intro, note, user-constraint {
+    padding-left: 1.25em;
+}
+
+/* Lists */
+ul.constraints, ul.notes, ul.variables, ul.problem-definition-lines {
+    list-style-type: none;
+    padding: 0px;
+}
+ul.constraints > li:before {
+    content: "-";
+    position:relative;
+    margin-left: 0px; /* optional, for multiline li element */
+    left: 0.625em;
+}
+ul.notes > li:before {
+    content: "-";
+    position:relative;
+    margin-left: 0px; /* optional, for multiline li element */
+    left: 0.625em;
+}
+
+/* Testcases */
+li.testcase {
+    line-height: 1.1em;
+    padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    overflow: auto;
+}
+li.testcase > .testcase-content > div { padding-bottom: 0.5em; padding-left: 1em; }
+
+li.testcase .testcase-comment {
+    margin: 0;
+    padding-left: 1em;
+}
+.testcase-comment p:first-child { margin-top: 0; }
+.testcase-comment p:last-child { margin-bottom: 0; }
+
+li.testcase .testcase-content {
+    margin: 0.31em;
+}
+
+/* Data and variables */
+.testcase-output {
+    padding: 0.2em 1em 0.2em 0em;
+}
+.variables, .testcase-output {
+    margin-left: 0.5em;
+    display: table;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.variable {
+    display: table-row;
+}
+.variable .name {
+    padding: 0.2em 0em 0.2em 1em;
+    font-weight: bold;
+    display: table-cell;
+    text-align: right;
+}
+.testcase-output .prefix {
+    padding: 0.2em 0em 0.2em 1em;
+    display: table-cell;
+}
+.testcase-output .prefix:after {
+    content : ":";
+    padding-right: 0.5em;
+}
+.variable .name:after {
+    font-weight: bold;
+    content : ":";
+    padding-right: 0.5em;
+}
+.variable .value, .testcase-output .value {
+    padding: 0.2em 1em 0.2em 0em;
+    display: table-cell;
+}
+ol.testcases {
+    padding: 0px;
+    counter-reset: test_number -1;
+}
+ol.testcases > li {
+    list-style:none;
+}
+ol.testcases > li:before {
+    counter-increment:test_number;
+    display: block;
+    clear: both;
+    content:counter(test_number) ")";
+    color: inherit;
+    background: inherit;
+}
+
+/* Problem Definition */
+.problem-definition, .problem-limits {
+    padding-left: 1.25em;
+}
+.problem-definition-lines, .limit-lines {
+    display: table;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
+.definition-line, .limit-line {
+    display: table-row;
+    height: 1.5em;
+    overflow: auto;
+}
+.limit-name:after {
+    content: ":";
+    margin-right: 1em;
+}
+.definition-name, .definition-value, .limit-name, .limit-value {
+    display: table-cell;
+}
+.definition-value {
+    padding-left: 0.5em;
+}
+.definition-name:after {
+    content: ":";
+}
+#contest-division:before {
+    content: "Div ";
+}
+#problem-score:before {
+    content: "- Problem ";
+}
+#problem-name {
+    display: block;
+}
+
+/* Tags, hidden default */
+.tag {
+    visibility: hidden;
+    position: absolute;
+}
+
+        body {
+    /* font color */
+    color: #333333;
+    /* background color */
+    background-color: white;
+}
+.section .section-title {
+    /* title color */
+    color: black;
+}
+li.testcase .data {
+    /* highlight color */
+    background: #eee;
+}
+
+    </style>
+    
+    
+    
+
+</head>
+
+<body>
+    <h1 class="heading">
+        <span id='contest-name'>SRM 371</span>
+        <span id='contest-division'>2</span>
+        <span id='problem-score'>250</span>
+        <span id='problem-name'>CondorcetVoting</span>
+    </h1>
+
+    <hr />
+
+    <!-- Problem Statement -->
+    <div class="section">
+        <h2 class="section-title">Problem Statement</h2>
+        <div class="problem-intro">
+            <intro escaped="1"><p>One approach to voting is to have voters assign a rank to each candidate. Candidate A is <i>preferred</i> to candidate B if there are more voters who rank A ahead of B than there are voters who rank B ahead of A. A <i>Condorcet winner</i> is a candidate which is preferred to all other candidates. There can be at most one Cordorcet winner in an election, but there might also be none.</p>
+
+<p>You will be given a <type>String[]</type> <b>votes</b>. The jth character of the ith element of <b>votes</b> is a lowercase letter, indicating the ranking that voter i assigned to candidate j. Letters closer to 'a' indicate higher-ranked (preferred) candidates, while those closer to 'z' are lower-ranked (less preferred). Return the 0-based index of the Cordorcet winner, or -1 if there isn't one.</p></intro>
+        </div>
+    </div>
+    
+    <!-- Problem definition -->
+    
+    <div class="section" id="definition">
+        <h2 class="section-title">Definition</h2>
+        <div class="problem-definition">
+            <ul class="problem-definition-lines">
+                <li class="definition-line" id='class-line'>
+                    <span class='definition-name'>Class</span>
+                    <span class='definition-value'>CondorcetVoting</span>
+                </li>
+                <li class="definition-line" id='method-line'>
+                    <span class='definition-name'>Method</span>
+                    <span class='definition-value'>winner</span>
+                </li>
+                <li class="definition-line" id='parameters-line'>
+                    <span class='definition-name'>Parameters</span>
+                    <span class='definition-value'>
+                    
+                        vector&lt;string&gt;
+                    
+                    </span>
+                </li>
+                <li class="definition-line" id='returns-line'>
+                    <span class='definition-name'>Returns</span>
+                    <span class='definition-value'>
+                        int
+                    </span>
+                </li>
+                <li class="definition-line" id='signature-line'>
+                    <span class='definition-name'>Method signature</span>
+                    <span class='definition-value'>
+                        int winner(vector&lt;string&gt; votes)
+                    </span>
+                </li>
+            </ul>
+            <div class="problem-definition-public-tip">(be sure your method is public)</div>
+        </div>        
+    </div>
+    
+
+    <!-- Limits -->
+    <div class="section">
+        <h2 class="section-title">Limits</h2>
+        <div class='problem-limits'>
+            <ul class="limit-lines">
+                <li class='limit-line'>
+                    <span class='limit-name'>Time limit (s)</span>
+                    <span class='limit-value'>2.000</span>
+                </li>
+                <li class='limit-line'>
+                    <span class='limit-name'>Memory limit (MB)</span>
+                    <span class='limit-value'>64</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+    
+    <!-- Constraints -->
+    <div class="section">
+        <h2 class="section-title">Constraints</h2>
+        <ul class="constraints">
+        
+            <li><user-constraint escaped="1"><b>votes</b> will contain between 1 and 50 elements, inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1">Each element of <b>votes</b> will contain between 1 and 50 characters, inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1">Each element of <b>votes</b> will contain the same number of characters.</user-constraint></li>
+        
+            <li><user-constraint escaped="1">Each element of <b>votes</b> will contain only lowercase letters ('a' - 'z').</user-constraint></li>
+        
+        </ul>
+    </div>
+
+    <!-- Test cases -->
+    <div class="section">
+        <h2 class="section-title">Test cases</h2>
+        <ol class="testcases" start='0'>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">votes</span>
+                                <span class="value data">
+                                
+                                    {&quot;acbd&quot;,<br />&nbsp;&quot;bacd&quot;,<br />&nbsp;&quot;bdca&quot;}
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            0
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment"><p>Voters 0 and 2 ranked candidate 0 higher than candidate 1, while voter 1 ranked candidate 1 higher than candidate 0.  Therefore, candidate 0 is preferred to candidate 1.</p>
+
+<p>All three voters ranked candidate 0 higher than candidate 2, so candidate 0 is preferred to candidate 2.</p>
+
+<p>Finally, voters 0 and 1 ranked candidate 0 higher than candidate 3, while only voter 2 ranked candidate 3 higher than candidate 0.  Therefore, candidate 0 is preferred to candidate 3 as well.</p></div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">votes</span>
+                                <span class="value data">
+                                
+                                    {&quot;abc&quot;,<br />&nbsp;&quot;bca&quot;,<br />&nbsp;&quot;cab&quot;}
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            -1
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">This is a classic example of a cyclic preference. Two voters prefer 0 to 1, two prefer 1 to 2, and two prefer 2 to 0. There is no Condorcet winner.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">votes</span>
+                                <span class="value data">
+                                
+                                    { &quot;cezdqcw&quot; }
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            -1
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">Even with only one voter, there may be no Condorcet winner because of a simple tie.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">votes</span>
+                                <span class="value data">
+                                
+                                    {&quot;abcd&quot;,<br />&nbsp;&quot;abcd&quot;,<br />&nbsp;&quot;abcd&quot;,<br />&nbsp;&quot;abcd&quot;,<br />&nbsp;&quot;abcd&quot;,<br />&nbsp;&quot;abcd&quot;,<br />&nbsp;&quot;cbad&quot;,<br />&nbsp;&quot;cbad&quot;,<br />&nbsp;&quot;cbad&quot;,<br />&nbsp;&quot;cbad&quot;,<br />&nbsp;&quot;cbad&quot;,<br />&nbsp;&quot;dbca&quot;,<br />&nbsp;&quot;cbda&quot;,<br />&nbsp;&quot;cbda&quot;}
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            1
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">Candidate 1 is nobody's first choice, but still wins.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">votes</span>
+                                <span class="value data">
+                                
+                                    {&quot;abbcbbbaaccaaccbbacbbbaacbccbccacaaacaacaaacbccaac&quot;,<br />&nbsp;&quot;accbabcaacacbcccbbccbbcaccccccbbcbbcbaccbcbcacbcbc&quot;,<br />&nbsp;&quot;acacaaabccaaaccabbaaaacabaaabacacbaacbcccbccbcbacb&quot;,<br />&nbsp;&quot;acbcbabaabbcaababaacbabcacbaccabbaaacccbcabbbcacba&quot;,<br />&nbsp;&quot;cbbbacbbacccbbabbbcbaabaaaacaacbcbccbaaccbcaaccbcb&quot;,<br />&nbsp;&quot;cbacbbcbbcbcaaabccabcabbcbacaaabccabbcbacbbacbbaca&quot;,<br />&nbsp;&quot;cacaabccbbbaaacccacbbcacababbcaaabccbbacbbbccacbaa&quot;,<br />&nbsp;&quot;bccbbabaaaababcbabbbbcbcacbcbcbacccacacacacacacaab&quot;,<br />&nbsp;&quot;bccabcaabcabbccaaccbcabaaabbbcaabaaabbbbabbbaabaac&quot;,<br />&nbsp;&quot;accccbabaaaabcbacabbcbbacaacaaaacccbbbcacaccccaaac&quot;,<br />&nbsp;&quot;cccbcaababbaacaaabbbaabbccccacaacbacaacbbbaacccbbb&quot;,<br />&nbsp;&quot;bccccaccbcbbaaaaaaaaccbababcabaaccacbbabbbcabbaaca&quot;,<br />&nbsp;&quot;cbacacaabbccacaabbbbbbccabcbbaccacbcacacacbccbcbcc&quot;,<br />&nbsp;&quot;baabcabccaaaaccbaacaaccacccbcbbaaacacaccbcaacbbbba&quot;,<br />&nbsp;&quot;bccaaaabcbbcbbbbbcaabaacccbccbbcbabacaaccbccaababb&quot;,<br />&nbsp;&quot;cacbbbbcabbcbaabbccbaccbaacbbcbbbbcabababccabbbcab&quot;,<br />&nbsp;&quot;bccbcacbccaacacccccaacabacbacbbbcaabacacccbbbccaac&quot;,<br />&nbsp;&quot;aaaccbbbacacbaaaacacaabbaacccbcccbcabbccbcacabbacb&quot;,<br />&nbsp;&quot;bcabcbbacbacacbbaaccabcabcbbaabacacccbbbcabbbcaacb&quot;,<br />&nbsp;&quot;bacbbbbaccbaabbbbbcaccbbcbcabbbccbcacccbabbbcaaacc&quot;,<br />&nbsp;&quot;bababcacbacacacccccbbcacccbbcbccaccaacbbcacabcabba&quot;,<br />&nbsp;&quot;aaabaccbbcacaacbabccccabbbcbcccccccbaacbccbaacbbbc&quot;,<br />&nbsp;&quot;abacbaaaaaccacbbbaccbbbabaacbcbccacccabaaaacbaabbb&quot;,<br />&nbsp;&quot;cbbcacbaccabbbcaacbcbabbcabcbaccabcbbbcabcbcbaacca&quot;,<br />&nbsp;&quot;babbacaaacbbcbbbabbaabcbabcbbaacaacbbbaaaabbcabcca&quot;,<br />&nbsp;&quot;cbabaacabcccaabbbacccaccbacabbaacaaabcbcccbcbcccaa&quot;,<br />&nbsp;&quot;aabbbcbacabbcabcbcccbccaccbcacbaacabbbccaabaabcbba&quot;,<br />&nbsp;&quot;caccabcccabbaacbabbaaaccccccccaaccbcaccacaabacccba&quot;,<br />&nbsp;&quot;bbbcabcababaabacaccacabcbccacccbbbbcbbbaccabcabaab&quot;,<br />&nbsp;&quot;bbbcaababbbbababababcbbbbaaabbacaabcacbbccbcaaaaaa&quot;,<br />&nbsp;&quot;bcbacccaaaabbcbcabbbcababbcacaabbbbcbbacbaabcbaccb&quot;,<br />&nbsp;&quot;bbcaccaaccacbbaaccaaaabccbbacbcbacaacbacbccaaccbba&quot;,<br />&nbsp;&quot;abaaacbccbbabbcaccbaccccbaaacaccccababcbccccbabcca&quot;,<br />&nbsp;&quot;acccaccababababacbbaccbcabcaccbabaabacbaacaaacabca&quot;,<br />&nbsp;&quot;aaabababccabccbcbabcabcacbbcacbcbbbabcabacbcaacacb&quot;,<br />&nbsp;&quot;ccacbaabbcbaccaccbbabbabbabaacccabcaaccacacccbbcab&quot;,<br />&nbsp;&quot;bbaabcbabbbaacacabaabcbaaabacbccccaccaaaacbacabbbc&quot;,<br />&nbsp;&quot;abaaaccaacbbcacacbcbccbaaacbbcbacabbbccabbbccaaaac&quot;,<br />&nbsp;&quot;bbacbabbcacbbacccaccbcbcabbcbaacabbbbabbaaabaacacb&quot;,<br />&nbsp;&quot;cacbacbccbcbabacccacabcacacabbcabbccaacacbaaacaacb&quot;,<br />&nbsp;&quot;bacbbacbccccabcbabcbbcbacacaaabcbaccccaabaabbacbcb&quot;,<br />&nbsp;&quot;abcaaccccabccaaaaccbabccacbcaaaacaccaccccccaaaabaa&quot;,<br />&nbsp;&quot;bacabcbccbacccbaaaabcbbaabbabaabcabacccbcabacccbcc&quot;,<br />&nbsp;&quot;babaccbbcbcbacccabccbcccbaaaaacccabcbccbbbbcbabcbc&quot;,<br />&nbsp;&quot;cccbbaccbabbbbcbcbcbaaacbbcacbcaacacacccbcabccbcaa&quot;,<br />&nbsp;&quot;caacbcacbccaaaaacaaababbcccacbabaaabcaacaaababacba&quot;,<br />&nbsp;&quot;cccccaccabcaacababbacbcbabbcaacbacbabbbccbabcbabbb&quot;,<br />&nbsp;&quot;ccbcababcabcbcccaccccacabcbaaacaabccbbaabaccbaccab&quot;,<br />&nbsp;&quot;abbbcacaccabcbccbacabbbccaccaaaacccabbcbacbbccabcb&quot;,<br />&nbsp;&quot;bacabccabcbbcaacbcacabcbccacbcccbcbcaaaabbaabccabb&quot;}
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            12
+                        
+                        </span>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">votes</span>
+                                <span class="value data">
+                                
+                                    {&quot;h&quot;,<br />&nbsp;&quot;e&quot;,<br />&nbsp;&quot;l&quot;,<br />&nbsp;&quot;l&quot;,<br />&nbsp;&quot;o&quot;}
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            0
+                        
+                        </span>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+        </ol>
+    </div>
+    <hr />
+
+    This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</body>
+</html>

@@ -16,8 +16,7 @@ using namespace std ;
 #define scout(n) cout<<setw(n)
 #define vary(type,name,size,init) vector< type> name(size,init)
 
-#define rep(i,n) for(int i = 0; i < (int)(n);++i)
-#define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
+#define rep(i,a,b) for(int i = (a); i < (int)(b);++i)
 #define repi(it,array) for(auto it = array.begin(),end = array.end(); it != end;++it)
 #define repa(n,array) for(auto &n :(array))
 
@@ -300,9 +299,9 @@ void Solve(ll n){
   }
 }
 
-
-namespace RMQ{
-  const int MAX_N = 1 << 17;
+const int MAX_N = 1 << 17;
+class RMQ{
+  public:
   int n, dat[2*MAX_N - 1];
 
   void init(int n_){
@@ -342,9 +341,106 @@ namespace RMQ{
   int query(int a,int b){
     return rec(a,b+1,0,0,n);
   }
-}
-
-using namespace RMQ;
+};
+class Bucket{
+  public:
+  vector<ll> buc,v;
+  ll N,sqn,K;
+  Bucket(){};
+  Bucket(ll n){
+    N = n;
+    sqn = sqrt(N);
+    K = (n + sqn - 1) /sqn;
+    buc.assign(K,0);
+    v.assign(K * sqn,0);
+  }
+  void add(int x,int y){
+    v[x] += y;
+    ll sum = 0;
+    int k = x / sqn;
+    for(int i = k * sqn; i < (k + 1) * sqn;++i){
+      sum += v[i];
+    }
+    buc[k] = sum;
+  }
+  ll query(int x,int y){
+    ll res = 0;
+    for (int k = 0; k < K; ++k) {
+      int l = k * sqn, r = (k + 1) * sqn;
+      if (r <= x || y <= l)
+        continue;
+      if (x <= l && r <= y) {
+        res += buc[k];
+      } else {
+        for (int i = max(x, l); i < min(y, r); ++i) {
+          res += v[i];
+        }
+      }
+    }
+    return res;
+  }
+  void Debug(){
+    for(int i = 0; i < N;++i){
+      cout << buc[i/sqn] << ' ';
+    }
+    cout << endl;
+    for(int i = 0; i < N;++i){
+      cout << v[i] << ' ';
+    }
+    cout << endl;
+  }
+};
+class LazyBucket{
+  public:
+  vector<ll> buc,v;
+  ll N,sqn,K;
+  LazyBucket(){};
+  LazyBucket(ll n){
+    N = n;
+    sqn = sqrt(N);
+    K = (n + sqn - 1) /sqn;
+    buc.assign(K,-inf);
+    v.assign(K * sqn,-inf);
+  }
+  ll find(int x){
+    lazyupdate(x/sqn);
+    return v[x];
+  }
+  void lazyupdate(int k){
+    if(k >= K) return ;
+    if(buc[k] != -inf){
+      for(int i = k * sqn; i < (k+1) * sqn;++i){
+        v[i] = buc[k];
+      }
+    }
+    buc[k] = -inf;
+  }
+  void update(int x,int y,int n){
+    for (int k = 0; k < K; ++k) {
+      int l = k * sqn, r = (k + 1) * sqn;
+      if (r <= x || y <= l)
+        continue;
+      if (x <= l && r <= y) {
+        buc[k] = n;
+      } else {
+        lazyupdate(k);
+        for (int i = max(x, l); i < min(y, r); ++i) {
+          v[i] = n;
+        }
+      }
+    }
+  }
+  void Debug(){
+    for(int i = 0; i < N;++i){
+      cout << buc[i/sqn] << ' ';
+    }
+    cout << endl;
+    for(int i = 0; i < N;++i){
+      cout << v[i] << ' ';
+    }
+    cout << endl;
+  }
+};
 class BIT{
   private:
     int n,MAX_N;
@@ -364,7 +460,7 @@ class BIT{
       return s;
     }
     void add(int i,int x){
-      while(int i <= n){
+      while(i <= n){
         bit[i] += x;
         i += i & -i;
       }
@@ -390,7 +486,6 @@ class Union_Find{
       return par[x] = find(par[x]);
     }
   }
-
   void Unite(int a, int b){
     a = find(a);
     b = find(b);

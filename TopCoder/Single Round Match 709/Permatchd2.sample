@@ -1,0 +1,44 @@
+-- Example 0
+3
+NYN
+YNN
+NNN
+
+1
+-- Example 1
+3
+NYY
+YNN
+YNN
+
+0
+-- Example 2
+3
+NYY
+YNY
+YYN
+
+-1
+-- Example 3
+4
+NYYY
+YNYY
+YYNN
+YYNN
+
+1
+-- Example 4
+6
+NYNNNN
+YNNNNN
+NNNYNN
+NNYNNN
+NNNNNY
+NNNNYN
+
+3
+-- Example 5
+1
+N
+
+0

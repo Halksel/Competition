@@ -1,0 +1,36 @@
+-- Example 0
+ONE TWO THREE FOUR FIVE
+150
+40
+
+9
+-- Example 1
+ONE TWO THREE FOUR FIVE
+150
+60
+
+10
+-- Example 2
+ONE TWO THREE FOUR FIVE
+150
+10000
+
+28
+-- Example 3
+ONE TWO THREE FOUR FIVE
+10000
+10000
+
+1250
+-- Example 4
+ONE TWO THREE FOUR FIVE
+50
+50
+
+-1
+-- Example 5
+A
+9
+14
+
+-1

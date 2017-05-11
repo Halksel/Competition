@@ -1,4 +1,4 @@
-CPPFLAGS = -g -std=c++11 -fdiagnostics-color=always -Wall -Wextra -ftrapv
+CPPFLAGS = -g -std=c++11 -fdiagnostics-color=always -Wall -Wextra -ftrapv -O2
 
 SRC=
 OBJ=$(SRC:.cpp=.o)

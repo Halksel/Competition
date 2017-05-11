@@ -1,0 +1,25 @@
+-- Example 0
+Y.C.C.H
+..RRRRR
+
+0
+-- Example 1
+Y.C.H
+RRRR.
+
+2
+-- Example 2
+Y..C.H
+RRR.R.
+
+3
+-- Example 3
+CCH..Y
+RRRR.R
+
+2
+-- Example 4
+CCH.........Y
+.............
+
+0
