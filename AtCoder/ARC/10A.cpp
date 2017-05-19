@@ -28,7 +28,7 @@ void O(T t){
   cout << t << endl;
 }
 
-const int mod = 1000000007;
+const ll mod = 1e9+7;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
@@ -42,21 +42,18 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  string c = "complete";
-  int n,m,a,b,c2;
+  ll n,m,a,b;
   cin >> n >> m >> a >> b;
+  ll c;
   rep(i,m){
-    if(n <= a){
-      n += b;
-    }
-    cin >> c2;
-    n -= c2;
+    if(n <= a) n += b;
+    cin >> c;
+    n -= c;
     if(n < 0){
       cout << i+1 << endl;
       return 0;
     }
   }
-  cout << c << endl;
+  cout << "complete" << endl;
   return 0;
 }
-
