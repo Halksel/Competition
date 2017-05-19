@@ -35,33 +35,65 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
+class Union_Find{
+  public:
+  Union_Find(){};
+  static const ll MAX_N = 100000*2+1;
+  int par[MAX_N];
+  int ranks[MAX_N];
+  void init(int n){
+    rep(i,MAX_N){
+      par[i] = i;
+      ranks[i] = 0;
+    }
+  }
+  int find(int x){
+    if(par[x] == x){
+      return x;
+    }
+    else{
+      return par[x] = find(par[x]);
+    }
+  }
+  void Unite(int a, int b){
+    a = find(a);
+    b = find(b);
+    if(a == b) return ;
+    if(ranks[a] < ranks[b]){
+      par[a] = b;
+    }
+    else{
+      par[b] = a;
+      if(ranks[a] == ranks[b]) ranks[a]++;
+    }
+  }
+  bool same(int a,int b){
+    return find(a) == find(b);
+  }
+};
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  cin >> n >> s;
-  ll sum = 0;
-  ll ans = inf;
-  vector<ll> v(n);
-  rep(i,n){
-    cin >> v[i];
+  Union_Find uf;
+  ll n,m;
+  cin >> n >> m;
+  uf.init(n);
+  ll s,t;
+  rep(i,m){
+    cin >> s >> t;
+    uf.Unite(s,t);
   }
-  ll l = 0,r = 0;
-  while(r < n){
-    sum += v[r];
-    ++r;
-    while(l < r && sum - v[l] >= s){
-      sum -= v[l];
-      ++l;
+  ll q;
+  cin >> q;
+  rep(i,q){
+    cin >> s >> t;
+    if(uf.same(s,t)){
+      cout << "yes" << endl;
     }
-    if(sum >= s){
-      ans = min(ans,r-l);
+    else{
+      cout << "no" << endl;
     }
   }
-  cout << ((ans == inf) ? 0 : ans)  << endl;
   return 0;
 }

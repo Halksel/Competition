@@ -42,26 +42,13 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  cin >> n >> s;
-  ll sum = 0;
-  ll ans = inf;
-  vector<ll> v(n);
+  ll n;
+  cin >> n;
+  std::random_device rnd;
+  std::mt19937 mt(rnd());
   rep(i,n){
-    cin >> v[i];
+    cout << char(mt() % 26 + 'a' );
   }
-  ll l = 0,r = 0;
-  while(r < n){
-    sum += v[r];
-    ++r;
-    while(l < r && sum - v[l] >= s){
-      sum -= v[l];
-      ++l;
-    }
-    if(sum >= s){
-      ans = min(ans,r-l);
-    }
-  }
-  cout << ((ans == inf) ? 0 : ans)  << endl;
+  cout << endl;
   return 0;
 }

@@ -6,9 +6,6 @@ using namespace std ;
 #define se second
 #define X real()
 #define Y imag()
-#define value(x,y,w,h) (x >= 0 && x < w && y >= 0 && y < h)
-#define all(r) (r).begin(),(r).end()
-#define gsort(st,en) sort((st),(en),greater<int>())
 #define vmax(ary) *max_element(all(ary))
 #define vmin(ary) *min_element(all(ary))
 #define debug(x) cout<<#x<<": "<<x<<endl
@@ -39,10 +36,10 @@ namespace dijkstra{
     int pos;
     long long cost;
   };
+  vector<Edge> g[100000],rg[100000];
   bool operator < (const NODE &a,const NODE &b){
     return a.cost > b.cost;
   }
-  vector<Edge> g[100000],rg[100000];
 
   int N;
   const ll INF = 1e15;
@@ -466,13 +463,100 @@ class BIT{
       }
     }
 };
+//kDTree
+{
+  struct datas{
+    ll x,y,i;
+  };
+
+  vector<datas> d ;
+  bool sortx(const datas& a,const datas& b){
+    return a.x < b.x;
+  }
+  bool sorty(const datas& a,const datas& b){
+    return a.y < b.y;
+  }
+
+  const int K = 2;
+  class kDTree{
+    public:
+      int depth;
+      ll n;
+      vector<datas> nodes,tree;
+      kDTree(){};
+      kDTree(const vector<datas> &v): n(v.size()),nodes(n),tree(n){
+        rep(i,n){
+          nodes[i] = v[i];
+        }
+        build(0,n,0);
+      }
+      void build(int l,int r,int _depth){
+        if(l >= r) return ;
+        int m = (l+r)/2;
+        int axis = _depth % K;
+        auto first = nodes.begin() + l, nth = nodes.begin() + m, last = nodes.begin() + r;
+        if (axis == 0)
+          nth_element(first, nth, last, sortx);
+        else
+          nth_element(first, nth, last, sorty);
+        tree[m] = *nth;
+        build(l,m,_depth+1);
+        build(m+1,r,_depth+1);
+      }
+      bool range(const datas &p, int sx, int sy, int tx, int ty) {
+        return sx <= p.x&&p.x <= tx&&sy <= p.y&&p.y <= ty;
+      }
+      void query(int sx, int sy, int tx, int ty, vector<int> &idxs) {
+        query(0, n, 0, sx, sy, tx, ty, idxs);
+      }
+      void query(int l,int r,int depth,int sx,int sy,int tx,int ty, vector<int>& idxs){
+        if(l >= r) return ;
+        int m = (l+r)/2;
+        datas node = tree[m];
+        int axis = depth % K;
+        if(axis == 0){
+          if (tx < node.x) {
+            query(l, m, depth+1, sx, sy, tx, ty, idxs);
+          }
+          else if (node.x < sx) {
+            query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+          }
+          else {
+            if (range(node, sx, sy, tx, ty))idxs.emplace_back(node.i);
+            query(l, m, depth+1, sx, sy, tx, ty, idxs);
+            query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+          }
+        }
+        else{
+          if (ty < node.y) {
+            query(l, m, depth+1, sx, sy, tx, ty, idxs);
+          }
+          else if (node.y < sy) {
+            query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+          }
+          else {
+            if (range(node, sx, sy, tx, ty))idxs.emplace_back(node.i);
+            query(l, m, depth+1, sx, sy, tx, ty, idxs);
+            query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+          }
+        }
+      }
+      void show(){
+        rep(i,n){
+          cout << tree[i].x << ' ' << tree[i].y << ' ' << tree[i].i << endl;
+        }
+      }
+  };
+}
 class Union_Find{
   public:
-  Union_Find(){};
+  Union_Find(){
+    init();
+  };
   static const ll MAX_N = 100000*2+1;
   int par[MAX_N];
   int ranks[MAX_N];
-  void init(int n){
+  void init(){
     rep(i,MAX_N){
       par[i] = i;
       ranks[i] = 0;

@@ -35,33 +35,50 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+template<typename T,typename U>
+ll FindErase(T &v,U tar){
+  ll cnt = 0;
+  for(auto it = v.begin(); it != v.end();){
+    if(*it == tar){
+      it = v.erase(it);
+      ++cnt;
+      return cnt;
+    }
+    else{
+      ++it;
+    }
+  }
+  return cnt;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  cin >> n >> s;
-  ll sum = 0;
-  ll ans = inf;
-  vector<ll> v(n);
+  deque<ll> d;
+  ll n,a;
+  string s;
+  cin >> n;
   rep(i,n){
-    cin >> v[i];
-  }
-  ll l = 0,r = 0;
-  while(r < n){
-    sum += v[r];
-    ++r;
-    while(l < r && sum - v[l] >= s){
-      sum -= v[l];
-      ++l;
+    cin >> s;
+    if(s == "insert"){
+      cin >> a;
+      d.push_front(a);
     }
-    if(sum >= s){
-      ans = min(ans,r-l);
+    else if(s == "delete"){
+      cin >> a;
+      FindErase(d,a);
+    }
+    else if(s == "deleteFirst") {
+      d.pop_front();
+    }
+    else{
+      d.pop_back();
     }
   }
-  cout << ((ans == inf) ? 0 : ans)  << endl;
+  rep(i,d.size()){
+    if(i) cout << ' ' ;
+    cout << d[i];
+  }
+  cout << endl;
   return 0;
 }

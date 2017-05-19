@@ -35,33 +35,44 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+struct Edge{
+  ll to;
+  long long cost;
+};
+vector<Edge> g[100000];
+
+ll dp[100001][2];
+bool f[100001];
+
+void dfs(int now,int pre){
+  for (auto&& n : g[now]) {
+    if(n.to != pre){
+      dfs(n.to,now);
+      (dp[now][0] *= (dp[n.to][0] + dp[n.to][1]) % mod) %= mod;
+      (dp[now][1] *= (dp[n.to][0])) %= mod;
+    }
+  }
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  cin >> n >> s;
-  ll sum = 0;
-  ll ans = inf;
-  vector<ll> v(n);
+  ll n,a,b;
+  cin >> n;
+  rep(i,n-1){
+    cin >> a >> b;
+    g[a-1].push_back({b-1,0});
+    g[b-1].push_back({a-1,0});
+  }
   rep(i,n){
-    cin >> v[i];
-  }
-  ll l = 0,r = 0;
-  while(r < n){
-    sum += v[r];
-    ++r;
-    while(l < r && sum - v[l] >= s){
-      sum -= v[l];
-      ++l;
-    }
-    if(sum >= s){
-      ans = min(ans,r-l);
+    rep(j,2){
+      dp[i][j] = 1;
     }
   }
-  cout << ((ans == inf) ? 0 : ans)  << endl;
+  dfs(0,-1);
+  /* rep(i,n){                                      */
+  /*   cout << dp[i][0] << ' ' << dp[i][1] << endl; */
+  /* }                                              */
+  cout << (dp[0][0] + dp[0][1]) % mod << endl;
   return 0;
 }

@@ -43,64 +43,106 @@ struct datas{
   ll x,y,i;
 };
 
+vector<datas> d ;
 bool sortx(const datas& a,const datas& b){
   return a.x < b.x;
-}
-bool sorti(const datas& a,const datas& b){
-  return a.i < b.i;
 }
 bool sorty(const datas& a,const datas& b){
   return a.y < b.y;
 }
 
-vector<datas> d ;
+const int K = 2;
+class kDTree{
+  public:
+    int depth;
+    ll n;
+    vector<datas> nodes,tree;
+    kDTree(){};
+    kDTree(const vector<datas> &v): n(v.size()),nodes(n),tree(n){
+      rep(i,n){
+        nodes[i] = v[i];
+      }
+      build(0,n,0);
+    }
+    void build(int l,int r,int _depth){
+      if(l >= r) return ;
+      int m = (l+r)/2;
+      int axis = _depth % K;
+      auto first = nodes.begin() + l, nth = nodes.begin() + m, last = nodes.begin() + r;
+      if (axis == 0)
+            nth_element(first, nth, last, sortx);
+        else
+            nth_element(first, nth, last, sorty);
+      tree[m] = *nth;
+      build(l,m,_depth+1);
+      build(m+1,r,_depth+1);
+    }
+    bool range(const datas &p, int sx, int sy, int tx, int ty) {
+        return sx <= p.x&&p.x <= tx&&sy <= p.y&&p.y <= ty;
+    }
+    void query(int sx, int sy, int tx, int ty, vector<int> &idxs) {
+        query(0, n, 0, sx, sy, tx, ty, idxs);
+    }
+    void query(int l,int r,int depth,int sx,int sy,int tx,int ty, vector<int>& idxs){
+      if(l >= r) return ;
+      int m = (l+r)/2;
+      datas node = tree[m];
+      int axis = depth % K;
+      if(axis == 0){
+        if (tx < node.x) {
+          query(l, m, depth+1, sx, sy, tx, ty, idxs);
+        }
+        else if (node.x < sx) {
+          query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+        }
+        else {
+          if (range(node, sx, sy, tx, ty))idxs.emplace_back(node.i);
+          query(l, m, depth+1, sx, sy, tx, ty, idxs);
+          query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+        }
+      }
+      else{
+        if (ty < node.y) {
+          query(l, m, depth+1, sx, sy, tx, ty, idxs);
+        }
+        else if (node.y < sy) {
+          query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+        }
+        else {
+          if (range(node, sx, sy, tx, ty))idxs.emplace_back(node.i);
+          query(l, m, depth+1, sx, sy, tx, ty, idxs);
+          query(m + 1, r, depth+1, sx, sy, tx, ty, idxs);
+        }
+      }
+    }
+    void show(){
+      rep(i,n){
+        cout << tree[i].x << ' ' << tree[i].y << ' ' << tree[i].i << endl;
+      }
+    }
+};
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,cnt_x = 0,cnt_y = 0;
+ll n;
   cin >> n;
   d.resize(n);
-  map<ll,ll> mx,my;
   rep(i,n){
     cin >> d[i].x >> d[i].y;
     d[i].i = i;
-    mx[d[i].x] = 0;
-    my[d[i].y] = 0;
   }
-  rep(i,n){
-    mx[d[i].x] = cnt_x++;
-    my[d[i].y] = cnt_y++;
-  }
+  kDTree tree(d);
   ll q;
   cin >> q;
-  sort(all(d),sortx);
-  auto dy = d;
-  sort(all(dy),sorty);
   ll sx,tx,sy,ty;
   rep(i,q){
     cin >> sx >> tx >> sy >> ty;
-    auto lb = lower_bound(all(d),sx,sortx);
-    auto ub = upper_bound(all(d),tx,sortx);
-    auto lby = lower_bound(all(dy),sy,sorty);
-    auto uby = upper_bound(all(dy),ty,sorty);
-    set<ll> ans;
-    if(ub - lb < uby - lby){
-      for(auto it = lb ; lb < ub;++it){
-        if(it->y >= sy && it->y <= ty){
-          ans.insert(it->i);
-        }
-      }
-    }
-    if(ub - lb >= uby - lby){
-      for(auto it = lby ; lby < uby;++it){
-        if(it->x >= sx && it->x <= tx){
-          ans.insert(it->i);
-        }
-      }
-    }
-    for (auto&& n : ans) {
-      cout << n << endl;
+    vector<int> res;
+    tree.query(sx,sy,tx,ty,res);
+    sort(all(res));
+    for (auto&& k : res) {
+      cout << k << endl;
     }
     cout << endl;
   }

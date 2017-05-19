@@ -55,11 +55,11 @@ class LazyBucket{
       if (r <= x || y <= l)
         continue;
       if (x <= l && r <= y) {
-        res += s[k];
+        res += s[k] + buc[k] * sqn;
       } else {
         lazyupdate(k);
         for (int i = max(x, l); i < min(y, r); ++i) {
-          res += v[i];
+          res += v[i] + buc[k];
         }
       }
     }
@@ -81,8 +81,7 @@ class LazyBucket{
       if (r <= x || y <= l)
         continue;
       if (x <= l && r <= y) {
-        buc[k] = n;
-        s[k] += n * (min(K,r) - l);
+        buc[k] += n;
       }
       else {
         lazyupdate(k);
@@ -115,7 +114,7 @@ int main(){
   ios::sync_with_stdio(false);
   ll n, q,s,t,x,a;
   cin >> n >> q;
-  LazyBucket buc(n);
+  LazyBucket buc(n+1);
   rep(i,q){
     /* buc.Debug(); */
     cin >> a;
@@ -128,6 +127,5 @@ int main(){
       buc.add(s-1,t,x);
     }
   }
-  buc.Debug();
   return 0;
 }

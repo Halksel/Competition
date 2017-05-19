@@ -42,26 +42,13 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  cin >> n >> s;
-  ll sum = 0;
-  ll ans = inf;
-  vector<ll> v(n);
+  ll n,a = inf,b,ans=-inf;
+  cin >> n;
   rep(i,n){
-    cin >> v[i];
+    cin >> b;
+    ans = max(b - a,ans);
+    a = min(a,b);
   }
-  ll l = 0,r = 0;
-  while(r < n){
-    sum += v[r];
-    ++r;
-    while(l < r && sum - v[l] >= s){
-      sum -= v[l];
-      ++l;
-    }
-    if(sum >= s){
-      ans = min(ans,r-l);
-    }
-  }
-  cout << ((ans == inf) ? 0 : ans)  << endl;
+  cout << ans << endl;
   return 0;
 }

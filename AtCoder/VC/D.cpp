@@ -39,29 +39,52 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
+int d[3000][3000];
+int dp[3000][3000];
+
+ll find(int x,int y,int w,int h){
+  return dp[x][y] - dp[x][y+h] - dp[x+w][y] + dp[x+w][y+h];
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  cin >> n >> s;
-  ll sum = 0;
-  ll ans = inf;
-  vector<ll> v(n);
+  ll n;
+  cin >> n;
   rep(i,n){
-    cin >> v[i];
-  }
-  ll l = 0,r = 0;
-  while(r < n){
-    sum += v[r];
-    ++r;
-    while(l < r && sum - v[l] >= s){
-      sum -= v[l];
-      ++l;
-    }
-    if(sum >= s){
-      ans = min(ans,r-l);
+    rep(j,n){
+      cin >> d[i][j];
     }
   }
-  cout << ((ans == inf) ? 0 : ans)  << endl;
+  rep(i,n+1){
+    rep(j,n+1){
+      dp[i+1][j+1] = dp[i][j+1] + d[i][j];
+    }
+  }
+  rep(i,n+1){
+    rep(j,n+1){
+      dp[i][j+1] += dp[i][j] ;
+    }
+  }
+  vector<ll> v(n * n+1);
+  REP(i,0,n){
+    REP(j,0,n){
+      REP(k,i+1,n+1){
+        REP(l,j+1,n+1){
+          v[(k-i) * (l - j)] = max(v[(k-i) * (l - j)],find(i,j,(k-i),(l-j)));
+        }
+      }
+    }
+  }
+  ll q,p;
+  cin >> q;
+  rep(i,q){
+    ll ans = 0;
+    cin >> p;
+    rep(i,p){
+      ans = max(ans,v[i+1]);
+    }
+    cout << ans << endl;
+  }
   return 0;
 }

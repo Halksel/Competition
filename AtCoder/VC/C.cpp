@@ -38,30 +38,49 @@ const int dx[] = {0,-1,0,1,1,-1,-1,1};
 inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
+const ll PrimeMax = 10000001;
+int is_prime[PrimeMax];
+void Eratosthenes(){
+  for(int i = 0; i < PrimeMax; i++){
+    is_prime[i] = 1;
+  }
+  is_prime[0] = 0;
+  is_prime[1] = 0;
+  for(int i = 2; i < PrimeMax ; i++){
+    if(is_prime[i]){
+      for(int j = 0; i * (j + 2) < PrimeMax; j++){
+        is_prime[i *(j + 2)] = 0;
+      }
+    }
+  }
+}
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,s;
-  cin >> n >> s;
+  ll n,N;
+  cin >> n;
+  N = n;
+  vector<ll> v;
+  REP(i,1,sqrt(N)+1){
+    if(n % i == 0){
+      v.push_back(i);
+      if(i != n/i)
+        v.push_back(n/i);
+    }
+  }
   ll sum = 0;
-  ll ans = inf;
-  vector<ll> v(n);
-  rep(i,n){
-    cin >> v[i];
+  for (auto&& k : v) {
+    sum += k;
   }
-  ll l = 0,r = 0;
-  while(r < n){
-    sum += v[r];
-    ++r;
-    while(l < r && sum - v[l] >= s){
-      sum -= v[l];
-      ++l;
-    }
-    if(sum >= s){
-      ans = min(ans,r-l);
-    }
+  sum /= 2;
+  if(sum == N){
+    cout << "Perfect" << endl;
   }
-  cout << ((ans == inf) ? 0 : ans)  << endl;
+  else if(sum < N){
+    cout << "Deficient" << endl;
+  }
+  else
+    cout << "Abundant" << endl;
   return 0;
 }
