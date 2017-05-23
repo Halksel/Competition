@@ -1,12 +1,12 @@
-CPPFLAGS = -g -std=c++11 -fdiagnostics-color=always -Wall -Wextra
+CXXFLAGS = -g -std=c++14 -fdiagnostics-color=always -Wall -Wextra -ftrapv
 
 SRC=
 OBJ=$(SRC:.cpp=.o)
 PROG=$(SRC:.cpp=.out)
 
-CPP=g++-mp-4.9
+CXX = g++
 $(PROG):$(OBJ)
-		$(CPP) -o $@ $<
+		$(CXX) -o $@ $<
 
 .PHONY : clean
 clean:

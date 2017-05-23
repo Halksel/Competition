@@ -26,24 +26,30 @@ constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
-namespace dijkstra{
+
+struct Edge{
+  int to;
+  long long cost;
+};
+struct NODE{
+  int pos;
+  long long cost;
+};
+
+bool operator < (const NODE &a,const NODE &b){
+  return a.cost > b.cost;
+}
+class dijkstra{
+  public:
   const int MAX_V = 1000000;
-  struct Edge{
-    int to;
-    long long cost;
-  };
-  struct NODE{
-    int pos;
-    long long cost;
-  };
   vector<Edge> g[100000],rg[100000];
-  bool operator < (const NODE &a,const NODE &b){
-    return a.cost > b.cost;
-  }
+  bool visit[100000];
 
   int N;
   const ll INF = 1e15;
-  vector<ll> dijkstra(vector<Edge> g[100000], int s){
+  dijkstra(){};
+  dijkstra(int n):N(n){};
+  vector<ll> shorter_path(int s){
     priority_queue<NODE> Q;
     Q.push({s,0});
     vector<ll> res(N,INF);
@@ -61,8 +67,27 @@ namespace dijkstra{
     }
     return res;
   }
-}
-using namespace dijkstra;
+  void push(int p,int to,int c){
+    g[p].push_back({to,c});
+    rg[to].push_back({p,c});
+  }
+  deque<ll> Topological_sort(){
+    deque<ll> res;
+    rep(i,N){
+      dfs(res,i);
+    }
+    return res;
+  }
+  void dfs(deque<ll> &res,int k){
+    if(!visit[k]){
+      visit[k] = true;
+      for (auto&& nxt : g[k]) {
+        dfs(res,nxt.to);
+      }
+      res.emplace_front(k);
+    }
+  }
+};
 namespace Prim{
   const int MAX_V = 1000000;
   struct Edge{
@@ -155,23 +180,24 @@ namespace SCC{
   }
 }
 using namespace SCC;
+
 namespace Geometry{
   const double EPS = 1e-8;
   const double INF = 1e12;
-  typedef complex<double> P;
+  typedef complex<double> P;//複素数を平面における点と解釈
   namespace std {
-    bool operator < (const P& a, const P& b) {
+    bool operator < (const P& a, const P& b) {//x軸を優先
       return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b);
     }
   }
-  double cross(const P& a, const P& b) {
+  double cross(const P& a, const P& b) {//外積
     return imag(conj(a)*b);
   }
-  double dot(const P& a, const P& b) {
+  double dot(const P& a, const P& b) {//内積
     return real(conj(a)*b);
   }
 
-  struct L : public vector<P> {
+  struct L : public vector<P> {//直線
     L(){};
     L(const P &a, const P &b) {
       push_back(a); push_back(b);
@@ -180,12 +206,12 @@ namespace Geometry{
 
   typedef vector<P> G;
 
-  struct C {
+  struct C {//円
     P p; double r;
     C(){};
     C(const P &p, double r) : p(p), r(r) { }
   };
-  int ccw(P a, P b, P c) {
+  int ccw(P a, P b, P c) {//3点がどの順番で並んでいるかの判定
     b -= a; c -= a;
     if (cross(b, c) > 0)   return +1;       // counter clockwise
     if (cross(b, c) < 0)   return -1;       // clockwise
@@ -217,9 +243,9 @@ namespace Geometry{
     double t = dot(p-l[0], l[0]-l[1]) / norm(l[0]-l[1]);
     return l[0] + t*(l[0]-l[1]);
   }
-  // L & P Symmetry
+  // Lに対するPの反射点
   P reflection(const L &l, const P &p) {
-    return p + 2 * (projection(l, p) - p);
+    return p + 2.0 * (projection(l, p) - p);
   }
   double distanceLP(const L &l, const P &p) {
     return abs(p - projection(l, p));
@@ -242,7 +268,7 @@ namespace Geometry{
         min(distanceSP(t, s[0]), distanceSP(t, s[1])));
   }
   double distancePP(const P &p,const P &q){
-    return dot((p - q), (p - q));
+    return abs(p - q) ;
   }
   P crosspoint(const L &l, const L &m) {
     double A = cross(l[1] - l[0], m[1] - m[0]);
@@ -251,12 +277,16 @@ namespace Geometry{
     if (abs(A) < EPS) assert(false); // !!!PRECONDITION NOT SATISFIED!!!
     return m[0] + B / A * (m[1] - m[0]);
   }
-#define d(k) (dot(P[k], l[1] - l[0]))
-  point extreme(const vector<point> &P, const line &l) {
-    int k = 0;
-    for (int i = 1; i < P.size(); ++i)
-      if (d(i) > d(k)) k = i;
-    return P[k];
+  P verticalvector(const P &a,const P &b){//2点の単位法線ベクトルを返す
+    if(a.real() == b.real()){
+      return {1.0,0};
+    }
+    if(a.imag() == b.imag()){
+      return {0,1.0};
+    }
+    P p = a - b;
+    P res = {-p.imag(),p.real()};
+    return res / abs(p);
   }
 }
 using namespace Geometry;
