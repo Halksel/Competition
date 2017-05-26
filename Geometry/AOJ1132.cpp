@@ -51,7 +51,7 @@ int main(){
         if (norm(ps[i] - ps[j]) > 4.0 + EPS) continue;
         P m = (ps[i]+ps[j])/2.0;
         P vv = verticalvector(ps[i],ps[j]);
-        double x = sqrt(1 - norm((ps[i] - ps[j]) / 2.0));
+        double x = sqrt(1 - norm((ps[i] - ps[j]) / 4.0));
         P c1 = vv * x + m,c2 = vv * (-x) + m;
         ll cnt1 = 2,cnt2 = 2;
         rep(k,n){

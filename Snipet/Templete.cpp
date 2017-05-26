@@ -87,6 +87,22 @@ class dijkstra{
       res.emplace_front(k);
     }
   }
+  pll farthest_point(int n,int p){
+    pll r = {0,n};
+    for (auto&& k : g[n]) {
+      if(k.to != p){
+        pll res = farthest_point(k.to,n);
+        res.fi += k.cost;
+        if(r.fi < res.fi) r = res;
+      }
+    }
+    return r;
+  }
+  ll diameter(){
+    pll a = farthest_point(0,-1);
+    pll b = farthest_point(a.se,-1);
+    return b.fi;
+  }
 };
 namespace Prim{
   const int MAX_V = 1000000;
@@ -189,6 +205,9 @@ namespace Geometry{
     bool operator < (const P& a, const P& b) {//x軸を優先
       return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b);
     }
+    bool sorty(const P& a, const P& b) {//y軸を優先
+      return imag(a) != imag(b) ? imag(a) < imag(b) : real(a) < real(b);
+    }
   }
   double cross(const P& a, const P& b) {//外積
     return imag(conj(a)*b);
@@ -264,8 +283,7 @@ namespace Geometry{
   }
   double distanceSS(const L &s, const L &t) {
     if (intersectSS(s, t)) return 0;
-    return min(min(distanceSP(s, t[0]), distanceSP(s, t[1])),
-        min(distanceSP(t, s[0]), distanceSP(t, s[1])));
+    return min(min(distanceSP(s, t[0]), distanceSP(s, t[1])), min(distanceSP(t, s[0]), distanceSP(t, s[1])));
   }
   double distancePP(const P &p,const P &q){
     return abs(p - q) ;
@@ -287,6 +305,13 @@ namespace Geometry{
     P p = a - b;
     P res = {-p.imag(),p.real()};
     return res / abs(p);
+  }
+  pair<P,P> crosspointCircle(const C &a,const C &b){
+    P m = (a.p+b.p)/2.0;
+    P vv = verticalvector(a.p,b.p);
+    double u = sqrt( a.r * a.r - norm(a.p - b.p) / 4.0);
+    P A = m + u * vv,B = m - u * vv;
+    return mp(A,B);
   }
 }
 using namespace Geometry;
@@ -661,7 +686,7 @@ namespace Compress{
       Unique(xs);
       rep(i,n){
         x1[i] = find(all(xs),x1[i])-xs.begin();
-        x2[i] = find(all(xs),x2[i]) - xs.begin();
+        x2[i] = find(all(xs),x2[i])-xs.begin();
       }
       return xs.size();
     }
