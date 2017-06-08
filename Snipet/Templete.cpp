@@ -223,14 +223,39 @@ namespace Geometry{
     return real(conj(a)*b);
   }
 
-  struct L : public vector<P> {//直線
-    L(){};
-    L(const P &a, const P &b) {
-      push_back(a); push_back(b);
-    }
+  class L{// line
+    public:
+      vector<P> l;
+      P v;
+      L(){};
+      L(const P &a, const P &b) {
+        l.push_back(a); l.push_back(b);
+        v = (b-a);
+      }
+      L(double a,double b,double c,double d){
+        l.push_back(P(a,b)),l.push_back(P(c,d));
+      }
+      P& operator[](const int i){
+        return l[i];
+      }
+      void readL() {
+        double a, b,c,d;
+        cin >> a >> b >> c >> d;
+        l.clear();
+        l.push_back(P(a,b)),l.push_back(P(c,d));
+      }
   };
 
   typedef vector<P> G;
+  G readG(int n){
+    double x,y;
+    G g;
+    rep(i,n){
+      cin >> x >> y;
+      g.push_back(P(x,y));
+    }
+    return g;
+  }
 
   struct C {//円
     P p; double r;
@@ -245,7 +270,7 @@ namespace Geometry{
     if (norm(b) < norm(c)) return -2;       // a--b--c on line
     return 0; // a--c--b on line
   }
-  int linejudge(const L &ab,const L &cd){ //2直線間の関係
+  int linejudge(L &ab,L &cd){ //2直線間の関係
     P a = ab[1] - ab[0],b = cd[1] - cd[0];
     if(abs(cross(a,b)) < EPS){ // Parallel
       return 2;
@@ -256,63 +281,69 @@ namespace Geometry{
     return 0;
   }
   // L:line,S:segment,P:point
-  bool intersectLL(const L &l, const L &m) {
+  bool intersectLL( L &l,  L &m) {
     return abs(cross(l[1]-l[0], m[1]-m[0])) > EPS || // non-parallel
       abs(cross(l[1]-l[0], m[0]-l[0])) < EPS;   // same line
   }
-  bool intersectLS(const L &l, const L &s) {
+  bool intersectLS( L &l,  L &s) {
     return cross(l[1]-l[0], s[0]-l[0])*       // s[0] is left of l
       cross(l[1]-l[0], s[1]-l[0]) < EPS; // s[1] is right of l
   }
-  bool intersectLP(const L &l, const P &p) {
+  bool intersectLP( L &l,  P &p) {
     return abs(cross(l[1]-p, l[0]-p)) < EPS;
   }
-  bool intersectSS(const L &s, const L &t) {
+  bool intersectSS( L &s,  L &t) {
     return ccw(s[0],s[1],t[0])*ccw(s[0],s[1],t[1]) <= 0 &&
       ccw(t[0],t[1],s[0])*ccw(t[0],t[1],s[1]) <= 0;
   }
-  bool intersectSP(const L &s, const P &p) {
+  bool intersectSP( L &s,  P &p) {
     return abs(s[0]-p)+abs(s[1]-p)-abs(s[1]-s[0]) < EPS; // triangle inequality
   }
   // L & P intersection
-  P projection(const L &l, const P &p) {
+  P projection( L &l,  P &p) {
     double t = dot(p-l[0], l[0]-l[1]) / norm(l[0]-l[1]);
     return l[0] + t*(l[0]-l[1]);
   }
   // Lに対するPの反射点
-  P reflection(const L &l, const P &p) {
+  P reflection( L &l,  P &p) {
     return p + 2.0 * (projection(l, p) - p);
   }
-  double distanceLP(const L &l, const P &p) {
+  double distanceLP( L &l,  P &p) {
     return abs(p - projection(l, p));
   }
-  double distanceLL(const L &l, const L &m) {
+  double distanceLL( L &l,  L &m) {
     return intersectLL(l, m) ? 0 : distanceLP(l, m[0]);
   }
-  double distanceLS(const L &l, const L &s) {
+  double distanceLS( L &l,  L &s) {
     if (intersectLS(l, s)) return 0;
     return min(distanceLP(l, s[0]), distanceLP(l, s[1]));
   }
-  double distanceSP(const L &s, const P &p) {
-    const P r = projection(s, p);
+  double distanceSP( L &s,  P &p) {
+    P r = projection(s, p);
     if (intersectSP(s, r)) return abs(r - p);
     return min(abs(s[0] - p), abs(s[1] - p));
   }
-  double distanceSS(const L &s, const L &t) {
+  double distanceSS( L &s,  L &t) {
     if (intersectSS(s, t)) return 0;
     return min(min(distanceSP(s, t[0]), distanceSP(s, t[1])), min(distanceSP(t, s[0]), distanceSP(t, s[1])));
   }
-  double distancePP(const P &p,const P &q){
+  double distancePP( P &p, P &q){
     return abs(p - q) ;
   }
-  P crosspoint(const L &l, const L &m) {
+  P crosspoint(L &l,L &m) {
     double A = cross(l[1] - l[0], m[1] - m[0]);
     double B = cross(l[1] - l[0], l[1] - m[0]);
     if (abs(A) < EPS && abs(B) < EPS) return m[0]; // same line
     if (abs(A) < EPS) assert(false); // !!!PRECONDITION NOT SATISFIED!!!
     return m[0] + B / A * (m[1] - m[0]);
   }
-  P verticalvector(const P &a,const P &b){//2点の単位法線ベクトルを返す
+  P crosspointSS(L &l1,L &l2) {
+    double d1 = abs(cross(l2.v, l1[0] - l2[0])); // l1.a - l2.b???
+    double d2 = abs(cross(l2.v, l1[1] - l2[0]));
+    double t = d1 / (d1 + d2);
+    return l1[0] + t * l1.v;
+  }
+  P verticalvector( P &a, P &b){//2点の単位法線ベクトルを返す
     if(a.real() == b.real()){
       return {1.0,0};
     }
@@ -334,7 +365,7 @@ namespace Geometry{
   }
   // a < b : -1, a > b : 1, a == b : 0
   inline int sgn(double a, double b = 0) { return a < b - EPS ? -1 : a > b + EPS ? 1 : 0; }
-  int circle_judge(const C &a,const C &b){ // return tangent count
+  int circle_judge(C &a,C &b){ // return tangent count
     double d = distancePP(a.p,b.p);
     double e = a.r,f = b.r;
     if(sgn(d,e+f) == 1) return 4;
@@ -443,13 +474,15 @@ namespace Geometry{
         else return G{};                        // p -- l.b -- l.a -- q
       }
       if (ccw(l[0], l[1], p) != -1) h.emplace_back(p);
-      if (ccw(l[0], l[1], p) * ccw(l[0], l[1], q) < 0)
-        h.emplace_back(crosspoint(L(p, q), l));
+      if (ccw(l[0], l[1], p) * ccw(l[0], l[1], q) < 0){
+        L t = L(p,q);
+        h.emplace_back(crosspoint(t, l));
+      }
     }
     return h;
   }
   double closestPair_calc(P *p,int n){
-    if(n < 2) return inf;
+    if(n < 2) return INF;
     int m = n/2;
     double x=real(p[m]);
     double d = min(closestPair_calc(p,m),closestPair_calc(p+m,n-m));
@@ -475,7 +508,7 @@ namespace Geometry{
     if(n < 2) return 0.0;
     sort(all(p));
     double ans = closestPair_calc(&p[0],n);
-    return ans == inf ? 0.0 : ans;
+    return ans == INF ? 0.0 : ans;
   }
 }
 using namespace Geometry;

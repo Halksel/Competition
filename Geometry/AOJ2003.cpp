@@ -173,166 +173,66 @@ P verticalvector( P &a, P &b){//2点の単位法線ベクトルを返す
   P res = {-p.imag(),p.real()};
   return res / abs(p);
 }
-pair<P,P> crosspoint(const C &a,const C &b){
-  double d = abs(b.p-a.p);
-  double c = acos((a.r*a.r+d*d-b.r*b.r)/(2.0*a.r*d));
-  double t = arg(b.p-a.p);
-  P A = a.p + polar(a.r,t+c),B = a.p + polar(a.r,t-c);
-  if(A < B)
-    return mp(A,B);
-  return mp(B,A);
-}
 // a < b : -1, a > b : 1, a == b : 0
 inline int sgn(double a, double b = 0) { return a < b - EPS ? -1 : a > b + EPS ? 1 : 0; }
-int circle_judge(C &a,C &b){ // return tangent count
-  double d = distancePP(a.p,b.p);
-  double e = a.r,f = b.r;
-  if(sgn(d,e+f) == 1) return 4;
-  if(sgn(d,e+f) == 0) return 3;
-  if(sgn(d,abs(e-f)) == -1) return 0;
-  if(sgn(d,abs(e-f)) == 0 ) return 1;
-  return 2;
-}
-double calc_triangle(P a,P b,P c){
-  P ba = (b - a);
-  P ca = (c - a);
-  return (real(ba) * imag(ca) - imag(ba) * real(ca))/2.0;
-}
-double calc_area(const G &g){
-  double res = 0;
-  rep(i,g.size()-2){
-    res += calc_triangle(g[0],g[(i+1) % g.size()],g[(i+2) % g.size()]);
-  }
-  return res;
-}
-bool is_convex(const G &g){
-  if(g.size() == 3) return true;
-  rep(i,g.size()){
-    if(ccw(g[i],g[(i+1) % g.size()],g[(i+2) % g.size()]) != 1 && ccw(g[i],g[(i+1) % g.size()],g[(i+2) % g.size()]) != -2){
-      return false;
-    }
-  }
-  return true;
-}
-int convex_point(const G &g,const P &p){
-  P q = p-P(-INF,imag(p));
-  double x = real(p),y = imag(p);
-  L l1(p,q);
-  ll cn = 0;
-  rep(i,g.size()){
-    P a = g[i],b = g[(i+1) % g.size()];
-    L l2 = L(a,b);
-    int k = ccw(a,b,p);
-    if(k == 0){
-      return 1; // p on g
-    }
-  }
-  rep(i,g.size()){
-    P a = g[i],b = g[(i+1) % g.size()];
-    double y1 = imag(a),y2 = imag(b);
-    if(!(y1 == y && y2 == y) && ((y1 <= y && y < y2) || (y2 <= y && y < y1))){
-      L l2 = L(a,b);
-      P c = crosspoint(l1,l2);
-      if(x < real(c))
-        ++cn;
-    }
-  }
-  if(cn % 2) return 2; // p in g
-  return 0; // p out g
-}
-vector<P> convex_hull(vector<P> &ps){
-  sort(all(ps));
-  int k = 0;
-  int n = ps.size();
-  vector<P> qs(ps.size() * 2);
-  rep(i,ps.size()){
-    while(k > 1 && cross((qs[k-1] -qs[k-2]),(ps[i] - qs[k-1])) < 0){
-      k--;
-    }
-    qs[k++] = ps[i];
-  }
-  for(int i = n-2,t = k; i >= 0; i--){
-    while(k>t && cross((qs[k-1] - qs[k-2]),(ps[i]-qs[k-1])) < 0){
-      k--;
-    }
-    qs[k++] = ps[i] ;
-  }
-  qs.resize(k-1);
-  return qs;
-}
-#define curr(P, i) P[i]
-#define next(P, i) P[(i+1)%P.size()]
-#define diff(P, i) (next(P, i) - curr(P, i))
-double convex_diameter(vector<P> &ps){
-  const int n = ps.size();
-  int is = 0,js = 0;
-  REP(i,1,n){
-    if(imag(ps[i]) > imag(ps[is])) is = i;
-    if(imag(ps[i]) < imag(ps[js])) js = i;
-  }
-  double d = norm(ps[is]-ps[js]);
-  int im,jm,i,j;
-  i = im = is;
-  j = jm = js;
-  do {
-    if(cross(diff(ps,i),diff(ps,j)) >= 0) j = (j+1) % n;
-    else i = (i+1) % n;
-    if(norm(ps[i]-ps[j]) > d){
-      d = norm(ps[i]-ps[j]);
-      im = i,jm = j;
-    }
-  } while (i != is || j != js);
-  return sqrt(d);
-}
-G convex_cut(G &g, L &l) {
-  G h;
-  rep(i, (int)g.size()) {
-    P p = curr(g, i), q = next(g, i);
-    if (ccw(p, q, l[0]) == 0 && ccw(p, q, l[1]) == 0) {
-      if (ccw(p, l[1], l[0]) == 0) return g;    // p -- l.a -- l.b -- q
-      else return G{};                        // p -- l.b -- l.a -- q
-    }
-    if (ccw(l[0], l[1], p) != -1) h.emplace_back(p);
-    if (ccw(l[0], l[1], p) * ccw(l[0], l[1], q) < 0){
-      L t = L(p,q);
-      h.emplace_back(crosspoint(t, l));
-    }
-  }
-  return h;
-}
-double closestPair_calc(P *p,int n){
-  if(n < 2) return INF;
-  int m = n/2;
-  double x=real(p[m]);
-  double d = min(closestPair_calc(p,m),closestPair_calc(p+m,n-m));
-  inplace_merge(p,p+m,p+n,sorty);
-  vector<P> q;
-  double dx,dy;
-  rep(i,n) {
-    if(abs(real(p[i])-x)>=d)continue;
-
-    for(int j=q.size()-1;j>=0;j--)
-    {
-      dx=real(p[i])-real(q[j]);
-      dy=imag(p[i])-imag(q[j]);
-      if(dy>=d)break;
-      d=min(d,sqrt(dx*dx+dy*dy));
-    }
-    q.push_back(p[i]);
-  }
-  return d;
-}
-
-double closestPair(vector<P> &p,int n) {
-  if(n < 2) return 0.0;
-  sort(all(p));
-  double ans = closestPair_calc(&p[0],n);
-  return ans == INF ? 0.0 : ans;
+P crosspointSS(L &l1,L &l2) {
+  double d1 = abs(cross(l2.v, l1[0] - l2[0])); // l1.a - l2.b???
+  double d2 = abs(cross(l2.v, l1[1] - l2[0]));
+  double t = d1 / (d1 + d2);
+  return l1[0] + t * l1.v;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-
+  ll n,m,x,y,x2,y2;
+  cin >> n;
+  int o,h;
+  rep(i,n){
+    cin >> x >> y >> x2 >> y2;
+    P a(x,y),b(x2,y2);
+    L l(a,b);
+    if(b < a) l = L(b,a);
+    cin >> m;
+    vector<pair<P,pair<int,int>>> ab;//a[i](crosspoint,h)
+    rep(j,m){
+      cin >> x >> y >> x2 >> y2;
+      P a(x,y),b(x2,y2);
+      L t(a,b);
+      if(b < a) t = L(b,a);
+      cin >> o >> h;
+      if(intersectSS(l,t)){
+        P p = crosspointSS(l,t);
+        ab.push_back(mp(p,mp(o,h)));
+      }
+    }
+    sort(all(ab));
+    int cnt = 0;
+    if(ab.size()){
+      int s = 0;
+      if(ab[0].se.se){
+        s = ab[0].se.fi;
+      }
+      else{
+        s = !ab[0].se.fi;
+      }
+      REP(u,1,ab.size()){
+        o = ab[u].se.fi,h = ab[u].se.se;
+        if(o && s != h){
+          ++cnt;
+          s = h;
+        }
+        else if(!o && s == h){
+          ++cnt;
+          s = !h;
+        }
+      }
+    }
+    cout << cnt << endl;
+    // 最初に全直線と路線との交差判定を行う
+    // もし始点と路線との交点の距離が最小のものが、自分なら地下高架を合わせて、そうじゃないなら逆
+    // そこからライバル路線とぶつかるたびに、h = !h、ans++
+    // 自社路線とぶつかるたび
+  }
   return 0;
 }
