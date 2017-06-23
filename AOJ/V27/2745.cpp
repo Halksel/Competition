@@ -42,24 +42,12 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
-  while(cin >> n >> m,n+m){
-    vector<pll> v(n);
-    rep(i,n){
-      cin >> v[i].se >> v[i].fi;
-    }
-    sort(all(v));
-    reverse(all(v));
-    ll ans = 0;
-    rep(i,n){
-      if(m >= v[i].se){
-        m -= v[i].se;
-      } 
-      else{
-        v[i].se -= m;
-        m = 0;
-        ans += v[i].se * v[i].fi;
-      }
+  double r,w,c,g;
+  while( cin >> r >> w >> c >> g&&(w + r + c + g)){
+    int ans = 0;
+    while(c > r / w){
+       r += g;
+       ++ans;
     }
     std::cout << ans << std::endl;
   }

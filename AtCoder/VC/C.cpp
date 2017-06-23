@@ -23,7 +23,12 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-const int mod = 1000000007;
+template<typename T>
+void O(T t){
+  cout << t << endl;
+}
+
+const ll mod = 1e9+7;
 constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
@@ -37,7 +42,27 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-
+  ll n;
+  cin >> n;
+  map<ll,ll> m;
+  rep(i,n){
+    ll k;
+    cin >> k;
+    if(k >= 3200) k = 3200;
+    m[k / 400]++;
+  }
+  ll a,b;
+  a = m.size();
+  if(m.count(8)){
+    a--;
+  }
+  if(a <= 0) a = 1;
+  b = m.size();
+  if(m.count(8)){
+    b--;
+    b += m[8];
+    /* b = min(b,7LL); */
+  }
+  cout << a << ' ' << b << endl;
   return 0;
 }
-

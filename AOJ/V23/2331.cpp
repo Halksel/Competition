@@ -42,26 +42,26 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
-  while(cin >> n >> m,n+m){
-    vector<pll> v(n);
-    rep(i,n){
-      cin >> v[i].se >> v[i].fi;
-    }
-    sort(all(v));
-    reverse(all(v));
-    ll ans = 0;
-    rep(i,n){
-      if(m >= v[i].se){
-        m -= v[i].se;
-      } 
-      else{
-        v[i].se -= m;
-        m = 0;
-        ans += v[i].se * v[i].fi;
-      }
-    }
-    std::cout << ans << std::endl;
+  ll n,a,b;
+  cin >> n;
+  vector<ll> ans(1000010);
+  ans[0] = 0;
+  rep(i,n){
+    cin >> a >> b;
+    /* if(a) a--; */
+    /* if(b) b--; */
+    --a;
+    ans[a] ++;
+    ans[b] --;
   }
+  rep(i,100001){
+    ans[i+1] += ans[i];
+  }
+  ll k = 0;
+  REP(i,0,n+1){
+    if(ans[i] >= i)
+      k = max(k,i+ 0LL); 
+  }
+  cout << k << endl;
   return 0;
 }

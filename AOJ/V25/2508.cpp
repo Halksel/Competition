@@ -23,45 +23,37 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-template<typename T>
-void O(T t){
-  cout << t << endl;
-}
-
-const ll mod = 1e9+7;
-constexpr ll inf = ((1<<30)-1)*2+1 ;
-constexpr double PI = acos(-1.0) ;
-double eps = 1e-10 ;
-const int dy[] = {-1,0,1,0,1,-1,1,-1};
-const int dx[] = {0,-1,0,1,1,-1,-1,1};
-
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
-}
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
-  while(cin >> n >> m,n+m){
-    vector<pll> v(n);
+  ll n;
+  string u = "";
+  map<char,int> m;
+  map<int,char> d;
+  rep(i,26){
+    m['a' + i] = i;
+  }
+  rep(i,26){
+    m['A' + i] = i + 26;
+  }
+  rep(i,26){
+    d[i] = i +'a';
+  }
+  rep(i,26){
+    d[26+ i] = i + 'A';
+  }
+  while(cin >> n,n){
+    vector<ll> k(n);
     rep(i,n){
-      cin >> v[i].se >> v[i].fi;
+      cin >> k[i];
+    } 
+    string s;cin >> s;
+    rep(i,s.size()){
+      /* cout << (m[s[i]] - k[i % n])%52 << endl; */
+      cout << d[(m[s[i]] - k[i % n]+52)%52];
     }
-    sort(all(v));
-    reverse(all(v));
-    ll ans = 0;
-    rep(i,n){
-      if(m >= v[i].se){
-        m -= v[i].se;
-      } 
-      else{
-        v[i].se -= m;
-        m = 0;
-        ans += v[i].se * v[i].fi;
-      }
-    }
-    std::cout << ans << std::endl;
+    cout << endl;
   }
   return 0;
 }

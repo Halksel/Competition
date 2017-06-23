@@ -42,26 +42,32 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
-  while(cin >> n >> m,n+m){
-    vector<pll> v(n);
-    rep(i,n){
-      cin >> v[i].se >> v[i].fi;
-    }
-    sort(all(v));
-    reverse(all(v));
-    ll ans = 0;
-    rep(i,n){
-      if(m >= v[i].se){
-        m -= v[i].se;
-      } 
-      else{
-        v[i].se -= m;
-        m = 0;
-        ans += v[i].se * v[i].fi;
-      }
-    }
-    std::cout << ans << std::endl;
+  ll n;
+  cin >> n;
+  vector<ll> v(n);
+  ll M = 0,m = inf;
+  map<ll,ll> ma;
+  rep(i,n){
+    cin >> v[i];
+    ma[v[i]]++;
+    m = min(m,v[i]);
+    M = max(M,v[i]);
   }
+  bool f = false;
+  if(m == M){
+    if(m == n-1 || m <= n/2) f = true; 
+  }
+  else if(M - m == 1){
+    int p = 0,q = 0;
+    rep(i,n){
+      if(v[i] == m){
+        ++p;
+      }
+      else
+        ++q;
+    }
+    if(p + 1 <= M && M <= p +  q/2) f = true;
+  }
+  std::cout << (f ? "Yes" : "No") << std::endl;
   return 0;
 }

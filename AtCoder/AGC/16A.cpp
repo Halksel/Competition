@@ -35,33 +35,58 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-inline bool value(int x,int y,int w,int h){
-  return (x >= 0 && x < w && y >= 0 && y < h);
+void make(string &s,char c){
+  string k ;
+  rep(i,s.size()){
+    if(s[i] == c){
+      if(i) k[i-1] = c;
+      /* k += s[i]; */
+    }
+    else{
+      k += s[i];
+    }
+  }
+  s = k;
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
-  while(cin >> n >> m,n+m){
-    vector<pll> v(n);
-    rep(i,n){
-      cin >> v[i].se >> v[i].fi;
-    }
-    sort(all(v));
-    reverse(all(v));
-    ll ans = 0;
-    rep(i,n){
-      if(m >= v[i].se){
-        m -= v[i].se;
-      } 
-      else{
-        v[i].se -= m;
-        m = 0;
-        ans += v[i].se * v[i].fi;
+  ll n;
+  string s,t;
+  cin >> s;
+  ll c = inf;
+  if(s.size() == 1) c = 0;
+  else{
+    rep(i,s.size()){
+      ll tmp = 0;
+      t = s;
+      rep(_,100){
+        set<char> m;
+        string k;
+        int l = 0;
+        while(l < t.size()-1){
+          if(t[l] == s[i] || t[l+1] == s[i]){
+            k += s[i];
+          }
+          else{
+            k += t[l];
+          }
+          ++l;
+        }
+        /* debug(k); */
+        rep(j,k.size()){
+          m.insert(k[j]);
+        }
+        if(m.size() == 1) break;
+        ++tmp;
+        t = k;
       }
+      c = min(c,tmp);
     }
-    std::cout << ans << std::endl;
   }
+  if(c != 0) ++ c;
+  std::cout << c << std::endl;
+ 
   return 0;
 }

@@ -39,29 +39,66 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
+ll W,h;
+void solve(vector<vector<int>> &m,int x,int y,int b){
+  rep(i,4){
+    int nx = dx[i] + x,ny = dy[i] + y;
+    if(value(nx,ny,W,h) && !(m[nx][ny] & b)){
+      m[nx][ny] += b;
+      solve(m,nx,ny,b);
+    }
+  }
+}
+
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
-  while(cin >> n >> m,n+m){
-    vector<pll> v(n);
-    rep(i,n){
-      cin >> v[i].se >> v[i].fi;
-    }
-    sort(all(v));
-    reverse(all(v));
-    ll ans = 0;
-    rep(i,n){
-      if(m >= v[i].se){
-        m -= v[i].se;
-      } 
-      else{
-        v[i].se -= m;
-        m = 0;
-        ans += v[i].se * v[i].fi;
+  while(cin >> W >> h,W+h){
+    vector<vector<char>> w(51,vector<char>(51));
+    vector<vector<int>> v(51,vector<int>(51));
+    rep(j,h){
+      rep(i,W){
+        cin >> w[i][j];
+        if(w[i][j] == '.'){
+          v[i][j] = 0;
+        }
+        if(w[i][j] == 'W'){
+          v[i][j] = 11;
+        }
+        if(w[i][j] == 'B'){
+          v[i][j] = 7;
+        }
+      } }
+    rep(i,W){
+      rep(j,h){
+        if(v[i][j] == 11)
+        solve(v,i,j,1);
+        if(v[i][j] == 7)
+        solve(v,i,j,2);
       }
     }
-    std::cout << ans << std::endl;
+    /* rep(j,h){                 */
+    /*   rep(i,W){               */
+    /*     cout << v[i][j] ;     */
+    /*   }                       */
+    /*   std::cout << std::endl; */
+    /* }                         */
+    ll bc = 0,wc = 0;
+    rep(i,W){
+      rep(j,h){
+        if(v[i][j] == 1){
+          wc += 1;
+        }
+      }
+    }
+    rep(i,W){
+      rep(j,h){
+        if(v[i][j] == 2){
+          bc += 1;
+        }
+      }
+    }
+    cout << bc << ' ' << wc << endl;
   }
   return 0;
 }

@@ -42,26 +42,46 @@ inline bool value(int x,int y,int w,int h){
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  ll n,m;
-  while(cin >> n >> m,n+m){
-    vector<pll> v(n);
-    rep(i,n){
-      cin >> v[i].se >> v[i].fi;
-    }
-    sort(all(v));
-    reverse(all(v));
-    ll ans = 0;
-    rep(i,n){
-      if(m >= v[i].se){
-        m -= v[i].se;
-      } 
-      else{
-        v[i].se -= m;
-        m = 0;
-        ans += v[i].se * v[i].fi;
+  ll n;
+  cin >> n;
+  string s;
+  string ans,tmp2;
+  cin >> s;
+  vector<ll> v(n+1);
+  ll u = 0;
+  rep(i,n){
+    if(s[i] == '(' && u < 0){
+      string tmp ;
+      rep(i,abs(u)){
+        tmp += "(";
       }
+      ans = tmp + ans + tmp2;
+      tmp2 = "";
+      u = 0;
     }
-    std::cout << ans << std::endl;
+    if(s[i] == '('){
+      ++u;
+      tmp2 += s[i];
+    }
+    if(s[i] == ')'){
+      --u;
+      tmp2 += s[i];
+    }
   }
+  string tmp ;
+  if(u < 0){
+    rep(i,abs(u)){
+      tmp += "(";
+    }
+    ans = tmp + ans + tmp2;
+  }
+  else{
+    rep(i,abs(u)){
+      tmp += ")";
+    }
+    ans = ans + tmp2 + tmp;
+  }
+  tmp2 = "";
+  std::cout << ans << std::endl;
   return 0;
 }

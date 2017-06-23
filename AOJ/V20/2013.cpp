@@ -23,8 +23,13 @@ using ll = long long;
 using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
-const int mod = 1000000007;
-constexpr int inf = ((1<<30)-1)*2+1 ;
+template<typename T>
+void O(T t){
+  cout << t << endl;
+}
+
+const ll mod = 1e9+7;
+constexpr ll inf = ((1<<30)-1)*2+1 ;
 constexpr double PI = acos(-1.0) ;
 double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
@@ -34,42 +39,34 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-struct train{
-  string s,t;
-};
-
-struct Comp{
-  bool operator()(pair<string,string> a,pair<string,string> b)const{
-    return a.fi < b.fi;
-  }
-};
-
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  string s,t;
   ll n;
-  while(cin >> n && n){
-    vector<train> ans;
-    vector<pair<string,string>> v(n);
+  while(cin >> n,n){
+    vector<pair<string,string>> s(n);
     rep(i,n){
-      cin >> v[i].fi >> v[i].se;
+      cin >> s[i].fi >> s[i].se;
     }
-    sort(all(v),Comp());
-    ans.push_back({v[0].fi,v[0].se});
-    REP(i,1,n){
+    int c = 1;
+    sort(all(s));
+    vector<string> t;
+    t.push_back(s[0].se);
+    rep(i,n-1){
       bool f = false;
-      rep(j,ans.size()){
-        if(ans[j].t <= v[i].fi){
-          ans[j] = {v[i].fi,v[i].se};
+      rep(j,t.size()){
+        if(s[i+1].fi >= t[j]){
           f = true;
+          t[j] = s[i+1].se;
           break;
         }
       }
-      if(!f) ans.push_back({v[i].fi,v[i].se});
+      if(!f){
+        ++c;
+        t.push_back(s[i+1].se);
+      }
     }
-    cout << ans.size() << endl;
+    std::cout << c << std::endl;
   }
   return 0;
 }
-

@@ -35,29 +35,24 @@ double eps = 1e-10 ;
 const int dy[] = {-1,0,1,0,1,-1,1,-1};
 const int dx[] = {0,-1,0,1,1,-1,-1,1};
 
-int numofbits5(long bits)
-{
-  bits = (bits & 0x55555555) + (bits >> 1 & 0x55555555);
-  bits = (bits & 0x33333333) + (bits >> 2 & 0x33333333);
-  bits = (bits & 0x0f0f0f0f) + (bits >> 4 & 0x0f0f0f0f);
-  bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);
-  return (bits & 0x0000ffff) + (bits >>16 & 0x0000ffff);
+inline bool value(int x,int y,int w,int h){
+  return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  int n;
-  cin >> n;
-  double sum = 0;
-  rep(i,n+1){
-    if(numofbits5(i) == 1){
-      sum += i;
-    }
-    else{
-      sum += 1;
-    }
+  ll n;
+  ll ans = 0;
+  cin >> n ;
+  vector<int> v(n);
+  rep(i,n){
+    cin >> v[i];
   }
-  cout << sum<<endl;
+  sort(all(v));
+  rep(i,n-1){
+    ans += v[i+1] - v[i];
+  }
+  std::cout << ans << std::endl;
   return 0;
 }
