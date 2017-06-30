@@ -87,7 +87,7 @@ int main(){
   ll n,k,t,u,v,l;
   cin >> n >> k >> t >> u >> v >> l;
   double time = 0;
-  vector<ll> d(n);
+  vector<ll> d(n+1);
   rep(i,n){
     cin >> d[i];
   }
@@ -99,14 +99,19 @@ int main(){
   pos += d[0];
   while(pos < l){
     if(have){
-      time += t*have;
-      pos += t*have * v;
-      have = 0;
-      REP(i,1,d.size()){
+      time += t;
+      pos += t* v;
+      have--;
+      REP(i,1,n){
         if(pos > d[i]){
           if(d[i])
             ++have;
           d[i] = 0;
+          if(have == k){
+            time += (d[i+1] - pos) / t;
+            pos = d[i+1];
+            d[i+1] = 0;
+          }
         }
         else{
           break;

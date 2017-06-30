@@ -24,7 +24,7 @@ using pii = pair<int,int> ;
 using pll = pair<ll,ll> ;
 
 template<typename T>
-void O(T t){
+void O(T t) {
   cout << t << endl;
 }
 
@@ -58,9 +58,9 @@ int main(){
     m[t] = i;
   }
   ll n;
-  string s,s2;
+  string s,s2 ;
   cin >> n;
-  vector<pair<string,string>> ans(n);
+  vector<pair<string,string>> ans(n) ;
   rep(i,n){
     cin >> s;
     s2 = s;

@@ -1,4 +1,4 @@
-CXXFLAGS = -g -std=c++14 -fdiagnostics-color=always -Wall -Wextra -ftrapv
+CXXFLAGS = -g -std=c++14 -fdiagnostics-color=always -Wall -Wextra -ftrapv -O2
 
 SRC=
 OBJ=$(SRC:.cpp=.o)

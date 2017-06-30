@@ -39,13 +39,13 @@ inline bool value(int x,int y,int w,int h){
   return (x >= 0 && x < w && y >= 0 && y < h);
 }
 
-using ti3 = tuple<int,int,int>;
+using ti3 = tuple<ll,ll,ll>;
 set<ti3> s;
 
 int main(){
   cin.tie(0);
   ios::sync_with_stdio(false);
-  int a,b,c,n,x,y,z;
+  ll a,b,c,n,x,y,z;
   cin >> a >> b >> c >> n;
   ll ans = a * b * 2 + b * c * 2 + c * a * 2;
   rep(i,n){
@@ -53,32 +53,58 @@ int main(){
     ti3 t(x,y,z);
     int cnt = 0;
     if((x == 0 || x == a - 1) || (y == 0 || y == b - 1) || (z == 0 || z == c - 1)){
-      if(x == 0 || x == a - 1){
+      bool f[6] = {};
+      if(x == 0){
         ++cnt;
       }
-      if(y == 0 || y == b - 1){
+      else{
+        if(s.find(make_tuple(x-1,y,z)) != s.end())++cnt;
+      }
+      if (x == a - 1){
         ++cnt;
       }
-      if(z == 0 || z == c - 1){
+      else{
+        if(s.find(make_tuple(x+1,y,z))!= s.end())++cnt;
+      }
+      if(y == 0){
         ++cnt;
       }
+      else{
+        if(s.find(make_tuple(x,y-1,z))!= s.end())++cnt;
+      }
+      if (y == b - 1){
+        ++cnt;
+      }
+      else
+        if(s.find(make_tuple(x,y+1,z))!= s.end())++cnt;
+      if(z == 0){
+        ++cnt;
+      }
+      else
+        if(s.find(make_tuple(x,y,z-1))!= s.end())++cnt;
+      if (z == c - 1){
+        ++cnt;
+      }
+      else
+        if(s.find(make_tuple(x,y,z+1))!= s.end())++cnt;
     }
     else{
-      if(s.find(make_tuple(x-1,y,z)))++cnt;
-      if(s.find(make_tuple(x+1,y,z)))++cnt;
-      if(s.find(make_tuple(x,y-1,z)))++cnt;
-      if(s.find(make_tuple(x,y+1,z)))++cnt;
-      if(s.find(make_tuple(x,y,z-1)))++cnt;
-      if(s.find(make_tuple(x,y,z+1)))++cnt;
+      if(s.find(make_tuple(x-1,y,z))!= s.end())++cnt;
+      if(s.find(make_tuple(x+1,y,z))!= s.end())++cnt;
+      if(s.find(make_tuple(x,y-1,z))!= s.end())++cnt;
+      if(s.find(make_tuple(x,y+1,z))!= s.end())++cnt;
+      if(s.find(make_tuple(x,y,z-1))!= s.end())++cnt;
+      if(s.find(make_tuple(x,y,z+1))!= s.end())++cnt;
     }
+    if(cnt == 0) ans += 6;
     if(cnt == 1) ans += 4;
     if(cnt == 2) ans += 2;
     if(cnt == 3) ans += 0;
     if(cnt == 4) ans += -2;
     if(cnt == 5) ans += -4;
     if(cnt == 6) ans += -6;
-    
     s.insert(t);
   }
+  std::cout << ans << std::endl;
   return 0;
 }
