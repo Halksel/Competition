@@ -1,0 +1,88 @@
+#include <bits/stdc++.h>
+using namespace std ;
+
+#define pb(n) push_back(n)
+#define fi first
+#define se second
+#define all(r) begin(r),end(r)
+#define vmax(ary) *max_element(all(ary))
+#define vmin(ary) *min_element(all(ary))
+#define debug(x) cout<<#x<<": "<<x<<endl
+#define fcout(n) cout<<fixed<<setprecision((n))
+#define scout(n) cout<<setw(n)
+#define vary(type,name,size,init) vector< type> name(size,init)
+#define vvl(v,w,h,init) vector<vector<ll>> v(w,vector<ll>(h,init))
+#define mp(a,b) make_pair(a,b)
+
+#define rep(i,n) for(int i = 0; i < (int)(n);++i)
+#define REP(i,a,b) for(int i = (a);i < (int)(b);++i)
+#define repi(it,array) for(auto it = array.begin(),end = array.end(); it != end;++it)
+#define repa(n,array) for(auto &n :(array))
+
+using ll = long long;
+using pii = pair<int,int> ;
+using pll = pair<ll,ll> ;
+
+const ll mod = 1e9+7;
+constexpr ll inf = ((1<<30)-1)*2+1 ;
+constexpr double PI = acos(-1.0) ;
+double eps = 1e-10 ;
+const int dy[] = {-1,0,1,0,1,-1,1,-1};
+const int dx[] = {0,-1,0,1,1,-1,-1,1};
+
+inline bool value(int x,int y,int w,int h){
+  return (x >= 0 && x < w && y >= 0 && y < h);
+}
+
+ll w,h,n;
+char v[51][51];
+vector<string> ans;
+
+string conv(char c,char d){
+  return c + " " + d;
+}
+string conv(int c,int d){
+  return to_string(c) + " " + to_string(d);
+}
+
+int main(){
+  cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin >> w >> h >> n;
+  rep(i,w){
+    rep(j,h){
+      cin >> v[i][j];
+    }
+  }
+  rep(k,50){
+    int u = 0;
+    while(u < 50){
+      string s;
+      bool f = true;
+      while(v[k][u] == '0'){
+        ++u;
+      }
+      rep(j,8){
+        if(!value(k,u+j,50,50)){
+          f = false;
+        }
+        if(value(k,u+j,50,50) && v[k][u +j] == '0'){
+          f = false;
+          u = u+j;
+          break;
+        }
+        s += conv(k+1,u + j + 1) + "\n";
+      }
+      if(f){
+        u += 7;
+        ans.push_back(s);
+      }
+      ++u;
+    }
+  }
+  cout << ans.size() << endl;
+  rep(i,ans.size()){
+    cout << ans[i];
+  }
+  return 0;
+}

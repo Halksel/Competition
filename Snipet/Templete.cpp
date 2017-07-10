@@ -203,11 +203,200 @@ namespace SCC{
   }
 }
 using namespace SCC;
+namespace Flow {
+
+  struct edge {int to, cap, rev;};
+  const ll MAX_V = 101;
+  vector<edge> G[MAX_V];
+  bool used[MAX_V];
+
+  void add_edge(int from, int to, int cap){
+    G[from].push_back(edge{to,cap,G[to].size()});
+    G[to].push_back(edge{from,0,G[from].size()-1});
+  }
+
+  int dfs(int v,int t,int f){
+    if(v == t) return f;
+    used[v] = true;
+    rep(i,G[v].size()){
+      auto &e = G[v][i];
+      if(!used[e.to] && e.cap > 0){
+        int d = dfs(e.to,t,min(f,e.cap));
+        if(d > 0){
+          e.cap -= d;
+          G[e.to][e.rev].cap += d;
+          return d;
+        }
+      }
+    }
+    return 0;
+  }
+
+  int max_flow(int s,int t){
+    int flow = 0;
+    for(;;){
+      memset(used, 0,sizeof(used));
+      int f = dfs(s,t,inf);
+      if(f == 0) return flow;
+      flow += f;
+    }
+  }
+} // namespace Flow
+
+namespace Bipartite_matching {
+  int V;
+  const ll MAX_V = 101;
+  vector<ll> G[MAX_V];
+  int match[MAX_V];
+  bool used[MAX_V];
+
+  void add_edge(int u,int v){
+    G[u].push_back(v);
+    G[v].push_back(u);
+  }
+
+  bool dfs(int v){
+    used[v] = true;
+    rep(i,G[v].size()){
+      int u = G[v][i], w = match[u];
+      if(w < 0 || !used[w] && dfs(w)){
+        match[v] = u;
+        match[u] = v;
+        return true;
+      }
+    }
+    return false;
+  }
+  ll bipartite_matching(){
+    ll res = 0;
+    memset(match,-1,sizeof(match));
+    rep(v,V){
+      if(match[v] < 0){
+        memset(used,-1,sizeof(used));
+        if(dfs(v)) ++res;
+      }
+    }
+    return res;
+  }
+  const int MAX_N = 100;
+
+  int N;
+  ll minimum_cover_path(){
+    V = N * 2;
+    rep(i,V) G[i].clear();
+    rep(i,N){
+      rep(j,N){
+        if(i == j) continue;
+        bool f = true;
+        /*
+          ここにi と jを結ぶことのできる条件を設定する
+         */
+        if(f) add_edge(i,N+j);
+      }
+    }
+    return N - bipartite_matching();
+  }
+} // namespace Bipartite_matching
+
+
 
 namespace Geometry{
+#define curr(P, i) P[i]
+#define next(P, i) P[(i+1)%P.size()]
+#define diff(P, i) (next(P, i) - curr(P, i))
   const double EPS = 1e-8;
   const double INF = 1e12;
+  const double PI = acos(-1);
+  double d2r(int d){
+    return (1.0 * d/180)*PI;
+  }
   typedef complex<double> P;//複素数を平面における点と解釈
+  P inputP(){
+    double x,y;
+    cin >> x >> y;
+    return P(x,y);
+  }
+  class L{// line
+    public:
+      vector<P> l;
+      P v;
+      L(){};
+      L(const P &a, const P &b) {
+        l.push_back(a); l.push_back(b);
+        v = (b-a);
+      }
+      L(double a,double b,double c,double d){
+        l.push_back(P(a,b)),l.push_back(P(c,d));
+      }
+      P& operator[](const int i){
+        return l[i];
+      }
+      void input() {
+        double a, b,c,d;
+        cin >> a >> b >> c >> d;
+        l.clear();
+        l.push_back(P(a,b)),l.push_back(P(c,d));
+      }
+  };
+
+  class G {
+    public:
+      vector<P> g;
+      vector<L> l;
+      ll n;
+      G(){};
+      G(int _n):n(_n){
+        double x,y;
+        l.resize(n),g.resize(n);
+        rep(i,n){
+          cin >> x >> y;
+          g[i] = (P(x,y));
+        }
+        rep(i,n){
+          l[i] = L(g[i],g[(i+1)%n]);
+        }
+      }
+      G (vector<P> ps){
+        n = ps.size();
+        g.resize(n),l.resize(n);
+        rep(i,n){
+          g[i] = ps[i];
+        }
+        rep(i,n){
+          l[i] = L(g[i],g[(i+1)%n]);
+        }
+      }
+      P& operator[](int i){
+        return g[i];
+      }
+      void push_back(P p){
+        g.push_back(p);
+      }
+      size_t size(){
+        return g.size();
+      }
+      void resize(int n){
+        g.resize(n),l.resize(n);
+      }
+      friend ostream& operator<<(ostream& os,const G& g){
+        rep(i,g.n){
+          if(i) os << ' ';
+          os << g.g[i] ;
+        }
+        return os;
+      }
+  };
+
+  struct C {//円
+    P p; double r;
+    C(){};
+    C(const P &p, double r) : p(p), r(r) { }
+    void input(){
+      double x,y;
+      cin >> x >> y >> r;
+      p = P(x,y);
+    }
+  };
   namespace std {
     bool operator < (const P& a, const P& b) {//x軸を優先
       return real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b);
@@ -230,45 +419,6 @@ namespace Geometry{
     return real(conj(a)*b);
   }
 
-  class L{// line
-    public:
-      vector<P> l;
-      P v;
-      L(){};
-      L(const P &a, const P &b) {
-        l.push_back(a); l.push_back(b);
-        v = (b-a);
-      }
-      L(double a,double b,double c,double d){
-        l.push_back(P(a,b)),l.push_back(P(c,d));
-      }
-      P& operator[](const int i){
-        return l[i];
-      }
-      void readL() {
-        double a, b,c,d;
-        cin >> a >> b >> c >> d;
-        l.clear();
-        l.push_back(P(a,b)),l.push_back(P(c,d));
-      }
-  };
-
-  typedef vector<P> G;
-  G readG(int n){
-    double x,y;
-    G g;
-    rep(i,n){
-      cin >> x >> y;
-      g.push_back(P(x,y));
-    }
-    return g;
-  }
-
-  struct C {//円
-    P p; double r;
-    C(){};
-    C(const P &p, double r) : p(p), r(r) { }
-  };
   int ccw(P a, P b, P c) {//3点がどの順番で並んでいるかの判定
     b -= a; c -= a;
     if (cross(b, c) > 0)   return +1;       // counter clockwise
@@ -288,23 +438,32 @@ namespace Geometry{
     return 0;
   }
   // L:line,S:segment,P:point
-  bool intersectLL( L &l,  L &m) {
+  bool intersectLL( L l,  L m) {
     return abs(cross(l[1]-l[0], m[1]-m[0])) > EPS || // non-parallel
       abs(cross(l[1]-l[0], m[0]-l[0])) < EPS;   // same line
   }
-  bool intersectLS( L &l,  L &s) {
+  bool intersectLS( L l,  L s) {
     return cross(l[1]-l[0], s[0]-l[0])*       // s[0] is left of l
       cross(l[1]-l[0], s[1]-l[0]) < EPS; // s[1] is right of l
   }
-  bool intersectLP( L &l,  P &p) {
+  bool intersectLP( L l,  P p) {
     return abs(cross(l[1]-p, l[0]-p)) < EPS;
   }
-  bool intersectSS( L &s,  L &t) {
+  bool intersectSS( L s,  L t) {
     return ccw(s[0],s[1],t[0])*ccw(s[0],s[1],t[1]) <= 0 &&
       ccw(t[0],t[1],s[0])*ccw(t[0],t[1],s[1]) <= 0;
   }
-  bool intersectSP( L &s,  P &p) {
+  bool intersectSP( L s,  P p) {
     return abs(s[0]-p)+abs(s[1]-p)-abs(s[1]-s[0]) < EPS; // triangle inequality
+  }
+  bool intersectSG(L l, G g) {
+    int n = g.size();
+    rep(i, n) {
+      if (intersectSS(l, L(curr(g, i), next(g, i)))) {
+        return true;
+      }
+    }
+    return false;
   }
   // L & P intersection
   P projection( L &l,  P &p) {
@@ -315,27 +474,34 @@ namespace Geometry{
   P reflection( L &l,  P &p) {
     return p + 2.0 * (projection(l, p) - p);
   }
-  double distanceLP( L &l,  P &p) {
+  double distanceLP( L l,  P p) {
     return abs(p - projection(l, p));
   }
-  double distanceLL( L &l,  L &m) {
+  double distanceLL( L l,  L m) {
     return intersectLL(l, m) ? 0 : distanceLP(l, m[0]);
   }
-  double distanceLS( L &l,  L &s) {
+  double distanceLS( L l,  L s) {
     if (intersectLS(l, s)) return 0;
     return min(distanceLP(l, s[0]), distanceLP(l, s[1]));
   }
-  double distanceSP( L &s,  P &p) {
+  double distanceSP( L s,  P p) {
     P r = projection(s, p);
     if (intersectSP(s, r)) return abs(r - p);
     return min(abs(s[0] - p), abs(s[1] - p));
   }
-  double distanceSS( L &s,  L &t) {
+  double distanceSS( L s,  L t) {
     if (intersectSS(s, t)) return 0;
     return min(min(distanceSP(s, t[0]), distanceSP(s, t[1])), min(distanceSP(t, s[0]), distanceSP(t, s[1])));
   }
-  double distancePP( P &p, P &q){
+  double distancePP( P p, P q){
     return abs(p - q) ;
+  }
+  double distanceSG(L l, G g) {
+    double d = INF;
+    rep(i, g.size()) {
+      d = min(d, distanceSS(l, L(curr(g, i), next(g, i))));
+    }
+    return d;
   }
   P crosspoint(L &l,L &m) {
     double A = cross(l[1] - l[0], m[1] - m[0]);
@@ -386,14 +552,14 @@ namespace Geometry{
     P ca = (c - a);
     return (real(ba) * imag(ca) - imag(ba) * real(ca))/2.0;
   }
-  double calc_area(const G &g){
+  double calc_area(G &g){
     double res = 0;
     rep(i,g.size()-2){
       res += calc_triangle(g[0],g[(i+1) % g.size()],g[(i+2) % g.size()]);
     }
     return res;
   }
-  bool is_convex(const G &g){
+  bool is_convex(G &g){
     if(g.size() == 3) return true;
     rep(i,g.size()){
       if(ccw(g[i],g[(i+1) % g.size()],g[(i+2) % g.size()]) != 1 && ccw(g[i],g[(i+1) % g.size()],g[(i+2) % g.size()]) != -2){
@@ -402,7 +568,7 @@ namespace Geometry{
     }
     return true;
   }
-  int convex_point(const G &g,const P &p){
+  int convex_point(G &g,const P &p){
     P q = p-P(-INF,imag(p));
     double x = real(p),y = imag(p);
     L l1(p,q);
@@ -428,6 +594,30 @@ namespace Geometry{
     if(cn % 2) return 2; // p in g
     return 0; // p out g
   }
+  double distance(G &g, P &p){
+    if(convex_point(g,p)) return 0;
+    double res = INF;
+    ll N = g.size();
+    rep(i,N){
+      L l = L(g[i],g[(i+1)%N]);
+      res = min(res,distanceSP(l,p));
+    }
+    return res;
+  }
+
+  double distance(G &g, G &h){
+    double res = INF;
+    ll N = g.size();
+    ll M = h.size();
+    rep(i,N){
+      L l = L(g[i],g[(i+1)%N]);
+      rep(j,M){
+        L k = L(h[j],h[(j+1)%M]);
+        res = min(res,distanceSS(l,k));
+      }
+    }
+    return res;
+  }
   vector<P> convex_hull(vector<P> &ps){
     sort(all(ps));
     int k = 0;
@@ -448,9 +638,6 @@ namespace Geometry{
     qs.resize(k-1);
     return qs;
   }
-#define curr(P, i) P[i]
-#define next(P, i) P[(i+1)%P.size()]
-#define diff(P, i) (next(P, i) - curr(P, i))
   double convex_diameter(vector<P> &ps){
     const int n = ps.size();
     int is = 0,js = 0;
@@ -480,10 +667,10 @@ namespace Geometry{
         if (ccw(p, l[1], l[0]) == 0) return g;    // p -- l.a -- l.b -- q
         else return G{};                        // p -- l.b -- l.a -- q
       }
-      if (ccw(l[0], l[1], p) != -1) h.emplace_back(p);
+      if (ccw(l[0], l[1], p) != -1) h.push_back(p);
       if (ccw(l[0], l[1], p) * ccw(l[0], l[1], q) < 0){
         L t = L(p,q);
-        h.emplace_back(crosspoint(t, l));
+        h.push_back(crosspoint(t, l));
       }
     }
     return h;
@@ -517,6 +704,108 @@ namespace Geometry{
     double ans = closestPair_calc(&p[0],n);
     return ans == INF ? 0.0 : ans;
   }
+  //3D
+  double add(double a, double b) {
+    if (abs(a + b) < EPS * (abs(a) + abs(b))) return 0;
+    return a + b;
+  }
+  struct Point {
+    double x, y, z;
+    Point() {}
+    Point(double _x, double _y, double _z) : x(_x), y(_y), z(_z) {}
+    void input(){
+      cin >> x >> y >> z;
+    }
+    const Point operator+ (const Point &p) {
+      return Point(add(this->x, p.x), add(this->y, p.y), add(this->z, p.z));
+    }
+    const Point operator- (const Point &p) {
+      return Point(add(this->x, -p.x), add(this->y, -p.y), add(this->z, -p.z));
+    }
+    const Point operator* (double d) {
+      return Point(this->x * d, this->y * d, this->z * d);
+    }
+    double norm() {
+      return this->x * this->x + this->y * this->y + this->z * this->z;
+    }
+    double distance() {
+      return sqrt(this->norm());
+    }
+  };
+
+  double dot(const Point &p1, const Point &p2) {
+    return p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
+  }
+  Point cross(const Point &p1, const Point &p2) {
+    return Point(p1.y * p2.z - p2.y * p1.z, -(p1.x * p2.z - p2.x * p1.z), p1.x * p2.y - p2.x * p1.y);
+  }
+
+  struct Line {
+    Point a, b, dis;
+    Line() {}
+    Line(const Point &_a, const Point &_b) : a(_a), b(_b), dis(b - a) {}
+    void input(){
+      a.input();
+      b.input();
+      *this = Line(a,b);
+    }
+    double dist2() {
+      const double X = this->a.x - this->b.x;
+      const double Y = this->a.y - this->b.y;
+      const double Z = this->a.z - this->b.z;
+      return X * X + Y * Y + Z * Z;
+    }
+    double dist() {
+      return sqrt(this->dist2());
+    }
+  };
+  using Segment = Line;
+
+  double distanceLineToPoint(Line &l, Point &p) {
+    return cross(l.dis, p - l.a).distance() / l.dis.distance();
+  }
+
+  double distanceSegmentToPoint(Segment &l, Point &p) {
+    if (dot(l.b - l.a, p - l.a) < 0) {
+      auto buf = p - l.a;
+      return buf.distance();
+    }
+    if (dot(l.a - l.b, p - l.b) < 0) {
+      auto buf = p - l.b;
+      return buf.distance();
+    }
+    return distanceLineToPoint(l, p);
+  }
+
+  struct Ball {
+    Point center;
+    double r;
+    Ball() {}
+    Ball(double _x, double _y, double _z, double _r) : center(_x, _y, _z), r(_r) {}
+    Ball(const Point &_c, double _r) : center(_c), r(_r) {}
+    void input(){
+      center.input();
+      cin >> r;
+    }
+    bool inside(const Point &p) {
+      const double X = p.x - this->center.x;
+      const double Y = p.y - this->center.y;
+      const double Z = p.z - this->center.z;
+      return sgn(X * X + Y * Y + Z * Z, -(this->r * this->r)) == -1;
+    }
+    bool inside(Segment &s) {
+      return sgn(distanceSegmentToPoint(s, this->center) - this->r) == -1;
+    }
+    bool on_surface(const Point &p) {
+      const double X = p.x - this->center.x;
+      const double Y = p.y - this->center.y;
+      const double Z = p.z - this->center.z;
+      return sgn(X * X + Y * Y + Z * Z, -(this->r * this->r)) == 0;
+    }
+    bool on_surface(Segment &s) {
+      return sgn(distanceSegmentToPoint(s, this->center) - this->r) == 0;
+    }
+  };
 }
 using namespace Geometry;
 //四捨五入
@@ -1126,12 +1415,12 @@ namespace CalcEquations{
 using namespace CalcEquations;
 
 namespace powmod{
-  const ll mod = 1e9+7;
+  const int mod = 1e9+7;
   ll powmod(ll a, ll p){
     ll ans = 1;
     ll mul = a;
     for(; p > 0; p >>= 1, mul = (mul*mul) % mod){ //初期条件なし、pを2で割り続け、mulの値を更新
-      if((p & 1) == 1) ans = ( ans * mul) % mod;//最下位Bitが1なら ansの値を更新
+      if((p & 1) == 1) ans = ( ans * mul) % mod;//pが1なら ansの値を更新
     }
     return ans;
   }
@@ -1144,18 +1433,32 @@ namespace powmod{
   void setFact(int N){
     fact[0] = 1;
     for(int i = 1; i < N; ++i){
-      fact[i] = fact[i-1]*i;
-      fact[i] %= mod;
+      fact[i] = (fact[i-1]*i) % mod;
     }
     revfact[N-1] = powmod(fact[N-1],mod-2);//逆元を求める
     for(int i = N-2;i >= 0;--i){
-      revfact[i] = revfact[i+1] * (i+1);
-      revfact[i] %= mod;//互いに素
+      revfact[i] = (revfact[i+1] * (i+1)) % mod;
     }
+  }
+
+  ll getP(int a,int b){
+    return (fact[a] * revfact[b]) % mod;
   }
 
   ll getC(int a, int b){
     return (fact[a] * revfact[b] % mod) * revfact[a-b] % mod;
+  }
+
+  ll mod_add(ll a, ll b) {
+    return (a + b) % mod;
+  }
+
+  ll mod_sub(ll a, ll b) {
+    return (a - b + mod) % mod;
+  }
+
+  ll mod_mul(ll a, ll b) {
+    return a*b % mod;
   }
 }
 //Useful
@@ -1213,11 +1516,11 @@ T ston(string& str, T n){
 long long C[1010][1010];
 
 void make_C(){
-    memset(C, 0, (int)sizeof(C));
-    for(int i = 0; i < 1010; i++){
-        C[i][0] = C[i][i] = 1;
-        for(int j = 1; j < i; j++) C[i][j] = (C[i-1][j-1] + C[i-1][j]) % mod;
-    }
+  memset(C, 0, (int)sizeof(C));
+  for(int i = 0; i < 1010; i++){
+    C[i][0] = C[i][i] = 1;
+    for(int j = 1; j < i; j++) C[i][j] = (C[i-1][j-1] + C[i-1][j]) % mod;
+  }
 }
 
 int main(){
