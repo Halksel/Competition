@@ -142,7 +142,6 @@ string ConvertRPN(string s){
       fom.push(str[i]);
     }
   }
-  bool f = true;
   while(fom.size()){
     if(fom.top() != " "){
       res += fom.top();

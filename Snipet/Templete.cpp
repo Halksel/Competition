@@ -111,6 +111,64 @@ class dijkstra{
       return b.fi;
     }
 };
+const int MAX_E = 2000;
+const int MAX_V = 2000;
+struct edge{
+  ll from,to,cost;
+};
+
+edge es[MAX_E];
+ll d[MAX_V];
+
+class Bellman_Ford{
+  public:
+  int V,E;
+  const ll INF = 1LL << 50;
+  Bellman_Ford(){};
+  Bellman_Ford(ll v,ll e):V(v),E(e){};
+  void shorter_path(int s){
+    rep(i,V) d[i] = INF;
+    d[s] = 0;
+    rep(i,V-1){
+      rep(i,E){
+        auto e = es[i];
+        if(d[e.from] != INF && d[e.to] > d[e.from] + e.cost){
+          d[e.to] = d[e.from] + e.cost;
+        }
+      }
+    }
+  }
+  bool find_negative_loop(){
+    memset(d,0,sizeof(d));
+    rep(i,V){
+      rep(j,E){
+        auto e = es[j];
+        if(d[e.to] > d[e.from] + e.cost){
+          (d[e.to] = d[e.from] + e.cost);
+          if(i == V - 1) return true;
+        }
+      }
+    }
+    return false;
+  }
+  bool check(){
+    vector<bool> neg(V,false);
+    rep(i,V){
+      rep(j,E){
+        auto e = es[j];
+        if(d[e.from] == INF) continue;
+        if(d[e.to] > d[e.from] + e.cost){
+          (d[e.to] = d[e.from] + e.cost);
+          neg[e.to] = true;
+        }
+        if(neg[e.from]){
+          neg[e.to] = true;
+        }
+      }
+    }
+    return neg[V-1];
+  }
+};
 namespace Prim{
   const int MAX_V = 1000000;
   struct Edge{
