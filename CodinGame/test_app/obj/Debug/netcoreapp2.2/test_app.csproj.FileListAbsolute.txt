@@ -1,0 +1,11 @@
+C:\Users\whent\Documents\CodinGame\test_app\bin\Debug\netcoreapp2.2\test_app.deps.json
+C:\Users\whent\Documents\CodinGame\test_app\bin\Debug\netcoreapp2.2\test_app.runtimeconfig.json
+C:\Users\whent\Documents\CodinGame\test_app\bin\Debug\netcoreapp2.2\test_app.runtimeconfig.dev.json
+C:\Users\whent\Documents\CodinGame\test_app\bin\Debug\netcoreapp2.2\test_app.dll
+C:\Users\whent\Documents\CodinGame\test_app\bin\Debug\netcoreapp2.2\test_app.pdb
+C:\Users\whent\Documents\CodinGame\test_app\obj\Debug\netcoreapp2.2\test_app.csprojAssemblyReference.cache
+C:\Users\whent\Documents\CodinGame\test_app\obj\Debug\netcoreapp2.2\test_app.csproj.CoreCompileInputs.cache
+C:\Users\whent\Documents\CodinGame\test_app\obj\Debug\netcoreapp2.2\test_app.AssemblyInfoInputs.cache
+C:\Users\whent\Documents\CodinGame\test_app\obj\Debug\netcoreapp2.2\test_app.AssemblyInfo.cs
+C:\Users\whent\Documents\CodinGame\test_app\obj\Debug\netcoreapp2.2\test_app.dll
+C:\Users\whent\Documents\CodinGame\test_app\obj\Debug\netcoreapp2.2\test_app.pdb
